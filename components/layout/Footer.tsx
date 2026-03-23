@@ -12,7 +12,6 @@ const quickLinks = [
 
 const branches = [
   { name: 'Head Office', location: 'Bucharest, Romania' },
-  { name: 'Kathmandu Branch', location: 'Kathmandu, Nepal' },
 ];
 
 export function Footer() {

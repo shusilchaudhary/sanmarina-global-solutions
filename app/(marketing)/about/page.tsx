@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 const milestones = [
-  { year: '2018', title: 'Founded', description: 'Established in Kathmandu with a mission to create global opportunities.' },
+  { year: '2018', title: 'Founded', description: 'Established in Romania with a mission to create global opportunities.' },
   { year: '2019', title: 'First Placements', description: 'Successfully placed 50 workers in Germany and Poland.' },
   { year: '2021', title: 'IT Division', description: 'Launched IT consulting services for European businesses.' },
   { year: '2023', title: '1000+ Workers', description: 'Reached milestone of placing over 1,000 workers across Europe.' },
@@ -41,7 +41,7 @@ export default function AboutPage() {
           </h1>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             SanMarina Global Agency is a licensed international recruitment firm
-            and IT consulting company headquartered in Kathmandu, Nepal.
+            and IT consulting company headquartered in Bucharest, Romania.
           </p>
         </div>
       </section>

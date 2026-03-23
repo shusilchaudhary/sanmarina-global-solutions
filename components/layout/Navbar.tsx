@@ -9,8 +9,8 @@ import { cn } from '@/lib/utils';
 
 const navLinks = [
   { label: 'Home', href: '/' },
-  { label: 'Recruitment', href: '/#recruitment' },
-  { label: 'IT Consulting', href: '/#it-consulting' },
+  { label: 'Recruitment', href: '/recruitment' },
+  { label: 'IT Consulting', href: '/it-consulting' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ];
@@ -48,7 +48,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-neutral-600 hover:text-primary-600 transition-colors relative group"
+                className="text-base font-medium text-neutral-600 hover:text-primary-600 transition-colors relative group"
               >
                 {link.label}
                 <span className="absolute -bottom-1.5 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300 group-hover:w-full rounded-full opacity-0 group-hover:opacity-100" />
@@ -60,7 +60,7 @@ export function Navbar() {
           <div className="flex items-center gap-4 shrink-0">
             <Link
                href="/contact"
-               className="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-lg transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5"
+               className="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-base font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-lg transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5"
              >
                Get Consultation
              </Link>

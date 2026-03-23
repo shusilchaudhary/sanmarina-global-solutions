@@ -1,0 +1,63 @@
+﻿Γû▓ Next.js 16.1.6 (Turbopack)
+
+  Creating an optimized production build ...
+Γ£ô Compiled successfully in 10.0s
+  Running TypeScript ...
+node.exe : Failed to 
+compile.
+At C:\Program 
+Files\nodejs\npx.ps1:29 
+char:3
++   & $NODE_EXE 
+$NPX_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~
+    + CategoryInfo        
+      : NotSpecified: (F  
+  ailed to compile.:Str   
+ ing) [], RemoteExcept    
+ion
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+
+./components/marketing/Loc
+ationMap.tsx:21:11
+Type error: Type '{ 
+label: string; title: 
+string; description: 
+string; dark: true; }' is 
+not assignable to type 
+'IntrinsicAttributes & 
+SectionHeaderProps'.
+  Property 'dark' does 
+not exist on type 
+'IntrinsicAttributes & 
+SectionHeaderProps'.
+
+[0m [90m 19 |[39m      
+     
+title[33m=[39m[32m"We 
+Operate Across 
+Europe"[39m
+ [90m 20 |[39m          
+ description[33m=[39m[3
+2m"Our network spans 15+ 
+European countries with 
+active job placements and 
+employer 
+partnerships."[39m
+[31m[1m>[22m[39m[90m 
+21 |[39m           dark
+ [90m    |[39m          
+ [31m[1m^[22m[39m
+ [90m 22 |[39m         
+[33m/[39m[33m>[39m
+ [90m 23 |[39m
+ [90m 24 |[39m         
+{[90m/* Map Container 
+*/[39m}[0m
+Next.js build worker 
+exited with code: 1 and 
+signal: null

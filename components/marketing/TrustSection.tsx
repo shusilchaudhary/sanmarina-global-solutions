@@ -5,9 +5,9 @@ import { Users, Globe, Award, Briefcase } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const stats = [
-  { icon: Users, value: 2000, suffix: '+', label: 'Workers Placed' },
+  { icon: Users, value: 10, suffix: '+', label: 'Workers Placed' },
   { icon: Globe, value: 15, suffix: '+', label: 'European Countries' },
-  { icon: Award, value: 98, suffix: '%', label: 'Visa Approval Rate' },
+  { icon: Award, value: 98, suffix: '%', label: 'Visa Success Rate (Genuine Applicants)' },
   { icon: Briefcase, value: 150, suffix: '+', label: 'Partner Companies' },
 ];
 

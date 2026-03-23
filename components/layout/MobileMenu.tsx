@@ -81,7 +81,7 @@ export function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) {
                 <Link
                   href={link.href}
                   onClick={onClose}
-                  className="block px-4 py-3.5 text-base font-medium text-neutral-600 hover:text-primary-600 hover:bg-primary-50 rounded-xl transition-colors"
+                  className="block px-4 py-3.5 text-lg font-medium text-neutral-600 hover:text-primary-600 hover:bg-primary-50 rounded-xl transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -95,7 +95,7 @@ export function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) {
           <Link
             href="/contact"
             onClick={onClose}
-            className="w-full flex items-center justify-center px-6 py-3.5 text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-xl transition-all shadow-sm"
+            className="w-full flex items-center justify-center px-6 py-3.5 text-base font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-xl transition-all shadow-sm"
           >
             Get Consultation
           </Link>

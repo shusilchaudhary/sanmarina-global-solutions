@@ -44,6 +44,18 @@ export function TestimonialsSection() {
           <div className="premium-card p-10 md:p-16 relative overflow-hidden text-center">
             
             <Quote className="w-12 h-12 text-primary-100 mx-auto mb-8" />
+
+            {/* Verified Badge */}
+            {t.verified && (
+              <div className="flex items-center justify-center mb-6">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold tracking-wide">
+                  <svg className="w-3.5 h-3.5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  Verified Visa Approved
+                </span>
+              </div>
+            )}
             
             {/* Stars */}
             <div className="flex items-center justify-center gap-1 mb-6">
@@ -73,6 +85,11 @@ export function TestimonialsSection() {
                 <p className="text-sm text-neutral-500">
                   {t.role} • {t.country}
                 </p>
+                {t.verified && t.visaType && (
+                  <p className="text-xs text-emerald-600 font-semibold mt-0.5">
+                    {t.visaType} · {t.visaDate}
+                  </p>
+                )}
               </div>
             </div>
 

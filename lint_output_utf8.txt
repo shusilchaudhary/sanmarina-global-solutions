@@ -1,0 +1,33 @@
+﻿node.exe : npm error 
+Missing script: "lint"
+At C:\Program 
+Files\nodejs\npm.ps1:29 
+char:3
++   & $NODE_EXE 
+$NPM_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~
+    + CategoryInfo        
+      : NotSpecified: (n  
+  pm error Missing scri   
+ pt: "lint":String) []    
+, RemoteException
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+npm error
+npm error Did you mean 
+this?
+npm error   npm link # 
+Symlink a package folder
+npm error
+npm error To see a list 
+of scripts, run:
+npm error   npm run
+npm error A complete log 
+of this run can be found 
+in: C:\Users\A S U S\AppDa
+ta\Local\npm-cache\_logs\2
+026-03-23T07_36_40_238Z-de
+bug-0.log

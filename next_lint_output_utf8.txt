@@ -1,0 +1,22 @@
+﻿node.exe : Invalid 
+project directory 
+provided, no such 
+directory: C:\Users\A S U 
+S\OneDrive\Documents\sanma
+rinaglobal_agency\lint
+At C:\Program 
+Files\nodejs\npx.ps1:29 
+char:3
++   & $NODE_EXE 
+$NPX_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~
+    + CategoryInfo        
+      : NotSpecified: (I  
+  nvalid project...bal_   
+ agency\lint:String) [    
+], RemoteException
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 

@@ -7,62 +7,38 @@ export interface Testimonial {
   quote: string;
   avatar: string;
   rating: number;
+  verified?: boolean;
+  visaType?: string;
+  visaDate?: string;
 }
 
 export const testimonials: Testimonial[] = [
   {
-    id: '1',
-    name: 'Ramesh Thapa',
-    role: 'Hotel Chef',
-    country: 'Germany',
-    countryCode: 'DE',
+    id: 'real-1',
+    name: 'Kirpa Rupakheti',
+    role: 'Permanent Worker (Lucrator Permanent)',
+    country: 'Romania',
+    countryCode: 'RO',
     quote:
-      'SanMarina Global made my dream of working in Europe a reality. Within 3 months, I had my visa and was working at a top hotel in Munich. Their support throughout the process was incredible.',
-    avatar: '/images/testimonials/ramesh.jpg',
+      'SanMarina Global made my European dream a reality. My Romania work visa was approved and I am now legally working as a permanent worker. The entire process was handled professionally and the team supported me at every step.',
+    avatar: '',
     rating: 5,
+    verified: true,
+    visaType: 'Romania D-Visa — Permanent Worker',
+    visaDate: 'January 2026',
   },
   {
-    id: '2',
-    name: 'Sita Gurung',
-    role: 'Healthcare Assistant',
-    country: 'Czech Republic',
-    countryCode: 'CZ',
+    id: 'real-2',
+    name: 'Dom Kumar Chemjong Limbu',
+    role: 'Permanent Worker (Lucrator Permanent)',
+    country: 'Romania',
+    countryCode: 'RO',
     quote:
-      'The team guided me through every step — from language classes to visa processing. I now work at a wonderful hospital in Prague and my family is so proud.',
-    avatar: '/images/testimonials/sita.jpg',
+      'I never imagined getting a European work visa could be this smooth. SanMarina Global handled my Romania visa application from Kuala Lumpur and it was approved within weeks. I am grateful for their dedication.',
+    avatar: '',
     rating: 5,
-  },
-  {
-    id: '3',
-    name: 'Bikram Rai',
-    role: 'Construction Worker',
-    country: 'Poland',
-    countryCode: 'PL',
-    quote:
-      'I was worried about the process, but SanMarina handled everything professionally. Free accommodation, good salary, and the company even arranged Polish language lessons for us.',
-    avatar: '/images/testimonials/bikram.jpg',
-    rating: 5,
-  },
-  {
-    id: '4',
-    name: 'Anita Sharma',
-    role: 'IT Support Specialist',
-    country: 'Germany',
-    countryCode: 'DE',
-    quote:
-      'As a female IT professional, I appreciated how SanMarina ensured my placement was with a reputable company. The EU Blue Card process was smooth and well-managed.',
-    avatar: '/images/testimonials/anita.jpg',
-    rating: 5,
-  },
-  {
-    id: '5',
-    name: 'Dipendra Khadka',
-    role: 'Farm Worker',
-    country: 'Croatia',
-    countryCode: 'HR',
-    quote:
-      'My seasonal work in Croatian vineyards was an amazing experience. SanMarina organized everything from flights to accommodation. I\'m returning for my second season!',
-    avatar: '/images/testimonials/dipendra.jpg',
-    rating: 4,
+    verified: true,
+    visaType: 'Romania D-Visa — Permanent Worker',
+    visaDate: 'February 2026',
   },
 ];

@@ -49,89 +49,89 @@ export function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 bg-white p-6 md:p-8 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-neutral-100">
       {submitSuccess && (
-        <div className="p-4 bg-accent-400/20 text-accent-400 border border-accent-400/30 rounded-xl mb-6">
+        <div className="p-4 bg-green-50 text-green-700 border border-green-200 rounded-xl mb-6">
           Thank you! Your message has been sent successfully.
         </div>
       )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
-          <label className="block text-sm text-gray-400 mb-2">Full Name</label>
+          <label className="block text-sm font-medium text-neutral-700 mb-2">Full Name</label>
           <input
             {...register('name')}
             type="text"
             placeholder="Your name"
-            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-gray-500 focus:outline-none focus:border-accent-400/50 focus:ring-1 focus:ring-accent-400/50 transition-all"
+            className="w-full px-5 py-4 bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 hover:border-neutral-300 rounded-xl text-neutral-800 placeholder:text-neutral-400 focus:bg-white focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 shadow-sm"
           />
           {errors.name && (
-            <p className="mt-1 text-xs text-red-400">{errors.name.message}</p>
+            <p className="mt-1 text-xs text-red-500">{errors.name.message}</p>
           )}
         </div>
         <div>
-          <label className="block text-sm text-gray-400 mb-2">Email</label>
+          <label className="block text-sm font-medium text-neutral-700 mb-2">Email</label>
           <input
             {...register('email')}
             type="email"
             placeholder="you@email.com"
-            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-gray-500 focus:outline-none focus:border-accent-400/50 focus:ring-1 focus:ring-accent-400/50 transition-all"
+            className="w-full px-5 py-4 bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 hover:border-neutral-300 rounded-xl text-neutral-800 placeholder:text-neutral-400 focus:bg-white focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 shadow-sm"
           />
           {errors.email && (
-            <p className="mt-1 text-xs text-red-400">{errors.email.message}</p>
+            <p className="mt-1 text-xs text-red-500">{errors.email.message}</p>
           )}
         </div>
       </div>
 
       <div>
-        <label className="block text-sm text-gray-400 mb-2">Phone (optional)</label>
+        <label className="block text-sm font-medium text-neutral-700 mb-2">Phone (optional)</label>
         <input
           {...register('phone')}
           type="tel"
           placeholder="+977 ..."
-          className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-gray-500 focus:outline-none focus:border-accent-400/50 focus:ring-1 focus:ring-accent-400/50 transition-all"
+          className="w-full px-5 py-4 bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 hover:border-neutral-300 rounded-xl text-neutral-800 placeholder:text-neutral-400 focus:bg-white focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 shadow-sm"
         />
         {errors.phone && (
-          <p className="mt-1 text-xs text-red-400">{errors.phone.message}</p>
+          <p className="mt-1 text-xs text-red-500">{errors.phone.message}</p>
         )}
       </div>
 
       <div>
-        <label className="block text-sm text-gray-400 mb-2">Service Interested In</label>
+        <label className="block text-sm font-medium text-neutral-700 mb-2">Service Interested In</label>
         <select
           {...register('service')}
-          className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-accent-400/50 focus:ring-1 focus:ring-accent-400/50 transition-all"
+          className="w-full px-5 py-4 bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 hover:border-neutral-300 rounded-xl text-neutral-800 focus:bg-white focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 shadow-sm cursor-pointer appearance-none"
         >
-          <option value="" className="bg-brand-950">Select a service</option>
-          <option value="recruitment" className="bg-brand-950">International Recruitment</option>
-          <option value="visa" className="bg-brand-950">Visa Assistance</option>
-          <option value="it-consulting" className="bg-brand-950">IT Consulting</option>
-          <option value="compliance" className="bg-brand-950">Compliance</option>
-          <option value="travel" className="bg-brand-950">Travel & Relocation</option>
-          <option value="other" className="bg-brand-950">Other</option>
+          <option value="" className="bg-white text-neutral-800">Select a service</option>
+          <option value="recruitment" className="bg-white text-neutral-800">International Recruitment</option>
+          <option value="visa" className="bg-white text-neutral-800">Visa Assistance</option>
+          <option value="it-consulting" className="bg-white text-neutral-800">IT Consulting</option>
+          <option value="compliance" className="bg-white text-neutral-800">Compliance</option>
+          <option value="travel" className="bg-white text-neutral-800">Travel & Relocation</option>
+          <option value="other" className="bg-white text-neutral-800">Other</option>
         </select>
         {errors.service && (
-          <p className="mt-1 text-xs text-red-400">{errors.service.message}</p>
+          <p className="mt-1 text-xs text-red-500">{errors.service.message}</p>
         )}
       </div>
 
       <div>
-        <label className="block text-sm text-gray-400 mb-2">Message</label>
+        <label className="block text-sm font-medium text-neutral-700 mb-2">Message</label>
         <textarea
           {...register('message')}
           rows={5}
           placeholder="Tell us about your needs..."
-          className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-gray-500 focus:outline-none focus:border-accent-400/50 focus:ring-1 focus:ring-accent-400/50 transition-all resize-none"
+          className="w-full px-5 py-4 bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 hover:border-neutral-300 rounded-xl text-neutral-800 placeholder:text-neutral-400 focus:bg-white focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 shadow-sm resize-none"
         />
         {errors.message && (
-          <p className="mt-1 text-xs text-red-400">{errors.message.message}</p>
+          <p className="mt-1 text-xs text-red-500">{errors.message.message}</p>
         )}
       </div>
 
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-brand-950 bg-accent-400 hover:bg-accent-500 disabled:opacity-50 disabled:cursor-not-allowed rounded-xl transition-colors shadow-lg shadow-accent-400/25"
+        className="group w-full inline-flex items-center justify-center gap-3 px-6 py-4 text-base font-bold text-white bg-primary-600 hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-xl transition-all duration-300 shadow-[0_4px_20px_rgba(37,99,235,0.2)] hover:shadow-[0_4px_30px_rgba(37,99,235,0.4)] hover:-translate-y-0.5"
       >
         {isSubmitting ? (
           <>

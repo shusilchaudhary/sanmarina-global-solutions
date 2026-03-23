@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from 'react';
 import { Users, Globe, Award, TrendingUp } from 'lucide-react';
 
 const stats = [
-  { icon: Users, value: 2000, suffix: '+', label: 'Workers Placed', color: 'text-accent-400' },
+  { icon: Users, value: 10, suffix: '+', label: 'Workers Placed', color: 'text-accent-400' },
   { icon: Globe, value: 15, suffix: '', label: 'EU Countries', color: 'text-sky-400' },
-  { icon: Award, value: 98, suffix: '%', label: 'Visa Approval Rate', color: 'text-emerald-400' },
+  { icon: Award, value: 98, suffix: '%', label: 'Visa Success Rate (Genuine Applicants)', color: 'text-emerald-400' },
   { icon: TrendingUp, value: 150, suffix: '+', label: 'Partner Companies', color: 'text-amber-400' },
 ];
 

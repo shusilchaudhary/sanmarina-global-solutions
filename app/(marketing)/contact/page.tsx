@@ -31,11 +31,16 @@ export default function ContactPage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <div className="p-8 bg-white border border-slate-200 rounded-3xl shadow-sm">
-              <h2 className="text-xl font-display font-semibold text-brand-950 mb-6">
+            <div className="p-8 md:p-10 bg-brand-950 rounded-[2rem] shadow-2xl shadow-brand-900/20 border border-brand-800 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-accent-500/10 rounded-full blur-[80px] -mr-32 -mt-32 pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full blur-[80px] -ml-32 -mb-32 pointer-events-none" />
+              
+              <h2 className="text-2xl font-display font-semibold text-white mb-8 relative z-10">
                 Send us a message
               </h2>
-              <ContactForm />
+              <div className="relative z-10">
+                <ContactForm />
+              </div>
             </div>
 
             {/* Contact Info */}
@@ -116,7 +121,7 @@ export default function ContactPage() {
                   <MapPin className="w-8 h-8 mx-auto mb-2 text-slate-400" />
                   <p className="text-sm text-slate-600">Office Location Map</p>
                   <p className="text-xs text-slate-400">
-                    Kathmandu, Nepal
+                    Bucharest, Romania
                   </p>
                 </div>
               </div>

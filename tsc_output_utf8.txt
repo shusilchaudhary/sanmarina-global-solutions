@@ -1,0 +1,2 @@
+﻿components/marketing/LocationMap.tsx(21,11): error TS2322: Type '{ label: string; title: string; description: string; dark: true; }' is not assignable to type 'IntrinsicAttributes & SectionHeaderProps'.
+  Property 'dark' does not exist on type 'IntrinsicAttributes & SectionHeaderProps'.
