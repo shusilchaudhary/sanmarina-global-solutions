@@ -7,11 +7,25 @@ import { MobileMenu } from './MobileMenu';
 import { Logo } from '@/components/shared/Logo';
 import { cn } from '@/lib/utils';
 
-const navLinks = [
+export type NavItem = {
+  label: string;
+  href: string;
+  children?: { label: string; href: string }[];
+};
+
+const navLinks: NavItem[] = [
   { label: 'Home', href: '/' },
-  { label: 'Recruitment', href: '/recruitment' },
-  { label: 'IT Consulting', href: '/it-consulting' },
+  { 
+    label: 'Services', 
+    href: '#',
+    children: [
+      { label: 'Recruitment', href: '/recruitment' },
+      { label: 'IT Consulting', href: '/it-consulting' },
+    ]
+  },
   { label: 'About', href: '/about' },
+  { label: 'Success Stories', href: '/success-stories' },
+  { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -32,27 +46,51 @@ export function Navbar() {
       <header
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-          scrolled ? 'bg-white/90 backdrop-blur-md border-b border-neutral-200 py-3 shadow-sm' : 'bg-transparent py-5'
+          'bg-white/90 backdrop-blur-md border-b border-neutral-200 py-3 shadow-sm'
         )}
       >
         <nav className="container mx-auto px-4 max-w-7xl flex items-center justify-between">
           
           {/* Logo */}
           <Link href="/" className="shrink-0 transition-opacity hover:opacity-80">
-            <Logo variant="light" />
+            <Logo variant="dark" />
           </Link>
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-base font-medium text-neutral-600 hover:text-primary-600 transition-colors relative group"
-              >
-                {link.label}
-                <span className="absolute -bottom-1.5 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300 group-hover:w-full rounded-full opacity-0 group-hover:opacity-100" />
-              </Link>
+              link.children ? (
+                <div key={link.label} className="relative group">
+                  <span className="cursor-pointer text-base font-medium text-neutral-600 hover:text-primary-600 transition-colors py-2 flex items-center gap-1 group">
+                    {link.label}
+                    <svg className="w-4 h-4 text-neutral-400 group-hover:text-primary-600 transition-transform duration-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </span>
+                  <div className="absolute top-[80%] pt-4 left-0 w-56 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 z-50">
+                    <div className="bg-white rounded-xl shadow-xl border border-neutral-100 overflow-hidden py-2">
+                      {link.children.map(child => (
+                        <Link 
+                          key={child.href} 
+                          href={child.href} 
+                          className="block px-5 py-3 hover:bg-neutral-50 text-neutral-600 hover:text-primary-600 transition-colors text-sm font-medium"
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-base font-medium text-neutral-600 hover:text-primary-600 transition-colors relative group"
+                >
+                  {link.label}
+                  <span className="absolute -bottom-1.5 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300 group-hover:w-full rounded-full opacity-0 group-hover:opacity-100" />
+                </Link>
+              )
             ))}
           </div>
 

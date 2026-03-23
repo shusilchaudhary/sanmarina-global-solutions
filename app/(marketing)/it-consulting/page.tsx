@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Code,
   Cloud,
@@ -53,7 +54,7 @@ const services = [
   {
     icon: Cpu,
     title: 'Dedicated Dev Teams',
-    desc: 'Hire skilled, pre-vetted engineers from Nepal who work exclusively on your product — at a fraction of the cost of local talent, with zero compromise on quality.',
+    desc: 'Hire skilled, pre-vetted engineers from Asia who work exclusively on your product — at a fraction of the cost of local talent, with zero compromise on quality.',
     tags: ['Staff Aug', 'Offshore Teams', 'Full-Stack', 'Product Teams'],
     color: 'bg-amber-50 border-amber-100 text-amber-600 group-hover:bg-amber-600 group-hover:text-white group-hover:border-amber-600',
   },
@@ -70,7 +71,7 @@ const whyUs = [
   { icon: Zap, title: 'Fast Delivery', desc: 'Agile sprints with clear milestones and weekly progress updates throughout.' },
   { icon: Users, title: 'Expert Engineers', desc: 'Pre-vetted, senior-level developers, architects and data scientists.' },
   { icon: Globe, title: 'Global Reach', desc: 'Serving clients across Europe, the Americas, Asia and the Middle East.' },
-  { icon: BarChart3, title: 'Cost-Efficient', desc: 'Premium quality at competitive rates — powered by our Nepal tech hub.' },
+  { icon: BarChart3, title: 'Cost-Efficient', desc: 'Premium quality at competitive rates — powered by our Asia tech hub.' },
 ];
 
 export default function ITConsultingPage() {
@@ -78,44 +79,62 @@ export default function ITConsultingPage() {
     <div className="min-h-screen bg-white">
 
       {/* ── HERO ─────────────────────────────────────────────── */}
-      <section className="relative bg-neutral-950 overflow-hidden pt-32 pb-24">
+      <section className="relative bg-neutral-50 border-b border-neutral-200 overflow-hidden pt-32 pb-24">
         {/* Ambient glows */}
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-violet-600/10 rounded-full blur-[140px] pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
 
-        <div className="container mx-auto px-4 max-w-5xl relative z-10">
-          <div className="flex items-center gap-2 mb-6">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-600/15 border border-violet-500/30 text-violet-400 text-xs font-semibold tracking-wider uppercase">
-              <Cpu className="w-3.5 h-3.5" />
-              IT Consulting & Software
-            </span>
-          </div>
+        <div className="container mx-auto px-4 max-w-7xl relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Text Content */}
+            <div className="max-w-xl">
+              <div className="flex items-center gap-2 mb-6">
+                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-50 border border-violet-200 text-violet-700 text-xs font-semibold tracking-wider uppercase">
+                  <Cpu className="w-3.5 h-3.5" />
+                  IT Consulting & Software
+                </span>
+              </div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-extrabold tracking-tight text-white leading-[1.05] mb-6">
-            Technology That<br />
-            <span className="bg-gradient-to-r from-violet-400 to-blue-400 bg-clip-text text-transparent">Drives Growth</span>
-          </h1>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold tracking-tight text-neutral-950 leading-[1.05] mb-6">
+                Technology That<br />
+                <span className="bg-gradient-to-r from-violet-600 to-blue-600 bg-clip-text text-transparent">Drives Growth</span>
+              </h1>
 
-          <p className="text-lg md:text-xl text-neutral-400 max-w-2xl leading-relaxed mb-10">
-            From custom software and cloud infrastructure to AI solutions and cybersecurity —
-            we deliver enterprise-grade technology consulting and development at competitive rates,
-            powered by our expert engineering team in Nepal.
-          </p>
+              <p className="text-base sm:text-lg text-neutral-600 leading-relaxed mb-10">
+                From custom software and cloud infrastructure to AI solutions and cybersecurity —
+                 Deliver your enterprise software projects on time and within budget —
+                powered by our expert engineering team in Asia.
+              </p>
 
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link
-              href="/contact"
-              className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-violet-600 hover:bg-violet-500 text-white font-semibold rounded-xl transition-all shadow-lg hover:shadow-violet-600/30 hover:-translate-y-0.5"
-            >
-              Start a Project
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/5 border border-white/10 hover:bg-white/10 text-white font-semibold rounded-xl transition-all"
-            >
-              Book a Free Call
-            </Link>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/contact"
+                  className="group inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-4 bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded-xl transition-all shadow-lg hover:shadow-violet-600/30 hover:-translate-y-0.5"
+                >
+                  Start a Project
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-4 bg-white border border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 text-neutral-900 font-semibold rounded-xl transition-all shadow-sm"
+                >
+                  Book a Free Call
+                </Link>
+              </div>
+            </div>
+
+            {/* Image Content */}
+            <div className="relative aspect-square lg:aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl shadow-violet-900/10 border border-neutral-200">
+              {/* Premium Glow around image */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-violet-500/10 via-transparent to-transparent z-10 pointer-events-none" />
+              <Image 
+                src="/global_02.png" 
+                alt="IT Consulting and Software Engineering team" 
+                fill 
+                className="object-cover object-center"
+                priority
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -188,7 +207,7 @@ export default function ITConsultingPage() {
                 Enterprise results at startup-friendly prices
               </h2>
               <p className="text-neutral-500 leading-relaxed mb-8">
-                Our engineering hub in Nepal gives us access to top-tier technical talent — developers, cloud architects, 
+                Our engineering hub in Asia gives us access to top-tier technical talent — developers, cloud architects, 
                 data engineers and security specialists — at rates that let you invest more into growing your product.
               </p>
               <Link

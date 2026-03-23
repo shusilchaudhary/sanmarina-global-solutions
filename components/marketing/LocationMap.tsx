@@ -70,10 +70,10 @@ export function LocationMap() {
             </button>
           ))}
 
-          {/* Nepal connection line */}
+          {/* Asia connection line */}
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-3 glass-card px-5 py-2.5 border border-white/10">
             <span className="text-lg">🇳🇵</span>
-            <span className="text-xs text-slate-400">Nepal</span>
+            <span className="text-xs text-slate-400">Asia</span>
             <span className="w-8 h-px bg-gradient-to-r from-accent-500 to-brand-400" />
             <span className="text-xs text-accent-400 font-medium">
               → {countries.reduce((sum, c) => sum + c.jobCount, 0)} jobs in{' '}

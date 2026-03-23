@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Post a Job',
-  description: 'Post a new job opening and find skilled workers from Nepal.',
+  description: 'Post a new job opening and find skilled workers from Asia.',
 };
 
 export default function PostJobPage() {

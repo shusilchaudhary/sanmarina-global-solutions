@@ -26,7 +26,7 @@ export function Footer() {
               <Logo variant="dark" />
             </Link>
             <p className="text-sm leading-relaxed text-neutral-400 max-w-sm">
-              Bridging Nepali talent with European opportunities. Licensed
+              Bridging Asian talent with European opportunities. Licensed
               international recruitment and technology consulting agency.
             </p>
             <div className="space-y-3 pt-2">

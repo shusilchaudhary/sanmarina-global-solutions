@@ -14,18 +14,12 @@ export function HeroSection() {
           fill
           priority
           quality={100}
+          unoptimized={true}
           className="object-contain object-center md:object-cover"
         />
       </div>
 
-      {/* Gentle Gradient for text readability only at bottom/top if needed - currently none to keep bg clear */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-white/30 z-0 pointer-events-none" />
-
-      {/* Premium Minimalist Background Gradients (Moved behind or reduced opacity to not wash out the main image) */}
-      <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-primary-100/30 rounded-full blur-[120px] pointer-events-none z-0" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-blue-50/40 rounded-full blur-[100px] pointer-events-none z-0" />
-      
-      {/* Grid overlay removed for a cleaner look */}
+      {/* Image is fully visible, no milky or blurry overlays washing it out */}
 
       <div className="container relative z-10 w-full max-w-5xl mx-auto px-4 text-center">
         
@@ -44,8 +38,8 @@ export function HeroSection() {
         </h1>
 
         {/* Hero Subheadline */}
-        <p className="animate-fade-in-up [animation-delay:200ms] text-lg md:text-xl text-black font-medium max-w-2xl mx-auto mb-12 leading-relaxed">
-          We bridge Nepali talent with premium European opportunities, while delivering cutting-edge software development and IT consulting across the globe.
+        <p className="animate-fade-in-up [animation-delay:200ms] text-lg md:text-xl text-neutral-900 font-medium max-w-2xl mx-auto mb-12 leading-relaxed">
+          We bridge Asian talent with premium European opportunities, while delivering cutting-edge software development and IT consulting across the globe.
         </p>
 
         {/* Action Buttons */}

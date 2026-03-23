@@ -1,9 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { SectionHeader } from '@/components/shared/SectionHeader';
 import { testimonials } from '@/public/data/testimonials';
-import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { Star, ChevronLeft, ChevronRight, Quote, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 
@@ -77,9 +78,15 @@ export function TestimonialsSection() {
 
             {/* Author */}
             <div className="flex items-center justify-center gap-4">
-              <div className="w-14 h-14 rounded-full bg-primary-100 border-2 border-white shadow-sm flex items-center justify-center text-primary-700 font-display font-bold text-xl">
-                {t.name.charAt(0)}
-              </div>
+              {t.avatar ? (
+                <div className="relative w-14 h-14 overflow-hidden rounded-full border-2 border-white shadow-sm shrink-0">
+                  <Image src={t.avatar} alt={t.name} fill className="object-cover" />
+                </div>
+              ) : (
+                <div className="w-14 h-14 rounded-full bg-primary-100 border-2 border-white shadow-sm flex items-center justify-center text-primary-700 font-display font-bold text-xl shrink-0">
+                  {t.name.charAt(0)}
+                </div>
+              )}
               <div className="text-left">
                 <p className="text-base font-bold text-neutral-900">{t.name}</p>
                 <p className="text-sm text-neutral-500">
@@ -93,6 +100,15 @@ export function TestimonialsSection() {
               </div>
             </div>
 
+            <div className="mt-8">
+              <Link 
+                href={`/success-stories/${t.id}`} 
+                className="inline-flex items-center gap-2 text-primary-600 font-bold hover:text-primary-700 hover:gap-3 transition-all"
+              >
+                Read Full Success Story <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+            
           </div>
 
           {/* Navigation Controls */}

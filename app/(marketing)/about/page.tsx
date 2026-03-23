@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    'Learn about SanMarina Global Agency — a licensed international recruitment and IT consulting firm connecting Nepal with Europe since 2018.',
+    'Learn about SanMarina Global Agency — a licensed international recruitment and IT consulting firm connecting Asia with Europe since 2018.',
 };
 
 const milestones = [
@@ -20,7 +20,7 @@ const values = [
   { icon: Shield, title: 'Integrity', description: 'We operate with full transparency and ethical recruitment practices.' },
   { icon: Users, title: 'People First', description: 'Every placement is a life changed — we treat workers as partners, not numbers.' },
   { icon: Target, title: 'Excellence', description: 'We maintain a 98% visa approval rate through meticulous preparation.' },
-  { icon: Globe, title: 'Global Vision', description: 'We build bridges between Nepal and Europe for lasting impact.' },
+  { icon: Globe, title: 'Global Vision', description: 'We build bridges between Asia and Europe for lasting impact.' },
 ];
 
 export default function AboutPage() {
@@ -33,7 +33,7 @@ export default function AboutPage() {
             About Us
           </span>
           <h1 className="text-4xl md:text-5xl font-display font-bold text-brand-950 mb-4">
-            Bridging Nepal & Europe
+            Bridging Asia & Europe
             <br />
             <span className="bg-gradient-to-r from-accent-600 to-brand-600 bg-clip-text text-transparent">
               Since 2018

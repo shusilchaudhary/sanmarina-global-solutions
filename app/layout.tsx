@@ -16,22 +16,23 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: {
-    default: 'SanMarina Global Agency | Nepal to Europe Recruitment & IT Consulting',
+    default: 'SanMarina Global Agency | Asia to Europe Recruitment & IT Consulting',
     template: '%s | SanMarina Global Agency',
   },
   description:
-    'Licensed international recruitment agency connecting skilled Nepali workers with verified European employers. IT consulting and visa processing services.',
+    'Licensed international recruitment agency connecting skilled Asian workers with verified European employers. IT consulting and visa processing services.',
   keywords: [
-    'Nepal recruitment agency',
-    'European jobs for Nepali',
+    'Asia recruitment agency',
+    'European jobs for Asians',
     'work in Europe',
-    'IT consulting Nepal',
+    'international staffing',
+    'IT consulting Asia',
     'visa processing',
     'international recruitment',
   ],
   openGraph: {
     title: 'SanMarina Global Agency',
-    description: 'Your Gateway from Nepal to Europe',
+    description: 'Your Gateway from Asia to Europe',
     url: 'https://sanmarinaglobal.com',
     siteName: 'SanMarina Global Agency',
     type: 'website',

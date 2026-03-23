@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   HardHat,
   Package,
@@ -20,7 +21,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'International Recruitment | SanMarina Global',
   description:
-    'Pre-screened Nepali workers for Europe. Construction, logistics, manufacturing, hospitality and more. Visa assistance included.',
+    'Pre-screened Asian workers for Europe. Construction, logistics, manufacturing, hospitality and more. Visa assistance included.',
 };
 
 const services = [
@@ -73,7 +74,7 @@ const process = [
     step: '02',
     icon: Users,
     title: 'Candidate Screening',
-    desc: 'We source, interview and background-check candidates from our verified pool of Nepali workers seeking European positions.',
+    desc: 'We source, interview and background-check candidates from our verified pool of Asian workers seeking European positions.',
   },
   {
     step: '03',
@@ -101,44 +102,62 @@ export default function RecruitmentPage() {
     <div className="min-h-screen bg-white">
 
       {/* ── HERO ─────────────────────────────────────────────── */}
-      <section className="relative bg-neutral-950 overflow-hidden pt-32 pb-24">
+      <section className="relative bg-neutral-50 border-b border-neutral-200 overflow-hidden pt-32 pb-24">
         {/* Ambient glows */}
         <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-primary-600/10 rounded-full blur-[140px] pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
 
-        <div className="container mx-auto px-4 max-w-5xl relative z-10">
-          <div className="flex items-center gap-2 mb-6">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-600/15 border border-primary-500/30 text-primary-400 text-xs font-semibold tracking-wider uppercase">
-              <Globe className="w-3.5 h-3.5" />
-              International Recruitment
-            </span>
-          </div>
+        <div className="container mx-auto px-4 max-w-7xl relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Text Content */}
+            <div className="max-w-xl">
+              <div className="flex items-center gap-2 mb-6">
+                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 border border-primary-200 text-primary-700 text-xs font-semibold tracking-wider uppercase">
+                  <Globe className="w-3.5 h-3.5" />
+                  International Recruitment
+                </span>
+              </div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-extrabold tracking-tight text-white leading-[1.05] mb-6">
-            Nepali Talent for<br />
-            <span className="text-primary-400">European Employers</span>
-          </h1>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold tracking-tight text-neutral-950 leading-[1.05] mb-6">
+                Asian Talent for<br />
+                <span className="text-primary-600">European Employers</span>
+              </h1>
 
-          <p className="text-lg md:text-xl text-neutral-400 max-w-2xl leading-relaxed mb-10">
-            We source, screen and deploy dedicated workers from Nepal for roles across construction,
-            logistics, manufacturing, hospitality and agriculture throughout Europe — with full visa
-            and documentation support.
-          </p>
+              <p className="text-base sm:text-lg text-neutral-600 leading-relaxed mb-10">
+                We source, screen and deploy dedicated workers from Asia for roles across construction,
+                logistics, manufacturing, hospitality and agriculture throughout Europe — with full visa
+                and documentation support.
+              </p>
 
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link
-              href="/contact"
-              className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary-600 hover:bg-primary-500 text-white font-semibold rounded-xl transition-all shadow-lg hover:shadow-primary-600/30 hover:-translate-y-0.5"
-            >
-              Request Workers
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link
-              href="/jobs"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/5 border border-white/10 hover:bg-white/10 text-white font-semibold rounded-xl transition-all"
-            >
-              Browse Open Jobs
-            </Link>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/contact"
+                  className="group inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-xl transition-all shadow-lg hover:shadow-primary-600/30 hover:-translate-y-0.5"
+                >
+                  Request Workers
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link
+                  href="/jobs"
+                  className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-4 bg-white border border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 text-neutral-900 font-semibold rounded-xl transition-all shadow-sm"
+                >
+                  Browse Open Jobs
+                </Link>
+              </div>
+            </div>
+
+            {/* Image Content */}
+            <div className="relative aspect-square lg:aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl shadow-primary-900/10 border border-neutral-200">
+              {/* Premium Glow around image */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary-500/10 via-transparent to-transparent z-10 pointer-events-none" />
+              <Image 
+                src="/recruitment_01.png" 
+                alt="Skilled workers ready for deployment" 
+                fill 
+                className="object-cover object-center"
+                priority
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -243,7 +262,7 @@ export default function RecruitmentPage() {
                 Recruitment you can trust — with a proven track record
               </h2>
               <p className="text-neutral-500 leading-relaxed mb-8">
-                We are a licensed international recruitment agency with direct operations between Nepal and Europe.
+                We are a licensed international recruitment agency with direct operations between Asia and Europe.
                 Every candidate we place is personally screened, ethically sourced and visa-ready.
               </p>
               <Link
@@ -258,7 +277,7 @@ export default function RecruitmentPage() {
             <ul className="space-y-4">
               {[
                 'Licensed international recruitment agency',
-                'Direct Nepal office — no third-party middlemen',
+                'Direct Asia office — no third-party middlemen',
                 '98% visa success rate for genuine applicants',
                 'Pre-screened, English-communicating workers',
                 'Post-arrival support & employer follow-up',

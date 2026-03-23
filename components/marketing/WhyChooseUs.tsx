@@ -20,7 +20,7 @@ const reasons = [
   {
     icon: FileCheck,
     title: 'Legal Compliance',
-    desc: 'Fully licensed agency ensuring 100% compliance with Nepali and EU labor laws.'
+    desc: 'Fully licensed agency ensuring 100% compliance with Asian and EU labor laws.'
   },
   {
     icon: HeartHandshake,

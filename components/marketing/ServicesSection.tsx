@@ -28,7 +28,7 @@ export function ServicesSection() {
           <SectionHeader
             label="Global Recruitment"
             title="Reliable European Workforce Solutions"
-            description="We supply pre-screened, dedicated talent from Nepal to fulfill your business demands across Europe, specializing in high-turnover sectors."
+            description="We supply pre-screened, dedicated talent from Asia to fulfill your business demands across Europe, specializing in high-turnover sectors."
             align="left"
           />
           

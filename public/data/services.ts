@@ -22,7 +22,7 @@ export const services: ServiceItem[] = [
     icon: 'Users',
     title: 'International Recruitment',
     description:
-      'We connect skilled Nepali workers with verified European employers across 15+ countries. From hospitality to healthcare, we match talent with opportunity.',
+      'We connect skilled Asian workers with verified European employers across 15+ countries. From hospitality to healthcare, we match talent with opportunity.',
     href: '/services#recruitment',
     features: [
       'Verified employer network',
@@ -78,7 +78,7 @@ export const services: ServiceItem[] = [
     icon: 'Plane',
     title: 'Travel & Relocation',
     description:
-      'Seamless relocation support from Nepal to Europe. We arrange flights, accommodation, and orientation to ensure a smooth transition for every worker.',
+      'Seamless relocation support from Asia to Europe. We arrange flights, accommodation, and orientation to ensure a smooth transition for every worker.',
     href: '/services#travel',
     features: [
       'Flight booking assistance',

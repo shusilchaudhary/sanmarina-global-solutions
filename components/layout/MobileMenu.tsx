@@ -9,7 +9,7 @@ import { Logo } from '@/components/shared/Logo';
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
-  links: { label: string; href: string }[];
+  links: { label: string; href: string; children?: { label: string; href: string }[] }[];
 }
 
 export function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) {
@@ -77,15 +77,36 @@ export function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) {
         <nav className="flex-1 px-5 py-4 overflow-y-auto">
           <ul className="space-y-1">
             {links.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  onClick={onClose}
-                  className="block px-4 py-3.5 text-lg font-medium text-neutral-600 hover:text-primary-600 hover:bg-primary-50 rounded-xl transition-colors"
-                >
-                  {link.label}
-                </Link>
-              </li>
+              link.children ? (
+                <li key={link.label} className="py-2">
+                  <span className="block px-4 py-2 text-sm font-bold text-neutral-400 uppercase tracking-widest">
+                    {link.label}
+                  </span>
+                  <ul className="mt-2 space-y-1 pl-4 border-l-2 border-primary-100 ml-4">
+                    {link.children.map(child => (
+                      <li key={child.href}>
+                        <Link
+                          href={child.href}
+                          onClick={onClose}
+                          className="block px-4 py-3 text-lg font-medium text-neutral-600 hover:text-primary-600 hover:bg-primary-50 rounded-xl transition-colors"
+                        >
+                          {child.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ) : (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    onClick={onClose}
+                    className="block px-4 py-3.5 text-lg font-medium text-neutral-600 hover:text-primary-600 hover:bg-primary-50 rounded-xl transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              )
             ))}
           </ul>
         </nav>
