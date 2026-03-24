@@ -136,6 +136,17 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ i
 
       {/* ── THE JOURNEY / ARTICLE BODY ───────────────────────── */}
       <article className="container mx-auto px-4 max-w-3xl prose prose-lg prose-neutral mb-24">
+        {story.visaImage && (
+          <div className="mb-10 w-full rounded-2xl overflow-hidden border border-neutral-200 shadow-md">
+            <Image 
+              src={story.visaImage} 
+              alt={`${story.name} Visa`} 
+              width={800} 
+              height={600} 
+              className="w-full object-cover"
+            />
+          </div>
+        )}
         <h2>The Journey to Europe</h2>
         
         {story.fullStory ? (
