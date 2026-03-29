@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import { JobCard } from '@/components/shared/JobCard';
 import { LoadingSkeleton } from '@/components/shared/LoadingSkeleton';
 import { SectionHeader } from '@/components/shared/SectionHeader';
-import { mockJobs } from '@/public/data/jobs';
+import { mockJobs } from '@/lib/data/jobs';
 import { Search, SlidersHorizontal } from 'lucide-react';
 import type { Metadata } from 'next';
 

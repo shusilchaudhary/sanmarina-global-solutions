@@ -17,6 +17,6 @@ export async function createJob(formData: FormData) {
 
 export async function getFeaturedJobs() {
   // TODO: Replace with actual DB call
-  const { mockJobs } = await import('@/public/data/jobs');
+  const { mockJobs } = await import('@/lib/data/jobs');
   return mockJobs.filter((j) => j.isFeatured).slice(0, 3);
 }

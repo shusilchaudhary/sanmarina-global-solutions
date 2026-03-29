@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { mockJobs } from '@/public/data/jobs';
+import { mockJobs } from '@/lib/data/jobs';
 import { formatSalary, formatDate, getCountryFlag } from '@/lib/utils';
 import { CountryBadge } from '@/components/shared/CountryBadge';
 import { JobApplicationForm } from '@/components/forms/JobApplicationForm';
