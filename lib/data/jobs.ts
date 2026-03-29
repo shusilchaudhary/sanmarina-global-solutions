@@ -27,9 +27,7 @@ export const mockJobs: Job[] = [
     company: {
       id: 'sanmarina-1',
       name: 'SANMARINA GLOBAL SOLUTIONS',
-      images: {
-        logo: '/images/companies/sanmarina.png',
-      },
+      logo: '/images/companies/sanmarina.png',
       country: 'Romania',
       countryCode: 'RO',
       industry: 'Recruitment & Hospitality',
@@ -69,9 +67,7 @@ export const mockJobs: Job[] = [
     company: {
       id: 'sanmarina-1',
       name: 'SANMARINA GLOBAL SOLUTIONS',
-      images: {
-        logo: '/images/companies/sanmarina.png',
-      },
+      logo: '/images/companies/sanmarina.png',
       country: 'Romania',
       countryCode: 'RO',
       industry: 'Recruitment & Hospitality',
@@ -111,9 +107,7 @@ export const mockJobs: Job[] = [
     company: {
       id: 'sanmarina-1',
       name: 'SANMARINA GLOBAL SOLUTIONS',
-      images: {
-        logo: '/images/companies/sanmarina.png',
-      },
+      logo: '/images/companies/sanmarina.png',
       country: 'Romania',
       countryCode: 'RO',
       industry: 'Recruitment & Hospitality',
@@ -153,9 +147,7 @@ export const mockJobs: Job[] = [
     company: {
       id: 'sanmarina-1',
       name: 'SANMARINA GLOBAL SOLUTIONS',
-      images: {
-        logo: '/images/companies/sanmarina.png',
-      },
+      logo: '/images/companies/sanmarina.png',
       country: 'Romania',
       countryCode: 'RO',
       industry: 'Multi-industry',
@@ -195,9 +187,7 @@ export const mockJobs: Job[] = [
     company: {
       id: 'sanmarina-1',
       name: 'SANMARINA GLOBAL SOLUTIONS',
-      images: {
-        logo: '/images/companies/sanmarina.png',
-      },
+      logo: '/images/companies/sanmarina.png',
       country: 'Romania',
       countryCode: 'RO',
       industry: 'Hospitality',
@@ -237,9 +227,7 @@ export const mockJobs: Job[] = [
     company: {
       id: 'sanmarina-1',
       name: 'SANMARINA GLOBAL SOLUTIONS',
-      images: {
-        logo: '/images/companies/sanmarina.png',
-      },
+      logo: '/images/companies/sanmarina.png',
       country: 'Romania',
       countryCode: 'RO',
       industry: 'Agriculture',
