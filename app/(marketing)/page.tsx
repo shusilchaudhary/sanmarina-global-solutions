@@ -1,6 +1,7 @@
 import { HeroSection } from '@/components/marketing/HeroSection';
 import { TrustSection } from '@/components/marketing/TrustSection';
 import { ServicesSection } from '@/components/marketing/ServicesSection';
+import { FeaturedJobs } from '@/components/marketing/FeaturedJobs';
 import { WhyChooseUs } from '@/components/marketing/WhyChooseUs';
 import { HiringProcess } from '@/components/marketing/HiringProcess';
 import { TestimonialsSection } from '@/components/marketing/TestimonialsSection';
@@ -19,6 +20,7 @@ export default function HomePage() {
       <HeroSection />
       <TrustSection />
       <ServicesSection />
+      <FeaturedJobs />
       <WhyChooseUs />
       <HiringProcess />
       <TestimonialsSection />

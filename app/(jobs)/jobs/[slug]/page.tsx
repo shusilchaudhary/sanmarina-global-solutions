@@ -54,7 +54,7 @@ export default async function JobDetailPage({
     <div className="min-h-screen bg-brand-50">
       {/* Breadcrumb */}
       <div className="bg-white border-b border-slate-200 py-4 shadow-sm">
-        <div className="container mx-auto px-4">
+        <div className="max-w-6xl mx-auto px-4">
           <Link
             href="/jobs"
             className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-accent-600 transition-colors"
@@ -65,7 +65,7 @@ export default async function JobDetailPage({
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-10">
+      <div className="max-w-6xl mx-auto px-4 py-10">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">

@@ -1,83 +1,192 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Globe, Layers } from 'lucide-react';
+import { HeroSearch } from './HeroSearch';
+import { CheckCircle } from 'lucide-react';
+
+const quickLinks = [
+  { label: 'Construction', href: '/jobs?category=construction' },
+  { label: 'Hospitality', href: '/jobs?category=hospitality' },
+  { label: 'Logistics', href: '/jobs?category=logistics' },
+  { label: 'Agriculture', href: '/jobs?category=agriculture' },
+  { label: 'Healthcare', href: '/jobs?category=healthcare' },
+  { label: 'IT & Tech', href: '/jobs?category=it' },
+];
 
 export function HeroSection() {
   return (
-    <section className="relative flex flex-col items-center justify-center overflow-hidden bg-white min-h-[90vh] lg:min-h-screen pt-32 pb-20">
-      
-      {/* Background Image Container */}
-      <div className="absolute inset-0 z-0 w-full h-full flex items-end justify-center pointer-events-none opacity-100">
+    <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+
+      {/* Background Image */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
         <Image
-          src="/hero_image.png"
-          alt="Sanmarina Global Hero"
+          src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1920&q=80"
+          alt="Professional team at work"
           fill
           priority
-          quality={100}
-          unoptimized={true}
-          className="object-contain object-center md:object-cover"
+          style={{ objectFit: 'cover', objectPosition: 'center' }}
         />
+        {/* Dark navy gradient overlay */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'linear-gradient(135deg, rgba(6,12,26,0.92) 0%, rgba(11,22,40,0.85) 50%, rgba(15,32,68,0.80) 100%)',
+        }} />
+        {/* Red accent at bottom */}
+        <div style={{
+          position: 'absolute', bottom: 0, left: 0, right: 0, height: '4px',
+          background: 'linear-gradient(90deg, transparent, #CC2229 40%, #CC2229 60%, transparent)',
+        }} />
       </div>
 
-      {/* Image is fully visible, no milky or blurry overlays washing it out */}
+      {/* Content */}
+      <div style={{
+        position: 'relative', zIndex: 10,
+        flex: 1, display: 'flex', flexDirection: 'column',
+        alignItems: 'center', justifyContent: 'center',
+        paddingTop: '160px', paddingBottom: '80px',
+        paddingLeft: '1.5rem', paddingRight: '1.5rem',
+        textAlign: 'center',
+      }}>
 
-      <div className="container relative z-10 w-full max-w-5xl mx-auto px-4 text-center">
-        
-        {/* Animated Pill Badge */}
-        <div className="animate-fade-in-up flex items-center justify-center mb-8">
-          <span className="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-primary-50 border border-primary-100 text-primary-700 text-xs md:text-sm font-semibold tracking-wide">
-            <Globe className="w-4 h-4 text-primary-500" />
-            Licensed International Recruitment & IT Consulting
-          </span>
+        {/* Badge */}
+        <div style={{
+          display: 'inline-flex', alignItems: 'center', gap: '8px',
+          padding: '6px 18px', borderRadius: '999px',
+          background: 'rgba(204,34,41,0.15)', border: '1px solid rgba(204,34,41,0.4)',
+          fontSize: '12px', fontWeight: 700, color: '#FCA5A5',
+          letterSpacing: '0.1em', textTransform: 'uppercase',
+          marginBottom: '28px',
+        }}>
+          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#CC2229', animation: 'pulse 2s infinite' }} />
+          Licensed International Recruitment Agency
         </div>
 
-        {/* Hero Headline */}
-        <h1 className="animate-fade-in-up [animation-delay:100ms] text-5xl md:text-7xl lg:text-[5.5rem] font-display font-extrabold tracking-tight leading-[1.05] text-neutral-950 mb-8">
-          Asian Talent & <br className="hidden md:block" />
-          <span className="text-primary-600">Technology Solutions</span>
+        {/* Headline */}
+        <h1 style={{
+          fontFamily: 'var(--font-outfit), Outfit, sans-serif',
+          fontSize: 'clamp(2.5rem, 6vw, 4.75rem)',
+          fontWeight: 800,
+          lineHeight: 1.1,
+          letterSpacing: '-0.03em',
+          color: '#ffffff',
+          maxWidth: '900px',
+          marginBottom: '20px',
+        }}>
+          Your Career in Europe{' '}
+          <span style={{
+            background: 'linear-gradient(135deg, #FF6B6B, #CC2229)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+          }}>
+            Starts Here
+          </span>
         </h1>
 
-        {/* Hero Subheadline */}
-        <p className="animate-fade-in-up [animation-delay:200ms] text-lg md:text-xl text-neutral-900 font-medium max-w-2xl mx-auto mb-12 leading-relaxed">
-          We bridge Asian talent with premium European opportunities, while delivering cutting-edge software development and IT consulting across the globe.
+        {/* Sub-headline */}
+        <p style={{
+          fontFamily: 'var(--font-inter), Inter, sans-serif',
+          fontSize: 'clamp(1rem, 2vw, 1.2rem)',
+          color: 'rgba(255,255,255,0.75)',
+          maxWidth: '600px',
+          lineHeight: 1.7,
+          marginBottom: '40px',
+        }}>
+          We connect skilled professionals from Asia with verified employers across 15+ European countries. Zero fees for candidates.
         </p>
 
-        {/* Action Buttons */}
-        <div className="animate-fade-in-up [animation-delay:300ms] flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link
-            href="/recruitment"
-            className="group flex items-center justify-center gap-2 px-8 py-4 bg-primary-600 text-white font-semibold rounded-xl hover:bg-primary-700 transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 text-base w-full sm:w-auto"
-          >
-            Hire Asian Talent
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
-          <Link
-            href="/it-consulting"
-            className="flex items-center justify-center gap-2 px-8 py-4 bg-white text-neutral-700 border border-neutral-200 font-semibold rounded-xl hover:bg-neutral-50 hover:border-neutral-300 transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 text-base w-full sm:w-auto"
-          >
-            <Layers className="w-4 h-4 text-neutral-500" />
-            Explore IT Services
-          </Link>
+        {/* Search Bar */}
+        <div style={{ width: '100%', maxWidth: '860px', marginBottom: '24px' }}>
+          <HeroSearch />
         </div>
 
-        {/* Social Proof / Mini Stats under buttons */}
-        <div className="animate-fade-in-up [animation-delay:400ms] mt-16 pt-8 border-t border-neutral-100 flex flex-wrap items-center justify-center gap-8 md:gap-16">
-          <div className="flex flex-col items-center gap-1 text-center">
-            <span className="text-2xl font-bold text-neutral-900">15+</span>
-            <span className="text-xs font-semibold uppercase tracking-wider text-neutral-500">European Countries</span>
-          </div>
-          <div className="hidden sm:block w-px h-8 bg-neutral-200" />
-          <div className="flex flex-col items-center gap-1 text-center">
-            <span className="text-2xl font-bold text-neutral-900">10+</span>
-            <span className="text-xs font-semibold uppercase tracking-wider text-neutral-500">Successful Placements</span>
-          </div>
-          <div className="hidden sm:block w-px h-8 bg-neutral-200" />
-          <div className="flex flex-col items-center gap-1 text-center">
-            <span className="text-2xl font-bold text-neutral-900">98%</span>
-            <span className="text-xs font-semibold uppercase tracking-wider text-neutral-500">Visa Success Rate (Genuine Applicants)</span>
-          </div>
+        {/* Trust badges */}
+        <div style={{
+          display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px',
+          marginBottom: '56px',
+        }}>
+          {['Licensed by ANOFM', 'Zero Fees for Candidates', 'GDPR Compliant', '98% Visa Success'].map((t) => (
+            <span key={t} style={{
+              display: 'inline-flex', alignItems: 'center', gap: '7px',
+              fontSize: '13px', fontWeight: 500, color: 'rgba(255,255,255,0.7)',
+            }}>
+              <CheckCircle size={14} color="#CC2229" />
+              {t}
+            </span>
+          ))}
         </div>
 
+        {/* Quick category links */}
+        <div>
+          <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', marginBottom: '14px' }}>
+            Browse by Category
+          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '10px' }}>
+            {quickLinks.map((link) => (
+              <Link key={link.label} href={link.href} style={{
+                padding: '8px 20px',
+                background: 'rgba(255,255,255,0.08)',
+                border: '1px solid rgba(255,255,255,0.15)',
+                borderRadius: '999px',
+                fontSize: '13px', fontWeight: 600, color: 'rgba(255,255,255,0.85)',
+                textDecoration: 'none',
+                transition: 'all 0.2s',
+              }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLElement).style.background = '#CC2229';
+                  (e.currentTarget as HTMLElement).style.borderColor = '#CC2229';
+                  (e.currentTarget as HTMLElement).style.color = '#fff';
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.08)';
+                  (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.15)';
+                  (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.85)';
+                }}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom stats strip */}
+      <div style={{
+        position: 'relative', zIndex: 10,
+        background: 'rgba(255,255,255,0.05)',
+        backdropFilter: 'blur(12px)',
+        borderTop: '1px solid rgba(255,255,255,0.1)',
+        padding: '20px 1.5rem',
+      }}>
+        <div style={{
+          maxWidth: '1280px', margin: '0 auto',
+          display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0',
+        }}>
+          {[
+            { value: '1,000+', label: 'Successful Placements' },
+            { value: '15+', label: 'European Countries' },
+            { value: '98%', label: 'Visa Success Rate' },
+            { value: '150+', label: 'Partner Companies' },
+          ].map((stat, i) => (
+            <div key={stat.label} style={{
+              flex: '1 1 140px',
+              textAlign: 'center',
+              padding: '12px 24px',
+              borderRight: i < 3 ? '1px solid rgba(255,255,255,0.1)' : 'none',
+            }}>
+              <div style={{
+                fontFamily: 'var(--font-outfit), Outfit, sans-serif',
+                fontSize: '1.75rem', fontWeight: 800, color: '#ffffff',
+                letterSpacing: '-0.02em', lineHeight: 1,
+              }}>
+                {stat.value}
+              </div>
+              <div style={{ fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.5)', marginTop: '4px', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

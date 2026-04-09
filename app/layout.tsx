@@ -1,16 +1,19 @@
 import type { Metadata } from 'next';
 import { Inter, Outfit } from 'next/font/google';
+import { WhatsAppButton } from '@/components/shared/WhatsAppButton';
 import './globals.css';
 
 const inter = Inter({
   variable: '--font-inter',
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
   display: 'swap',
 });
 
 const outfit = Outfit({
   variable: '--font-outfit',
   subsets: ['latin'],
+  weight: ['600', '700', '800', '900'],
   display: 'swap',
 });
 
@@ -38,23 +41,17 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.variable} ${outfit.variable} font-sans antialiased bg-white text-neutral-950`}
-      >
+      <body className={`${inter.variable} ${outfit.variable} antialiased`}>
         {children}
+        <WhatsAppButton />
       </body>
     </html>
   );

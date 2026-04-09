@@ -55,12 +55,12 @@ export function JobApplicationForm({ jobId }: JobApplicationFormProps) {
 
   if (submitSuccess) {
     return (
-      <div className="p-6 bg-accent-400/10 border border-accent-400/30 rounded-2xl text-center">
-        <div className="w-12 h-12 bg-accent-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
-          <Send className="w-6 h-6 text-accent-400" />
+      <div className="p-6 bg-primary-50 border border-primary-100 rounded-2xl text-center">
+        <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <Send className="w-6 h-6 text-primary-600" />
         </div>
-        <h3 className="text-lg font-semibold text-white mb-2">Application Submitted!</h3>
-        <p className="text-sm text-gray-400">
+        <h3 className="text-lg font-semibold text-neutral-900 mb-2">Application Submitted!</h3>
+        <p className="text-sm text-neutral-600">
           Our team will review your profile and get back to you shortly.
         </p>
       </div>
@@ -70,64 +70,74 @@ export function JobApplicationForm({ jobId }: JobApplicationFormProps) {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div>
-        <label className="block text-xs text-gray-400 mb-1">Full Name</label>
+        <label className="block text-xs font-bold text-neutral-800 mb-1.5 uppercase tracking-wider">Full Name</label>
         <input
           {...register('fullName')}
           type="text"
-          className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white focus:outline-none focus:border-accent-400/50"
+          placeholder="e.g. John Doe"
+          className="w-full px-4 py-2.5 bg-neutral-50 border border-neutral-300 rounded-xl text-sm text-neutral-900 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all font-medium"
         />
-        {errors.fullName && <p className="mt-1 text-xs text-red-400">{errors.fullName.message}</p>}
+        {errors.fullName && <p className="mt-1 text-xs text-red-500 font-semibold">{errors.fullName.message}</p>}
       </div>
 
       <div>
-        <label className="block text-xs text-gray-400 mb-1">Email</label>
+        <label className="block text-xs font-bold text-neutral-800 mb-1.5 uppercase tracking-wider">Email Address</label>
         <input
           {...register('email')}
           type="email"
-          className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white focus:outline-none focus:border-accent-400/50"
+          placeholder="john@example.com"
+          className="w-full px-4 py-2.5 bg-neutral-50 border border-neutral-300 rounded-xl text-sm text-neutral-900 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all font-medium"
         />
-        {errors.email && <p className="mt-1 text-xs text-red-400">{errors.email.message}</p>}
+        {errors.email && <p className="mt-1 text-xs text-red-500 font-semibold">{errors.email.message}</p>}
       </div>
 
       <div>
-        <label className="block text-xs text-gray-400 mb-1">Phone</label>
+        <label className="block text-xs font-bold text-neutral-800 mb-1.5 uppercase tracking-wider">Phone Number</label>
         <input
           {...register('phone')}
           type="tel"
-          className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white focus:outline-none focus:border-accent-400/50"
+          placeholder="+40 XXX XXX XXX"
+          className="w-full px-4 py-2.5 bg-neutral-50 border border-neutral-300 rounded-xl text-sm text-neutral-900 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all font-medium"
         />
-        {errors.phone && <p className="mt-1 text-xs text-red-400">{errors.phone.message}</p>}
+        {errors.phone && <p className="mt-1 text-xs text-red-500 font-semibold">{errors.phone.message}</p>}
       </div>
 
       <div>
-        <label className="block text-xs text-gray-400 mb-1">Cover Letter</label>
+        <label className="block text-xs font-bold text-neutral-800 mb-1.5 uppercase tracking-wider">Cover Letter (Optional)</label>
         <textarea
           {...register('coverLetter')}
           rows={4}
-          className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white focus:outline-none focus:border-accent-400/50 resize-none"
+          placeholder="Tell us why you're a good fit..."
+          className="w-full px-4 py-2.5 bg-neutral-50 border border-neutral-300 rounded-xl text-sm text-neutral-900 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all resize-none font-medium"
         />
-        {errors.coverLetter && <p className="mt-1 text-xs text-red-400">{errors.coverLetter.message}</p>}
+        {errors.coverLetter && <p className="mt-1 text-xs text-red-500 font-semibold">{errors.coverLetter.message}</p>}
       </div>
 
-      <div className="flex items-start gap-2 pt-2">
-        <input
-          {...register('agreeToTerms')}
-          type="checkbox"
-          id="terms"
-          className="mt-1 bg-white/5 border-white/10 rounded accent-accent-400"
-        />
-        <label htmlFor="terms" className="text-xs text-gray-400 leading-tight">
+      <div className="flex items-start gap-3 pt-2">
+        <div className="flex items-center h-5">
+          <input
+            {...register('agreeToTerms')}
+            type="checkbox"
+            id="terms"
+            className="w-4 h-4 border-neutral-300 rounded text-primary-600 focus:ring-primary-500 cursor-pointer"
+          />
+        </div>
+        <label htmlFor="terms" className="text-xs text-neutral-500 leading-normal cursor-pointer hover:text-neutral-700 transition-colors">
           I agree to the privacy policy and consent to my data being processed for recruitment purposes.
         </label>
       </div>
-      {errors.agreeToTerms && <p className="text-xs text-red-400">{errors.agreeToTerms.message}</p>}
+      {errors.agreeToTerms && <p className="text-xs text-red-500 font-medium">{errors.agreeToTerms.message}</p>}
 
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full mt-2 inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-brand-950 bg-accent-400 hover:bg-accent-500 disabled:opacity-50 disabled:cursor-not-allowed rounded-xl transition-colors shadow-lg shadow-accent-400/25"
+        className="w-full mt-4 inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-bold text-white bg-primary-600 hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-xl transition-all shadow-lg shadow-primary-600/20 hover:shadow-primary-600/30 hover:-translate-y-0.5 active:translate-y-0"
       >
-        {isSubmitting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
+        {isSubmitting ? (
+          <Loader2 className="w-4 h-4 animate-spin" />
+        ) : (
+          <Send className="w-4 h-4" />
+        )}
         Submit Application
       </button>
     </form>

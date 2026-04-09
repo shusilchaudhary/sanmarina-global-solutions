@@ -1,57 +1,173 @@
+'use client';
+
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
-import type { Job } from '@/types/job';
+import { ArrowRight, MapPin, DollarSign, Clock } from 'lucide-react';
+import { mockJobs } from '@/lib/data/jobs';
 
-interface FeaturedJobsProps {
-  jobs: Job[];
-}
+const countryFlags: Record<string, string> = {
+  RO: '🇷🇴', PL: '🇵🇱', HR: '🇭🇷', HU: '🇭🇺', MT: '🇲🇹',
+};
 
-export function FeaturedJobs({ jobs }: FeaturedJobsProps) {
+const categoryColors: Record<string, { bg: string; color: string }> = {
+  hospitality:  { bg: '#FFF1F2', color: '#CC2229' },
+  construction: { bg: '#FFF7ED', color: '#C2410C' },
+  logistics:    { bg: '#EFF6FF', color: '#2563EB' },
+  agriculture:  { bg: '#F0FDF4', color: '#16A34A' },
+  healthcare:   { bg: '#F5F3FF', color: '#7C3AED' },
+};
+
+export function FeaturedJobs() {
+  const featured = mockJobs.filter(j => j.isFeatured).slice(0, 6);
+
   return (
-    <section className="relative py-28 bg-brand-950 overflow-hidden noise-overlay">
-      {/* Ambient glow */}
-      <div className="absolute top-[-10%] left-[20%] w-[400px] h-[400px] bg-accent-600/8 rounded-full blur-[100px] z-0" />
-      <div className="absolute bottom-[-10%] right-[10%] w-[300px] h-[300px] bg-brand-600/10 rounded-full blur-[80px] z-0" />
+    <section style={{ background: '#ffffff', padding: '96px 0' }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem' }}>
 
-      <div className="container mx-auto px-4 max-w-6xl relative z-10">
-        <div className="text-center mb-14">
-          <span className="inline-block px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] rounded-full mb-5 bg-white/[0.06] text-accent-400 border border-white/10 shadow-[0_0_20px_rgba(225,29,72,0.08)]">
-            Hot Roles
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-display font-extrabold text-white tracking-tight mb-3 leading-[1.15]">
-            Featured Opportunities
-          </h2>
-          <p className="text-slate-400 text-base">Top roles handpicked for you in Europe</p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12">
-          {jobs.map((job) => (
-            <Link
-              key={job.id}
-              href={`/jobs/${job.slug}`}
-              className="group relative flex items-center justify-between px-5 py-4 rounded-2xl glass-card hover-glow hover-glow-dark transition-all duration-300 border-l-[3px] border-l-accent-500/60 hover:border-l-accent-400"
-            >
-              <div className="min-w-0">
-                <h3 className="text-sm font-bold text-white group-hover:text-accent-300 transition-colors truncate">
-                  {job.title} — {job.country}
-                </h3>
-                <p className="text-[11px] text-slate-400 mt-1">
-                  {job.company.name} · {job.visaType === 'skilled-worker' ? 'Skilled Visa' : job.visaType === 'work-permit' ? 'Work Permit' : job.visaType}
-                </p>
-              </div>
-              <ArrowRight className="w-4 h-4 text-accent-400 shrink-0 ml-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-            </Link>
-          ))}
-        </div>
-
-        <div className="text-center">
-          <Link
-            href="/jobs"
-            className="group inline-flex items-center justify-center gap-2 px-8 py-3.5 text-sm font-semibold text-white bg-white/[0.06] border border-white/10 hover:bg-white/10 hover:border-white/20 rounded-full transition-all shadow-sm backdrop-blur-sm"
-          >
-            Explore All Roles
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 text-accent-400 transition-transform" />
+        {/* Header */}
+        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px', marginBottom: '48px' }}>
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
+              <div style={{ height: '3px', width: '40px', background: '#CC2229', borderRadius: '2px' }} />
+              <span style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.2em', color: '#CC2229' }}>
+                Now Hiring
+              </span>
+            </div>
+            <h2 style={{
+              fontFamily: 'var(--font-outfit), Outfit, sans-serif',
+              fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800,
+              color: '#0B1628', letterSpacing: '-0.03em', lineHeight: 1.2,
+            }}>
+              Featured Job Opportunities
+            </h2>
+            <p style={{ fontSize: '16px', color: '#6B7280', marginTop: '8px', lineHeight: 1.6 }}>
+              Verified positions with free accommodation, meals &amp; work permits.
+            </p>
+          </div>
+          <Link href="/jobs" style={{
+            display: 'inline-flex', alignItems: 'center', gap: '8px',
+            padding: '12px 24px', background: '#0B1628', color: '#fff',
+            borderRadius: '10px', fontSize: '14px', fontWeight: 700,
+            textDecoration: 'none',
+          }}>
+            View All Jobs <ArrowRight size={16} />
           </Link>
+        </div>
+
+        {/* Job Cards Grid */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+          gap: '20px',
+        }}>
+          {featured.map(job => {
+            const catStyle = categoryColors[job.category] ?? { bg: '#F3F4F6', color: '#374151' };
+            return (
+              <Link key={job.slug} href={`/jobs/${job.slug}`} style={{ textDecoration: 'none', display: 'flex' }}>
+                <div style={{
+                  background: '#fff',
+                  border: '1.5px solid #F3F4F6',
+                  borderRadius: '16px',
+                  padding: '24px',
+                  transition: 'all 0.25s',
+                  cursor: 'pointer',
+                  width: '100%',
+                  display: 'flex', flexDirection: 'column', gap: '14px',
+                }}
+                  onMouseEnter={e => {
+                    (e.currentTarget as HTMLElement).style.borderColor = '#CC2229';
+                    (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 32px rgba(204,34,41,0.12)';
+                    (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)';
+                  }}
+                  onMouseLeave={e => {
+                    (e.currentTarget as HTMLElement).style.borderColor = '#F3F4F6';
+                    (e.currentTarget as HTMLElement).style.boxShadow = 'none';
+                    (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
+                  }}
+                >
+                  {/* Top row */}
+                  <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '12px' }}>
+                    <div style={{
+                      width: '48px', height: '48px', borderRadius: '12px',
+                      background: '#F9FAFB', border: '1px solid #E5E7EB',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      fontSize: '24px', flexShrink: 0,
+                    }}>
+                      {countryFlags[job.countryCode] ?? '🌍'}
+                    </div>
+                    <span style={{
+                      padding: '4px 12px', borderRadius: '999px',
+                      fontSize: '11px', fontWeight: 700,
+                      background: catStyle.bg, color: catStyle.color,
+                      textTransform: 'capitalize', letterSpacing: '0.03em',
+                    }}>
+                      {job.category}
+                    </span>
+                  </div>
+
+                  {/* Title */}
+                  <div>
+                    <h3 style={{
+                      fontFamily: 'var(--font-outfit), Outfit, sans-serif',
+                      fontSize: '17px', fontWeight: 700, color: '#0B1628',
+                      marginBottom: '4px', lineHeight: 1.3,
+                    }}>
+                      {job.title}
+                    </h3>
+                    <p style={{ fontSize: '13px', color: '#6B7280', fontWeight: 500 }}>
+                      {job.company.name}
+                    </p>
+                  </div>
+
+                  {/* Meta */}
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px' }}>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '13px', color: '#6B7280' }}>
+                      <MapPin size={13} color="#CC2229" /> {job.country}
+                    </span>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '13px', color: '#6B7280' }}>
+                      <DollarSign size={13} color="#16A34A" />
+                      {job.salary.currency} {job.salary.min}
+                      {job.salary.min !== job.salary.max ? `–${job.salary.max}` : ''}/{job.salary.period === 'monthly' ? 'mo' : 'yr'}
+                    </span>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '13px', color: '#6B7280' }}>
+                      <Clock size={13} /> 2-yr contract
+                    </span>
+                  </div>
+
+                  {/* Benefits */}
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                    {['Free Accommodation', 'Free Meals', 'Work Permit'].map(b => (
+                      <span key={b} style={{
+                        padding: '3px 10px', borderRadius: '6px',
+                        background: '#F0FDF4', color: '#16A34A',
+                        fontSize: '11px', fontWeight: 600,
+                      }}>
+                        ✓ {b}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Footer */}
+                  <div style={{
+                    display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                    paddingTop: '12px', borderTop: '1px solid #F3F4F6', marginTop: 'auto',
+                  }}>
+                    <span style={{
+                      fontSize: '13px', fontWeight: 700, color: '#CC2229',
+                      display: 'flex', alignItems: 'center', gap: '4px',
+                    }}>
+                      Apply Now <ArrowRight size={13} />
+                    </span>
+                    <span style={{
+                      fontSize: '11px', fontWeight: 600, padding: '4px 10px',
+                      borderRadius: '6px', background: '#FFF1F2', color: '#CC2229',
+                    }}>
+                      Featured
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>

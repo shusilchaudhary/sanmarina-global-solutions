@@ -1,7 +1,5 @@
-import { cn } from '@/lib/utils';
-
 interface SectionHeaderProps {
-  label: string;
+  label?: string;
   title: string;
   description?: string;
   align?: 'left' | 'center';
@@ -15,33 +13,44 @@ export function SectionHeader({
   align = 'center',
   dark = false,
 }: SectionHeaderProps) {
+  const textAlign = align === 'center' ? 'center' : 'left';
+  const maxWidth  = align === 'center' ? '720px' : '600px';
+  const margin    = align === 'center' ? '0 auto 3rem' : '0 0 3rem';
+
   return (
-    <div
-      className={cn(
-        'mb-12 md:mb-16',
-        align === 'center' ? 'text-center mx-auto' : 'text-left'
+    <div style={{ textAlign, maxWidth, margin }}>
+      {label && (
+        <span style={{
+          display: 'inline-flex', alignItems: 'center', gap: '6px',
+          fontFamily: 'var(--font-inter), Inter, sans-serif',
+          fontSize: '11px', fontWeight: 700,
+          letterSpacing: '0.16em', textTransform: 'uppercase',
+          color: dark ? '#FFA0A4' : '#CC2229',
+          marginBottom: '0.875rem',
+        }}>
+          {label}
+        </span>
       )}
-    >
-      <span className={cn(
-        "inline-block px-4 py-1.5 text-xs font-bold uppercase tracking-wider rounded-full mb-6",
-        dark ? "text-accent-400 bg-accent-500/10 border border-accent-500/20" : "text-primary-700 bg-primary-50 border border-primary-100"
-      )}>
-        {label}
-      </span>
-      <h2 className={cn(
-        "text-3xl md:text-4xl lg:text-5xl font-display font-bold tracking-tight mb-6",
-        dark ? "text-white" : "text-neutral-900"
-      )}>
+      <h2 style={{
+        fontFamily: 'var(--font-outfit), Outfit, sans-serif',
+        fontSize: 'clamp(1.75rem, 4vw, 2.75rem)',
+        fontWeight: 800,
+        lineHeight: 1.15,
+        letterSpacing: '-0.03em',
+        color: dark ? '#ffffff' : '#0B1628',
+        marginBottom: description ? '1rem' : '0',
+      }}>
         {title}
       </h2>
       {description && (
-        <p
-          className={cn(
-            'text-base md:text-lg leading-relaxed',
-            dark ? "text-slate-400" : "text-neutral-500",
-            align === 'center' ? 'max-w-3xl mx-auto' : 'max-w-2xl'
-          )}
-        >
+        <p style={{
+          fontFamily: 'var(--font-inter), Inter, sans-serif',
+          fontSize: '1.0625rem',
+          fontWeight: 400,
+          lineHeight: 1.7,
+          color: dark ? '#93C5FD' : '#6B7280',
+          marginTop: '1rem',
+        }}>
           {description}
         </p>
       )}

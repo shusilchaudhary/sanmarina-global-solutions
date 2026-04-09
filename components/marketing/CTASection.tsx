@@ -3,63 +3,81 @@ import { ArrowRight, Users, Building } from 'lucide-react';
 
 export function CTASection() {
   return (
-    <section className="relative py-24 md:py-32 bg-primary-600 overflow-hidden text-center md:text-left">
-      
-      {/* Background patterns */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500 rounded-full blur-[100px] opacity-50 z-0 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary-700 rounded-full blur-[80px] opacity-40 z-0 pointer-events-none" />
+    <section className="relative py-28 md:py-36 overflow-hidden">
 
-      {/* Grid overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem] z-0 pointer-events-none" />
+      {/* Deep navy background */}
+      <div className="absolute inset-0 bg-[linear-gradient(160deg,#060C1A_0%,#0B1628_40%,#0F2044_80%,#060C1A_100%)]" />
+
+      {/* Red radial glow – center-right */}
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[700px] h-[700px] pointer-events-none"
+        style={{ background: 'radial-gradient(circle at 80% 50%, rgba(204,34,41,0.15) 0%, transparent 60%)' }} />
+
+      {/* Blue glow – bottom-left */}
+      <div className="absolute left-0 bottom-0 w-[500px] h-[500px] pointer-events-none"
+        style={{ background: 'radial-gradient(circle at 10% 100%, rgba(37,99,235,0.12) 0%, transparent 60%)' }} />
+
+      {/* Subtle dot grid */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
+        style={{ backgroundImage: 'radial-gradient(rgba(255,255,255,1) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+
+      {/* Red shimmer top edge */}
+      <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-red-600/60 to-transparent" />
 
       <div className="container mx-auto px-4 max-w-6xl relative z-10">
-        <div className="bg-white rounded-3xl p-8 md:p-16 shadow-xl border border-primary-500 overflow-hidden relative">
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            
-            {/* Left side text */}
-            <div className="text-center md:text-left">
-              <span className="inline-block px-4 py-1.5 text-xs font-bold uppercase tracking-wider rounded-full mb-6 text-primary-700 bg-primary-50 border border-primary-100">
-                Ready to Start?
-              </span>
-              <h2 className="text-3xl md:text-5xl font-display font-extrabold text-neutral-900 mb-6 tracking-tight">
-                Scale Your Global Operations Today
-              </h2>
-              <p className="text-lg text-neutral-500 mb-8 max-w-md mx-auto md:mx-0">
-                Whether you're an employer seeking top-tier talent, or a professional aiming to build your career in Europe.
-              </p>
-              
-              <Link
-                href="/contact"
-                className="group inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-xl transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
-              >
-                Get Started Now
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
-            
-            {/* Right side boxes */}
-            <div className="grid gap-4">
-              <div className="bg-neutral-50 p-6 rounded-2xl flex gap-4 items-start border border-neutral-100">
-                <div className="w-12 h-12 rounded-full bg-primary-100 text-primary-600 flex items-center justify-center shrink-0">
-                  <Building className="w-6 h-6" />
-                </div>
-                <div className="text-left">
-                  <h4 className="text-lg font-bold text-neutral-900 mb-1">For Employers</h4>
-                  <p className="text-sm text-neutral-500">Access pre-screened international talent or hire a dedicated IT consulting team.</p>
-                </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+          {/* Left – headline */}
+          <div className="text-center lg:text-left">
+            <span className="inline-block px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] rounded-full mb-6 text-red-300 bg-red-600/15 border border-red-600/30">
+              Ready to Start?
+            </span>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 tracking-tight leading-[1.08]">
+              Scale Your{' '}
+              <span className="text-red-gradient">Global Operations</span>{' '}
+              Today
+            </h2>
+            <p className="text-lg text-navy-300 mb-10 max-w-md mx-auto lg:mx-0 leading-relaxed">
+              Whether you&apos;re an employer seeking top-tier talent, or a professional aiming to build your career in Europe.
+            </p>
+            <Link href="/contact" className="btn-red text-base inline-flex animate-red-pulse">
+              Get Started Now
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+
+          {/* Right – cards */}
+          <div className="flex flex-col gap-5">
+            {/* Employer card */}
+            <div className="navy-card p-7 flex gap-5 items-start group hover:scale-[1.02] transition-transform">
+              <div className="w-12 h-12 rounded-2xl bg-red-600/15 border border-red-600/30 text-red-400 flex items-center justify-center shrink-0 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">
+                <Building className="w-6 h-6" />
               </div>
-              <div className="bg-neutral-50 p-6 rounded-2xl flex gap-4 items-start border border-neutral-100">
-                <div className="w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shrink-0">
-                  <Users className="w-6 h-6" />
-                </div>
-                <div className="text-left">
-                  <h4 className="text-lg font-bold text-neutral-900 mb-1">For Candidates</h4>
-                  <p className="text-sm text-neutral-500">Register today to get matched with verified jobs across 15+ European countries.</p>
-                </div>
+              <div>
+                <h4 className="font-display text-lg font-bold text-white mb-1.5">For Employers</h4>
+                <p className="text-sm text-navy-300 leading-relaxed">Access pre-screened international talent or hire a dedicated IT consulting team ready to deliver from day one.</p>
               </div>
             </div>
 
+            {/* Candidate card */}
+            <div className="navy-card p-7 flex gap-5 items-start group hover:scale-[1.02] transition-transform">
+              <div className="w-12 h-12 rounded-2xl bg-electric-500/15 border border-electric-500/30 text-electric-300 flex items-center justify-center shrink-0 group-hover:bg-electric-500 group-hover:text-white transition-all duration-300">
+                <Users className="w-6 h-6" />
+              </div>
+              <div>
+                <h4 className="font-display text-lg font-bold text-white mb-1.5">For Candidates</h4>
+                <p className="text-sm text-navy-300 leading-relaxed">Register today to get matched with verified jobs across 15+ European countries. Zero placement fees.</p>
+              </div>
+            </div>
+
+            {/* Trust strip */}
+            <div className="flex items-center gap-4 mt-2 px-2">
+              {['Licensed by ANOFM', 'GDPR Compliant', 'Zero Fees'].map((t) => (
+                <div key={t} className="flex items-center gap-1.5 text-[11px] font-semibold text-navy-300">
+                  <span className="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" />
+                  {t}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
