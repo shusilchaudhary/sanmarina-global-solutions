@@ -131,7 +131,18 @@ export function JobApplicationForm({ jobId }: JobApplicationFormProps) {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full mt-4 inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-bold text-white bg-primary-600 hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-xl transition-all shadow-lg shadow-primary-600/20 hover:shadow-primary-600/30 hover:-translate-y-0.5 active:translate-y-0"
+        style={{
+          width: '100%', marginTop: '16px',
+          display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
+          padding: '14px 24px', borderRadius: '12px', border: 'none', cursor: isSubmitting ? 'not-allowed' : 'pointer',
+          fontSize: '14px', fontWeight: 700, color: '#ffffff',
+          background: isSubmitting ? '#9CA3AF' : 'linear-gradient(135deg, #CC2229, #a81b21)',
+          boxShadow: '0 4px 16px rgba(204,34,41,0.3)',
+          transition: 'all 0.2s',
+          opacity: isSubmitting ? 0.7 : 1,
+        }}
+        onMouseEnter={e => { if (!isSubmitting) (e.currentTarget as HTMLButtonElement).style.opacity = '0.9'; }}
+        onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.opacity = '1'; }}
       >
         {isSubmitting ? (
           <Loader2 className="w-4 h-4 animate-spin" />

@@ -295,25 +295,25 @@ export function Navbar() {
           </nav>
 
           {/* ── CTA + Hamburger ── */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginLeft: 'auto' }}>
-            <Link href="/contact"
-              style={{
-                display: 'none',
-                alignItems: 'center', justifyContent: 'center', gap: '6px',
-                padding: '9px 20px', borderRadius: '10px',
-                background: 'linear-gradient(135deg, #1D4ED8, #2563EB)',
-                color: '#ffffff', fontSize: '14px', fontWeight: 600,
-                fontFamily: 'var(--font-inter), Inter, sans-serif',
-                textDecoration: 'none',
-                boxShadow: '0 2px 14px rgba(37,99,235,0.28)',
-                transition: 'opacity 0.2s, transform 0.2s',
-                whiteSpace: 'nowrap',
-              }}
-              className="md:!flex"
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.opacity = '0.9'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-1px)'; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.opacity = '1'; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; }}
-            >
-              Get Consultation
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginLeft: 'auto' }}>
+            <Link href="/auth/login" className="hidden md:flex" style={{
+              alignItems: 'center', justifyContent: 'center',
+              padding: '9px 20px', borderRadius: '10px',
+              background: '#F3F4F6',
+              color: '#1F2937', fontSize: '14px', fontWeight: 700,
+              textDecoration: 'none', whiteSpace: 'nowrap',
+            }}>
+              Sign In
+            </Link>
+            <Link href="/auth/register" className="hidden md:flex" style={{
+              alignItems: 'center', justifyContent: 'center',
+              padding: '9px 20px', borderRadius: '10px',
+              background: 'linear-gradient(135deg, #CC2229, #a81b21)',
+              color: '#ffffff', fontSize: '14px', fontWeight: 700,
+              textDecoration: 'none', whiteSpace: 'nowrap',
+              boxShadow: '0 2px 12px rgba(204,34,41,0.28)',
+            }}>
+              Sign Up
             </Link>
             <button
               onClick={() => setMobileOpen(true)}
@@ -405,16 +405,26 @@ export function Navbar() {
             </nav>
 
             {/* Mobile CTA */}
-            <div style={{ padding: '16px', borderTop: '1px solid #F3F4F6' }}>
-              <Link href="/contact" onClick={() => setMobileOpen(false)} style={{
-                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
-                width: '100%', padding: '13px',
-                background: 'linear-gradient(135deg, #1D4ED8, #2563EB)',
-                color: '#ffffff', fontSize: '15px', fontWeight: 600,
+            <div style={{ padding: '16px', borderTop: '1px solid #F3F4F6', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <Link href="/auth/login" onClick={() => setMobileOpen(false)} style={{
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                width: '100%', padding: '12px',
+                background: '#F3F4F6',
+                color: '#1F2937', fontSize: '15px', fontWeight: 600,
                 fontFamily: 'var(--font-inter), Inter, sans-serif',
                 textDecoration: 'none', borderRadius: '12px',
               }}>
-                Get Consultation <ArrowRight size={16} />
+                Sign In
+              </Link>
+              <Link href="/auth/register" onClick={() => setMobileOpen(false)} style={{
+                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
+                width: '100%', padding: '13px',
+                background: 'linear-gradient(135deg, #CC2229, #a81b21)',
+                color: '#ffffff', fontSize: '15px', fontWeight: 700,
+                fontFamily: 'var(--font-inter), Inter, sans-serif',
+                textDecoration: 'none', borderRadius: '12px',
+              }}>
+                Sign Up <ArrowRight size={16} />
               </Link>
             </div>
           </div>

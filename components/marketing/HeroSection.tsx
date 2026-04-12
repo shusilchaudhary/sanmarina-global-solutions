@@ -59,7 +59,7 @@ export function HeroSection() {
           marginBottom: '28px',
         }}>
           <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#CC2229', animation: 'pulse 2s infinite' }} />
-          Licensed International Recruitment Agency
+          International Recruitment & IT Consulting
         </div>
 
         {/* Headline */}

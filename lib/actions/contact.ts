@@ -23,7 +23,7 @@ export async function sendContactEmail(formData: FormData) {
 
   try {
     await resend.emails.send({
-      from: 'SanMarina Website <onboarding@resend.dev>',
+      from: 'SanMarina Global <noreply@sanmarinaglobal.eu>',
       to: [CONTACT_EMAIL],
       replyTo: email,
       subject: `New Contact: ${serviceLabels[service] ?? service} — ${name}`,

@@ -10,6 +10,7 @@ import { useState } from 'react';
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const {
     register,
@@ -29,20 +30,24 @@ export function ContactForm() {
 
   const onSubmit = async (data: ContactFormValues) => {
     setIsSubmitting(true);
+    setSubmitError('');
     try {
       const formData = new FormData();
       Object.entries(data).forEach(([key, value]) => {
         if (value) formData.append(key, value);
       });
-      
+
       const result = await sendContactEmail(formData);
       if (result.success) {
         setSubmitSuccess(true);
         reset();
         setTimeout(() => setSubmitSuccess(false), 5000);
+      } else {
+        setSubmitError(result.message ?? 'Something went wrong. Please try again.');
       }
     } catch (error) {
       console.error('Failed to submit form:', error);
+      setSubmitError('Something went wrong. Please email us directly at info@sanmarinaglobal.eu');
     } finally {
       setIsSubmitting(false);
     }
@@ -52,7 +57,12 @@ export function ContactForm() {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 bg-white p-6 md:p-8 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-neutral-100">
       {submitSuccess && (
         <div className="p-4 bg-green-50 text-green-700 border border-green-200 rounded-xl mb-6">
-          Thank you! Your message has been sent successfully.
+          Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.
+        </div>
+      )}
+      {submitError && (
+        <div className="p-4 bg-red-50 text-red-700 border border-red-200 rounded-xl mb-6">
+          {submitError}
         </div>
       )}
 
@@ -131,7 +141,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="group w-full inline-flex items-center justify-center gap-3 px-6 py-4 text-base font-bold text-white bg-primary-600 hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-xl transition-all duration-300 shadow-[0_4px_20px_rgba(37,99,235,0.2)] hover:shadow-[0_4px_30px_rgba(37,99,235,0.4)] hover:-translate-y-0.5"
+        className="group w-full inline-flex items-center justify-center gap-3 px-6 py-4 text-base font-bold text-white bg-red-600 hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-xl transition-all duration-300 shadow-[0_4px_20px_rgba(204,34,41,0.25)] hover:shadow-[0_4px_30px_rgba(204,34,41,0.4)] hover:-translate-y-0.5"
       >
         {isSubmitting ? (
           <>

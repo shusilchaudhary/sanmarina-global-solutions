@@ -1,7 +1,7 @@
 'use server';
 
 import { Resend } from 'resend';
-import { mockJobs } from '@/lib/data/jobs';
+import { supabaseAdmin } from '@/lib/supabase';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const CONTACT_EMAIL = process.env.CONTACT_EMAIL ?? 'info@sanmarinaglobal.eu';
@@ -13,8 +13,20 @@ export async function submitApplication(formData: FormData) {
   const phone = formData.get('phone') as string;
   const coverLetter = formData.get('coverLetter') as string;
 
-  const job = mockJobs.find((j) => j.id === jobId);
+  // Fetch job title from Supabase
+  const { data: job } = await supabaseAdmin.from('jobs').select('title, country').eq('id', jobId).maybeSingle();
   const jobTitle = job ? `${job.title} — ${job.country}` : jobId;
+
+  // Save application to Supabase
+  await supabaseAdmin.from('applications').insert({
+    job_id: jobId,
+    job_title: jobTitle,
+    full_name: fullName,
+    email,
+    phone,
+    cover_letter: coverLetter,
+    status: 'pending',
+  });
 
   try {
     // Notify the agency
