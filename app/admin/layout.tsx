@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Briefcase, Users, LayoutDashboard, Plus } from 'lucide-react';
+import { Briefcase, Users, LayoutDashboard, Plus, BookOpen } from 'lucide-react';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -26,6 +26,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             { href: '/admin/jobs', icon: Briefcase, label: 'Jobs' },
             { href: '/admin/jobs/new', icon: Plus, label: 'Add Job' },
             { href: '/admin/applications', icon: Users, label: 'Applications' },
+            { href: '/admin/blog', icon: BookOpen, label: 'Blog Posts' },
+            { href: '/admin/blog/new', icon: Plus, label: 'New Post' },
           ].map(({ href, icon: Icon, label }) => (
             <Link key={href} href={href} style={{
               display: 'flex', alignItems: 'center', gap: '10px',
