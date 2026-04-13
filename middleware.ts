@@ -22,13 +22,27 @@ export async function middleware(request: NextRequest) {
   );
 
   const { data: { user } } = await supabase.auth.getUser();
+  const path = request.nextUrl.pathname;
 
-  // Protect dashboard routes
-  const isDashboard = request.nextUrl.pathname.startsWith('/dashboard');
-  const isAdmin = request.nextUrl.pathname.startsWith('/admin');
+  const isDashboard = path.startsWith('/dashboard');
+  const isAdmin     = path.startsWith('/admin');
 
-  if (isDashboard && !user) {
+  // Not logged in → redirect to login
+  if ((isDashboard || isAdmin) && !user) {
     return NextResponse.redirect(new URL('/auth/login', request.url));
+  }
+
+  // Admin routes → check role
+  if (isAdmin && user) {
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('role')
+      .eq('id', user.id)
+      .single();
+
+    if (profile?.role !== 'admin') {
+      return NextResponse.redirect(new URL('/', request.url));
+    }
   }
 
   return supabaseResponse;
