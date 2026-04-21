@@ -108,26 +108,6 @@ export const testimonials: Testimonial[] = [
     ]
   },
   {
-    id: 'visa-4',
-    name: 'Amit Patel',
-    role: 'Construction Worker',
-    country: 'Malta',
-    countryCode: 'MT',
-    quote: 'I never thought working in Malta was within reach — SanMarina Global turned that dream into a stamped visa and a confirmed job offer. Their team handled everything flawlessly.',
-    avatar: '',
-    visaImage: '/visa_04.jpeg',
-    rating: 5,
-    verified: true,
-    visaType: 'Malta Single Permit — Employment',
-    visaDate: 'March 2026',
-    fullStory: [
-      "Amit Patel had spent years working in the construction sector across Asia, building up a strong skillset in structural work and site management. His goal had always been to break into the European construction market — a sector known for its high safety standards, competitive wages, and long-term job security.",
-      "After researching his options, Amit reached out to SanMarina Global. Our advisors quickly identified a verified Maltese employer actively recruiting experienced construction workers for ongoing infrastructure and residential development projects on the island.",
-      "The Malta Single Permit process — which combines the work permit and residence authorisation into one unified approval — is thorough but manageable with the right guidance. Our immigration specialists prepared Amit's entire documentation package: employment contract verification, health insurance, police clearance, and all consular requirements tailored specifically for Malta's Jobsplus authority.",
-      "After a smooth embassy interview and a careful review by Maltese authorities, Amit's Single Permit was approved. He relocated to Malta in March 2026 and is now part of a skilled construction team contributing to Malta's growing built environment — legally employed, well-compensated, and settled in one of Europe's most vibrant island nations."
-    ]
-  },
-  {
     id: 'visa-5',
     name: 'Nguyen Thi Mai',
     role: 'Healthcare Assistant',
