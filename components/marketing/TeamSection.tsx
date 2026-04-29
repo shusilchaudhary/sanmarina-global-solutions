@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import { Linkedin } from 'lucide-react';
-import { useTheme } from '@/components/shared/ThemeProvider';
 
 const team = [
   {
@@ -50,11 +49,8 @@ const team = [
 ];
 
 export function TeamSection() {
-  const { theme } = useTheme();
-  const isDark = theme === 'dark';
-
   return (
-    <section className={`py-20 transition-colors duration-300 ${isDark ? 'bg-dark-950' : 'bg-white'}`}>
+    <section className="py-20 bg-dark-950">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="flex items-center justify-center gap-3 mb-4">
           <div className="h-0.5 w-12 bg-violet-500" />
@@ -63,7 +59,7 @@ export function TeamSection() {
         </div>
 
         <div className="text-center mb-14">
-          <h2 className={`font-display text-3xl md:text-4xl font-bold tracking-tight mb-4 ${isDark ? 'text-zinc-100' : 'text-zinc-900'}`}>
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-4 text-zinc-100">
             The People Behind <span className="text-gradient">Your Success</span>
           </h2>
           <p className="text-zinc-500 text-lg max-w-2xl mx-auto leading-relaxed">
@@ -73,7 +69,7 @@ export function TeamSection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {team.map((member) => (
-            <div key={member.name} className={`group rounded-2xl border overflow-hidden transition-all duration-300 hover:-translate-y-1 ${isDark ? 'bg-dark-800 border-zinc-700 hover:border-violet-500/30 hover:shadow-lg hover:shadow-violet-500/10' : 'bg-white border-zinc-200 hover:border-violet-300 hover:shadow-xl hover:shadow-violet-100/50'}`}>
+            <div key={member.name} className="group rounded-2xl border overflow-hidden transition-all duration-300 hover:-translate-y-1 bg-dark-800 border-zinc-700 hover:border-violet-500/30 hover:shadow-lg hover:shadow-violet-500/10">
               <div className="relative h-56 overflow-hidden">
                 <Image src={member.avatar} alt={member.name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
@@ -85,7 +81,7 @@ export function TeamSection() {
               </div>
 
               <div className="p-5">
-                <h3 className={`text-base font-bold mb-0.5 ${isDark ? 'text-zinc-100' : 'text-zinc-900'}`}>{member.name}</h3>
+                <h3 className="text-base font-bold mb-0.5 text-zinc-100">{member.name}</h3>
                 <p className="text-xs font-semibold text-violet-500 uppercase tracking-wider mb-2">{member.role}</p>
                 <p className="text-sm text-zinc-500 leading-relaxed">{member.bio}</p>
               </div>

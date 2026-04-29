@@ -18,7 +18,7 @@ const contactItems = [
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-zinc-900">
 
       {/* Hero */}
       <section className="relative min-h-[480px] flex items-center overflow-hidden">
@@ -54,8 +54,8 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
 
             {/* Form */}
-            <div className="relative overflow-hidden rounded-2xl bg-white border border-zinc-200 p-8 md:p-10 shadow-sm">
-              <h2 className="font-display text-2xl font-bold text-zinc-900 mb-8">
+            <div className="relative overflow-hidden rounded-2xl bg-zinc-900 border border-zinc-700 p-8 md:p-10 shadow-sm">
+              <h2 className="font-display text-2xl font-bold text-zinc-100 mb-8">
                 Send us a message
               </h2>
               <div className="relative z-10">
@@ -65,7 +65,7 @@ export default function ContactPage() {
 
             {/* Info */}
             <div className="space-y-8">
-              <h2 className="font-display text-xl font-bold text-zinc-900">Get in touch</h2>
+              <h2 className="font-display text-xl font-bold text-zinc-100">Get in touch</h2>
 
               <div className="space-y-5">
                 {contactItems.map(({ icon: Icon, label, value, href }) => (
@@ -74,7 +74,7 @@ export default function ContactPage() {
                       <Icon className="w-5 h-5 text-violet-400 group-hover:text-white transition-colors duration-300" />
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-zinc-900 mb-1">{label}</h4>
+                      <h4 className="text-sm font-bold text-zinc-100 mb-1">{label}</h4>
                       {href ? (
                         <a href={href} className="text-sm text-zinc-500 hover:text-violet-600 transition-colors whitespace-pre-line">
                           {value}
@@ -87,7 +87,7 @@ export default function ContactPage() {
                 ))}
               </div>
 
-              <div className="w-full h-64 rounded-2xl overflow-hidden border border-zinc-200 shadow-sm">
+              <div className="w-full h-64 rounded-2xl overflow-hidden border border-zinc-700 shadow-sm">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2849.0!2d26.1118!3d44.4268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff4b70001d55%3A0x1234!2sSplaiul+Unirii+165%2C+Bucure%C8%99ti!5e0!3m2!1sen!2sro!4v1680000000000!5m2!1sen!2sro"
                   width="100%"

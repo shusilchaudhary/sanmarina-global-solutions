@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import { SectionHeader } from '@/components/shared/SectionHeader';
-import { useTheme } from '@/components/shared/ThemeProvider';
 
 const steps = [
   { num: 1, title: 'Discovery & Consultation', description: 'We discuss your goals, audience, and requirements to define a clear project roadmap.', image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80' },
@@ -12,11 +11,8 @@ const steps = [
 ];
 
 export function HiringProcess() {
-  const { theme } = useTheme();
-  const isDark = theme === 'dark';
-
   return (
-    <section className={`relative py-24 md:py-32 overflow-hidden transition-colors duration-300 ${isDark ? 'bg-dark-950' : 'bg-white'}`}>
+    <section className="relative py-24 md:py-32 overflow-hidden bg-dark-950">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="flex items-center justify-center gap-3 mb-4">
           <div className="h-0.5 w-12 bg-violet-500" />
@@ -38,7 +34,7 @@ export function HiringProcess() {
                   </div>
                 </div>
                 <div className="p-5">
-                  <h3 className={`font-display text-base font-bold mb-2 ${isDark ? 'text-zinc-100' : 'text-zinc-900'}`}>{step.title}</h3>
+                  <h3 className="font-display text-base font-bold mb-2 text-zinc-100">{step.title}</h3>
                   <p className="text-zinc-500 leading-relaxed text-sm">{step.description}</p>
                 </div>
               </div>

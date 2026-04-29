@@ -5,10 +5,8 @@ import Link from 'next/link';
 import {
   Menu, ChevronDown, ArrowRight, X,
   Globe, Smartphone, Megaphone, Search, Video, Palette, Clapperboard, Bot,
-  Sun, Moon,
 } from 'lucide-react';
 import { Logo } from '@/components/shared/Logo';
-import { useTheme } from '@/components/shared/ThemeProvider';
 
 const navLinks = [
   { label: 'Home',      href: '/' },
@@ -33,8 +31,6 @@ export function Navbar() {
   const [mobileOpen,   setMobileOpen]   = useState(false);
   const [scrolled,     setScrolled]     = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
-  const isDark = theme === 'dark';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -50,10 +46,10 @@ export function Navbar() {
   return (
     <header style={{
       position: 'fixed', top: '36px', left: 0, right: 0, zIndex: 50,
-      backgroundColor: isDark ? '#09090b' : '#ffffff',
-      borderBottom: isDark ? '1px solid #27272a' : '1px solid #e4e4e7',
-      boxShadow: scrolled ? (isDark ? '0 1px 3px 0 rgba(0,0,0,0.3)' : '0 1px 3px 0 rgba(0,0,0,0.04)') : 'none',
-      transition: 'background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.2s ease',
+      backgroundColor: '#09090b',
+      borderBottom: '1px solid #27272a',
+      boxShadow: scrolled ? '0 1px 3px 0 rgba(0,0,0,0.3)' : 'none',
+      transition: 'box-shadow 0.2s ease',
     }}>
       <div style={{
         maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem',
@@ -61,7 +57,7 @@ export function Navbar() {
       }}>
 
         <Link href="/" className="shrink-0">
-          <Logo variant={isDark ? 'dark' : 'light'} />
+          <Logo variant="dark" />
         </Link>
 
         {/* Desktop nav */}
@@ -73,7 +69,7 @@ export function Navbar() {
                 onMouseLeave={() => setServicesOpen(false)}
               >
                 <button
-                  className={`flex items-center gap-1 px-3.5 py-2 text-[14px] font-medium transition-colors bg-transparent border-none cursor-pointer rounded-lg ${isDark ? 'text-zinc-300 hover:text-white hover:bg-white/5' : 'text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50'}`}
+                  className="flex items-center gap-1 px-3.5 py-2 text-[14px] font-medium transition-colors bg-transparent border-none cursor-pointer rounded-lg text-zinc-300 hover:text-white hover:bg-white/5"
                   style={{ fontFamily: 'var(--font-inter), Inter, sans-serif' }}
                   aria-expanded={servicesOpen}
                   aria-haspopup="true"
@@ -90,21 +86,21 @@ export function Navbar() {
                   visibility: servicesOpen ? 'visible' : 'hidden',
                   transition: 'opacity 0.15s, transform 0.15s, visibility 0.15s',
                 }}>
-                  <div className={`w-[300px] rounded-xl border shadow-lg overflow-hidden ${isDark ? 'bg-dark-900 border-zinc-700 shadow-black/20' : 'bg-white border-zinc-200 shadow-black/6'}`}>
+                  <div className="w-[300px] rounded-xl border shadow-lg overflow-hidden bg-dark-900 border-zinc-700 shadow-black/20">
                     <div className="p-1.5">
                       {serviceItems.map(({ icon: Icon, label, desc, href }) => (
-                        <Link key={label} href={href} className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors group ${isDark ? 'hover:bg-white/5' : 'hover:bg-zinc-50'}`}>
-                          <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors ${isDark ? 'bg-white/5 group-hover:bg-violet-500/20' : 'bg-zinc-100 group-hover:bg-violet-100'}`}>
+                        <Link key={label} href={href} className="flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors group hover:bg-white/5">
+                          <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors bg-white/5 group-hover:bg-violet-500/20">
                             <Icon size={15} className="text-zinc-500 group-hover:text-violet-600 transition-colors" />
                           </div>
                           <div>
-                            <p className={`text-[13px] font-semibold ${isDark ? 'text-zinc-200' : 'text-zinc-800'}`}>{label}</p>
+                            <p className="text-[13px] font-semibold text-zinc-200">{label}</p>
                             <p className="text-[11px] text-zinc-400">{desc}</p>
                           </div>
                         </Link>
                       ))}
                     </div>
-                    <div className={`flex items-center justify-between px-4 py-2.5 border-t ${isDark ? 'bg-white/2 border-zinc-700' : 'bg-zinc-50 border-zinc-100'}`}>
+                    <div className="flex items-center justify-between px-4 py-2.5 border-t bg-white/2 border-zinc-700">
                       <span className="text-[11px] text-zinc-400">Have a project?</span>
                       <Link href="/contact" className="flex items-center gap-1 text-[11px] font-semibold text-violet-600 hover:text-violet-700 transition-colors">
                         Talk to us <ArrowRight size={10} />
@@ -115,7 +111,7 @@ export function Navbar() {
               </div>
             ) : (
               <Link key={link.href} href={link.href}
-                className={`px-3.5 py-2 text-[14px] font-medium rounded-lg transition-colors ${isDark ? 'text-zinc-300 hover:text-white hover:bg-white/5' : 'text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50'}`}
+                className="px-3.5 py-2 text-[14px] font-medium rounded-lg transition-colors text-zinc-300 hover:text-white hover:bg-white/5"
               >
                 {link.label}
               </Link>
@@ -126,28 +122,16 @@ export function Navbar() {
         {/* CTA */}
         <Link href="/contact"
           className="hidden lg:flex items-center gap-1.5 px-4 py-2 rounded-lg text-[13px] font-semibold transition-all"
-          style={{
-            background: isDark ? '#ffffff' : '#09090b',
-            color: isDark ? '#09090b' : '#ffffff',
-          }}
-          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = isDark ? '#e4e4e7' : '#27272a'; }}
-          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = isDark ? '#ffffff' : '#09090b'; }}
+          style={{ background: '#ffffff', color: '#09090b' }}
+          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#e4e4e7'; }}
+          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = '#ffffff'; }}
         >
           Get a Quote
           <ArrowRight size={13} />
         </Link>
 
-        {/* Theme toggle */}
-        <button
-          onClick={toggleTheme}
-          className={`hidden lg:flex items-center justify-center w-9 h-9 ml-3 rounded-lg border transition-all cursor-pointer ${isDark ? 'bg-white/5 border-zinc-700 text-zinc-300 hover:bg-white/10 hover:text-white' : 'bg-zinc-50 border-zinc-200 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900'}`}
-          aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-        >
-          {isDark ? <Sun size={16} /> : <Moon size={16} />}
-        </button>
-
         {/* Hamburger */}
-        <button onClick={() => setMobileOpen(true)} className={`lg:hidden ml-auto p-2 bg-transparent border-none cursor-pointer ${isDark ? 'text-zinc-300 hover:text-white' : 'text-zinc-600 hover:text-zinc-900'}`} aria-label="Open menu">
+        <button onClick={() => setMobileOpen(true)} className="lg:hidden ml-auto p-2 bg-transparent border-none cursor-pointer text-zinc-300 hover:text-white" aria-label="Open menu">
           <Menu size={20} />
         </button>
       </div>
@@ -156,10 +140,10 @@ export function Navbar() {
       {mobileOpen && (
         <div className="fixed inset-0 z-70 lg:hidden">
           <div onClick={() => setMobileOpen(false)} className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
-          <div className={`absolute right-0 top-0 bottom-0 w-[300px] max-w-[90vw] flex flex-col shadow-2xl ${isDark ? 'bg-dark-900' : 'bg-white'}`}>
-            <div className={`flex items-center justify-between px-5 py-4 border-b ${isDark ? 'border-zinc-800' : 'border-zinc-100'}`}>
-              <Logo variant={isDark ? 'dark' : 'light'} />
-              <button onClick={() => setMobileOpen(false)} className={`p-1.5 bg-transparent border-none cursor-pointer rounded-lg ${isDark ? 'text-zinc-400 hover:text-white hover:bg-white/5' : 'text-zinc-400 hover:text-zinc-700 hover:bg-zinc-50'}`} aria-label="Close menu">
+          <div className="absolute right-0 top-0 bottom-0 w-[300px] max-w-[90vw] flex flex-col shadow-2xl bg-dark-900">
+            <div className="flex items-center justify-between px-5 py-4 border-b border-zinc-800">
+              <Logo variant="dark" />
+              <button onClick={() => setMobileOpen(false)} className="p-1.5 bg-transparent border-none cursor-pointer rounded-lg text-zinc-400 hover:text-white hover:bg-white/5" aria-label="Close menu">
                 <X size={18} />
               </button>
             </div>
@@ -170,10 +154,10 @@ export function Navbar() {
                   {link.hasDropdown ? (
                     <div className="mb-1">
                       <p className="text-[10px] font-semibold tracking-[0.12em] uppercase text-zinc-400 px-3 py-2">Services</p>
-                      <div className={`ml-2 pl-3 border-l ${isDark ? 'border-zinc-700' : 'border-zinc-200'}`}>
+                      <div className="ml-2 pl-3 border-l border-zinc-700">
                         {serviceItems.map((item) => (
                           <Link key={item.label} href={item.href} onClick={() => setMobileOpen(false)}
-                            className={`block px-3 py-2.5 text-[14px] font-medium rounded-lg transition-colors ${isDark ? 'text-zinc-300 hover:text-white hover:bg-white/5' : 'text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50'}`}
+                            className="block px-3 py-2.5 text-[14px] font-medium rounded-lg transition-colors text-zinc-300 hover:text-white hover:bg-white/5"
                           >
                             {item.label}
                           </Link>
@@ -182,7 +166,7 @@ export function Navbar() {
                     </div>
                   ) : (
                     <Link href={link.href} onClick={() => setMobileOpen(false)}
-                      className={`block px-3 py-3 text-[15px] font-semibold rounded-lg transition-colors ${isDark ? 'text-zinc-200 hover:text-white hover:bg-white/5' : 'text-zinc-800 hover:text-zinc-900 hover:bg-zinc-50'}`}
+                      className="block px-3 py-3 text-[15px] font-semibold rounded-lg transition-colors text-zinc-200 hover:text-white hover:bg-white/5"
                     >
                       {link.label}
                     </Link>
@@ -191,21 +175,12 @@ export function Navbar() {
               ))}
             </nav>
 
-            <div className={`p-4 border-t ${isDark ? 'border-zinc-800' : 'border-zinc-100'}`}>
-              <div className="flex items-center gap-2">
-                <Link href="/contact" onClick={() => setMobileOpen(false)}
-                  className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-lg text-[14px] font-semibold transition-colors ${isDark ? 'bg-white text-zinc-900 hover:bg-zinc-200' : 'bg-zinc-900 text-white hover:bg-zinc-800'}`}
-                >
-                  Get a Quote <ArrowRight size={14} />
-                </Link>
-                <button
-                  onClick={toggleTheme}
-                  className={`w-11 h-11 rounded-lg border flex items-center justify-center transition-all cursor-pointer shrink-0 ${isDark ? 'bg-white/5 border-zinc-700 text-zinc-300 hover:bg-white/10' : 'bg-zinc-50 border-zinc-200 text-zinc-500 hover:bg-zinc-100'}`}
-                  aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-                >
-                  {isDark ? <Sun size={16} /> : <Moon size={16} />}
-                </button>
-              </div>
+            <div className="p-4 border-t border-zinc-800">
+              <Link href="/contact" onClick={() => setMobileOpen(false)}
+                className="flex items-center justify-center gap-2 py-3 rounded-lg text-[14px] font-semibold transition-colors bg-white text-zinc-900 hover:bg-zinc-200"
+              >
+                Get a Quote <ArrowRight size={14} />
+              </Link>
             </div>
           </div>
         </div>

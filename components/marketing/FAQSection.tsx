@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
-import { useTheme } from '@/components/shared/ThemeProvider';
 
 const faqs = [
   {
@@ -37,11 +36,9 @@ const faqs = [
 
 export function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-  const { theme } = useTheme();
-  const isDark = theme === 'dark';
 
   return (
-    <section className={`py-24 md:py-32 transition-colors duration-300 ${isDark ? 'bg-dark-950' : 'bg-white'}`}>
+    <section className="py-24 md:py-32 bg-dark-950">
       <div className="max-w-3xl mx-auto px-6">
         <div className="flex items-center justify-center gap-3 mb-4">
           <div className="h-0.5 w-12 bg-violet-500" />
@@ -50,7 +47,7 @@ export function FAQSection() {
         </div>
 
         <div className="text-center mb-14">
-          <h2 className={`font-display text-3xl md:text-4xl font-bold tracking-tight mb-4 ${isDark ? 'text-zinc-100' : 'text-zinc-900'}`}>
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-4 text-zinc-100">
             Frequently Asked <span className="text-gradient">Questions</span>
           </h2>
           <p className="text-zinc-500 text-lg max-w-2xl mx-auto leading-relaxed">
@@ -64,10 +61,7 @@ export function FAQSection() {
             return (
               <div
                 key={i}
-                className={`rounded-xl border overflow-hidden transition-all duration-300 ${isDark
-                  ? `border-zinc-700 ${isOpen ? 'bg-white/3' : 'bg-dark-800 hover:bg-white/2'}`
-                  : `border-zinc-200 ${isOpen ? 'bg-violet-50/50' : 'bg-white hover:bg-zinc-50'}`
-                }`}
+                className={`rounded-xl border overflow-hidden transition-all duration-300 border-zinc-700 ${isOpen ? 'bg-white/3' : 'bg-dark-800 hover:bg-white/2'}`}
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : i)}
@@ -76,7 +70,7 @@ export function FAQSection() {
                   aria-controls={`faq-panel-${i}`}
                   id={`faq-btn-${i}`}
                 >
-                  <span className={`text-[15px] font-semibold ${isDark ? 'text-zinc-100' : 'text-zinc-900'}`}>
+                  <span className="text-[15px] font-semibold text-zinc-100">
                     {faq.question}
                   </span>
                   <ChevronDown

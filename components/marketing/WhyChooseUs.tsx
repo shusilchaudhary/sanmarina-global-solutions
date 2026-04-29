@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { SectionHeader } from '@/components/shared/SectionHeader';
 import { useReveal } from '@/hooks/useReveal';
 import { cn } from '@/lib/utils';
-import { useTheme } from '@/components/shared/ThemeProvider';
 
 const reasons = [
   { title: 'Full-Stack Expertise',   desc: 'From frontend to backend, cloud to mobile — our team covers the entire technology stack.', image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80' },
@@ -17,14 +16,11 @@ const reasons = [
 
 function ReasonCard({ title, desc, image, stagger }: { title: string; desc: string; image: string; stagger: number }) {
   const { ref, revealed } = useReveal<HTMLDivElement>({ threshold: 0.08 });
-  const { theme } = useTheme();
-  const isDark = theme === 'dark';
   return (
     <div
       ref={ref}
       className={cn(
-        'rounded-2xl overflow-hidden border shadow-sm hover:shadow-lg hover:border-violet-200 transition-all duration-400 group cursor-default reveal-hidden',
-        isDark ? 'bg-dark-800 border-zinc-700 hover:shadow-violet-500/10' : 'bg-white border-zinc-200 hover:shadow-violet-100/50',
+        'rounded-2xl overflow-hidden border shadow-sm hover:shadow-lg hover:border-violet-200 transition-all duration-400 group cursor-default reveal-hidden bg-dark-800 border-zinc-700 hover:shadow-violet-500/10',
         `reveal-stagger-${stagger}`,
         revealed && 'reveal-visible'
       )}
@@ -34,7 +30,7 @@ function ReasonCard({ title, desc, image, stagger }: { title: string; desc: stri
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
       </div>
       <div className="p-6">
-        <h3 className={`text-lg font-bold mb-2 ${isDark ? 'text-zinc-100' : 'text-zinc-900'}`}>{title}</h3>
+        <h3 className="text-lg font-bold mb-2 text-zinc-100">{title}</h3>
         <p className="text-zinc-500 leading-relaxed text-sm">{desc}</p>
       </div>
     </div>
@@ -43,11 +39,9 @@ function ReasonCard({ title, desc, image, stagger }: { title: string; desc: stri
 
 export function WhyChooseUs() {
   const { ref: headRef, revealed: headRevealed } = useReveal<HTMLDivElement>();
-  const { theme } = useTheme();
-  const isDark = theme === 'dark';
 
   return (
-    <section className={`relative py-24 md:py-32 overflow-hidden transition-colors duration-300 border-y ${isDark ? 'bg-dark-950 border-zinc-800' : 'bg-white border-zinc-100'}`}>
+    <section className="relative py-24 md:py-32 overflow-hidden border-y bg-dark-950 border-zinc-800">
       <div className="container mx-auto px-4 max-w-7xl">
         <div ref={headRef} className={cn('reveal-hidden', headRevealed && 'reveal-visible')}>
           <div className="flex items-center justify-center gap-3 mb-4">

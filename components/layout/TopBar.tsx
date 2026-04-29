@@ -1,7 +1,6 @@
 'use client';
 
 import { Mail, Phone } from 'lucide-react';
-import { useTheme } from '@/components/shared/ThemeProvider';
 
 const iconStyle = { width: '16px', height: '16px' };
 
@@ -56,9 +55,6 @@ const socialLinks = [
 export { socialLinks };
 
 export function TopBar() {
-  const { theme } = useTheme();
-  const isDark = theme === 'dark';
-
   return (
     <div
       style={{
@@ -68,8 +64,7 @@ export function TopBar() {
         right: 0,
         zIndex: 51,
         height: '36px',
-        backgroundColor: isDark ? '#18181b' : '#09090b',
-        transition: 'background-color 0.3s ease',
+        backgroundColor: '#18181b',
       }}
     >
       <div

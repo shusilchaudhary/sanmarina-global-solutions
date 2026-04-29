@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Globe, Smartphone, Megaphone, Search, Video, Palette, Clapperboard, Bot } from 'lucide-react';
-import { useTheme } from '@/components/shared/ThemeProvider';
 
 const services = [
   {
@@ -70,11 +69,8 @@ const colorMap = {
 };
 
 export function ServicesSection() {
-  const { theme } = useTheme();
-  const isDark = theme === 'dark';
-
   return (
-    <section className={`py-24 transition-colors duration-300 ${isDark ? 'bg-dark-950' : 'bg-white'}`}>
+    <section className="py-24 bg-dark-950">
       <div className="max-w-7xl mx-auto px-6">
 
         <div className="flex items-center gap-3 mb-2">
@@ -83,7 +79,7 @@ export function ServicesSection() {
         </div>
         <div className="flex items-end justify-between flex-wrap gap-4 mb-12">
           <div>
-            <h2 className={`font-display text-3xl md:text-4xl font-extrabold tracking-tight ${isDark ? 'text-zinc-100' : 'text-zinc-900'}`}>
+            <h2 className="font-display text-3xl md:text-4xl font-extrabold tracking-tight text-zinc-100">
               Our Digital Services
             </h2>
             <p className="text-zinc-500 mt-2 max-w-lg">End-to-end IT solutions to take your business from idea to launch and beyond.</p>
@@ -117,7 +113,7 @@ export function ServicesSection() {
                   </div>
 
                   <div className="p-6">
-                    <h3 className={`text-lg font-bold mb-2 ${isDark ? 'text-zinc-100' : 'text-zinc-900'}`}>{s.title}</h3>
+                    <h3 className="text-lg font-bold mb-2 text-zinc-100">{s.title}</h3>
                     <p className="text-sm text-zinc-500 leading-relaxed mb-4">{s.desc}</p>
                     <span className={`text-sm font-semibold ${c.text} flex items-center gap-1.5 group-hover:gap-2.5 transition-all`}>
                       Learn more <ArrowRight size={14} />

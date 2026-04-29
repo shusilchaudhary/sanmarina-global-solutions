@@ -1,7 +1,5 @@
 'use client';
 
-import { useTheme } from '@/components/shared/ThemeProvider';
-
 const categories = [
   {
     title: 'Frontend',
@@ -60,11 +58,8 @@ const categories = [
 ];
 
 export function TechStackSection() {
-  const { theme } = useTheme();
-  const isDark = theme === 'dark';
-
   return (
-    <section className={`py-24 md:py-32 transition-colors duration-300 border-y ${isDark ? 'bg-dark-900 border-zinc-800' : 'bg-zinc-50 border-zinc-100'}`}>
+    <section className="py-24 md:py-32 border-y bg-dark-900 border-zinc-800">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex items-center justify-center gap-3 mb-4">
           <div className="h-0.5 w-12 bg-violet-500" />
@@ -73,7 +68,7 @@ export function TechStackSection() {
         </div>
 
         <div className="text-center mb-14">
-          <h2 className={`font-display text-3xl md:text-4xl font-bold tracking-tight mb-4 ${isDark ? 'text-zinc-100' : 'text-zinc-900'}`}>
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-4 text-zinc-100">
             Built With the <span className="text-gradient">Best Tools</span>
           </h2>
           <p className="text-zinc-500 text-lg max-w-2xl mx-auto leading-relaxed">
@@ -83,15 +78,15 @@ export function TechStackSection() {
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
           {categories.map((cat) => (
-            <div key={cat.title} className={`rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-0.5 ${isDark ? 'bg-dark-800 border-zinc-700 hover:border-violet-500/30' : 'bg-white border-zinc-200 hover:border-violet-300 hover:shadow-lg hover:shadow-violet-100/30'}`}>
-              <h3 className={`text-xs font-bold uppercase tracking-[0.15em] mb-4 ${isDark ? 'text-zinc-400' : 'text-zinc-500'}`}>
+            <div key={cat.title} className="rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-0.5 bg-dark-800 border-zinc-700 hover:border-violet-500/30">
+              <h3 className="text-xs font-bold uppercase tracking-[0.15em] mb-4 text-zinc-400">
                 {cat.title}
               </h3>
               <div className="space-y-2.5">
                 {cat.tools.map((tool) => (
                   <div key={tool.name} className="flex items-center gap-2.5">
                     <span className="text-base">{tool.icon}</span>
-                    <span className={`text-sm font-medium ${isDark ? 'text-zinc-300' : 'text-zinc-700'}`}>{tool.name}</span>
+                    <span className="text-sm font-medium text-zinc-300">{tool.name}</span>
                   </div>
                 ))}
               </div>

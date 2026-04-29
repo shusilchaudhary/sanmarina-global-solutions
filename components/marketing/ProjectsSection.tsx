@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { useTheme } from '@/components/shared/ThemeProvider';
 
 const projects = [
   {
@@ -84,11 +83,8 @@ const colorMap: Record<string, { badge: string; stat: string }> = {
 };
 
 export function ProjectsSection() {
-  const { theme } = useTheme();
-  const isDark = theme === 'dark';
-
   return (
-    <section className={`py-24 md:py-32 transition-colors duration-300 ${isDark ? 'bg-dark-900' : 'bg-zinc-50'}`}>
+    <section className="py-24 md:py-32 bg-dark-900">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-center gap-3 mb-4">
           <div className="h-0.5 w-12 bg-violet-500" />
@@ -97,7 +93,7 @@ export function ProjectsSection() {
         </div>
 
         <div className="text-center mb-14">
-          <h2 className={`font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 ${isDark ? 'text-zinc-100' : 'text-zinc-900'}`}>
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 text-zinc-100">
             Projects That <span className="text-gradient">Speak for Themselves</span>
           </h2>
           <p className="text-zinc-500 text-lg max-w-2xl mx-auto leading-relaxed">
@@ -109,7 +105,7 @@ export function ProjectsSection() {
           {projects.map((p) => {
             const c = colorMap[p.color];
             return (
-              <div key={p.title} className={`group rounded-2xl overflow-hidden border transition-all duration-300 hover:-translate-y-1 ${isDark ? 'bg-dark-800 border-zinc-700 hover:border-violet-500/30 hover:shadow-lg hover:shadow-violet-500/10' : 'bg-white border-zinc-200 hover:border-violet-300 hover:shadow-xl hover:shadow-violet-100/50'}`}>
+              <div key={p.title} className="group rounded-2xl overflow-hidden border transition-all duration-300 hover:-translate-y-1 bg-dark-800 border-zinc-700 hover:border-violet-500/30 hover:shadow-lg hover:shadow-violet-500/10">
                 <div className="relative h-48 overflow-hidden">
                   <Image src={p.image} alt={p.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" loading="lazy" className="object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
@@ -128,12 +124,12 @@ export function ProjectsSection() {
 
                 <div className="p-6">
                   <p className="text-[11px] font-semibold text-zinc-400 uppercase tracking-wider mb-1.5">{p.client}</p>
-                  <h3 className={`text-lg font-bold mb-2 ${isDark ? 'text-zinc-100' : 'text-zinc-900'}`}>{p.title}</h3>
+                  <h3 className="text-lg font-bold mb-2 text-zinc-100">{p.title}</h3>
                   <p className="text-sm text-zinc-500 leading-relaxed mb-4 line-clamp-2">{p.description}</p>
 
                   <div className="flex flex-wrap gap-1.5">
                     {p.tags.map((tag) => (
-                      <span key={tag} className={`px-2 py-0.5 text-[10px] font-semibold rounded-md ${isDark ? 'bg-white/5 text-zinc-400' : 'bg-zinc-100 text-zinc-500'}`}>
+                      <span key={tag} className="px-2 py-0.5 text-[10px] font-semibold rounded-md bg-white/5 text-zinc-400">
                         {tag}
                       </span>
                     ))}
@@ -148,7 +144,7 @@ export function ProjectsSection() {
           <Link href="/portfolio" className="btn-primary inline-flex text-sm">
             View All Projects <ArrowRight size={15} />
           </Link>
-          <Link href="/contact" className={`inline-flex items-center gap-2 text-sm font-semibold transition-colors ${isDark ? 'text-zinc-400 hover:text-violet-400' : 'text-zinc-500 hover:text-violet-600'}`}>
+          <Link href="/contact" className="inline-flex items-center gap-2 text-sm font-semibold transition-colors text-zinc-400 hover:text-violet-400">
             Start Your Project <ArrowRight size={14} />
           </Link>
         </div>

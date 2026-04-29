@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { X, ExternalLink, ArrowRight, ChevronLeft, ChevronRight, CheckCircle, Quote } from 'lucide-react';
 import { portfolio, categories, type PortfolioProject, type ProjectCategory } from '@/public/data/portfolio';
-import { useTheme } from '@/components/shared/ThemeProvider';
 
 const categoryColors: Record<string, string> = {
   'web-dev': 'bg-violet-500/10 text-violet-400 border-violet-500/20',
@@ -17,19 +16,19 @@ const categoryColors: Record<string, string> = {
   'ai-automation': 'bg-teal-500/10 text-teal-400 border-teal-500/20',
 };
 
-function ProjectModal({ project, onClose, isDark }: { project: PortfolioProject; onClose: () => void; isDark: boolean }) {
+function ProjectModal({ project, onClose }: { project: PortfolioProject; onClose: () => void }) {
   const [activeImage, setActiveImage] = useState(0);
 
   return (
     <div className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto" onClick={onClose}>
       <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" />
       <div
-        className={`relative w-full max-w-4xl mx-4 my-8 sm:my-16 rounded-2xl border shadow-2xl overflow-hidden ${isDark ? 'bg-dark-900 border-zinc-700' : 'bg-white border-zinc-200'}`}
+        className="relative w-full max-w-4xl mx-4 my-8 sm:my-16 rounded-2xl border shadow-2xl overflow-hidden bg-dark-900 border-zinc-700"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className={`absolute top-4 right-4 z-10 w-10 h-10 rounded-full flex items-center justify-center transition-colors cursor-pointer border-none ${isDark ? 'bg-white/10 text-white hover:bg-white/20' : 'bg-black/5 text-zinc-600 hover:bg-black/10'}`}
+          className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full flex items-center justify-center transition-colors cursor-pointer border-none bg-white/10 text-white hover:bg-white/20"
           aria-label="Close"
         >
           <X size={20} />
@@ -68,32 +67,32 @@ function ProjectModal({ project, onClose, isDark }: { project: PortfolioProject;
         {/* Content */}
         <div className="p-6 sm:p-10">
           <p className="text-[11px] font-semibold text-zinc-400 uppercase tracking-wider mb-1">{project.client}</p>
-          <h2 className={`font-display text-2xl sm:text-3xl font-bold tracking-tight mb-4 ${isDark ? 'text-zinc-100' : 'text-zinc-900'}`}>
+          <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight mb-4 text-zinc-100">
             {project.title}
           </h2>
-          <p className={`text-[15px] leading-relaxed mb-8 ${isDark ? 'text-zinc-300' : 'text-zinc-600'}`}>
+          <p className="text-[15px] leading-relaxed mb-8 text-zinc-300">
             {project.description}
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <div>
-              <h3 className={`text-sm font-bold uppercase tracking-wider mb-3 ${isDark ? 'text-zinc-400' : 'text-zinc-500'}`}>The Challenge</h3>
-              <p className={`text-sm leading-relaxed ${isDark ? 'text-zinc-400' : 'text-zinc-500'}`}>{project.challenge}</p>
+              <h3 className="text-sm font-bold uppercase tracking-wider mb-3 text-zinc-400">The Challenge</h3>
+              <p className="text-sm leading-relaxed text-zinc-400">{project.challenge}</p>
             </div>
             <div>
-              <h3 className={`text-sm font-bold uppercase tracking-wider mb-3 ${isDark ? 'text-zinc-400' : 'text-zinc-500'}`}>Our Solution</h3>
-              <p className={`text-sm leading-relaxed ${isDark ? 'text-zinc-400' : 'text-zinc-500'}`}>{project.solution}</p>
+              <h3 className="text-sm font-bold uppercase tracking-wider mb-3 text-zinc-400">Our Solution</h3>
+              <p className="text-sm leading-relaxed text-zinc-400">{project.solution}</p>
             </div>
           </div>
 
           {/* Results */}
-          <div className={`rounded-xl p-5 mb-8 ${isDark ? 'bg-white/[0.03] border border-zinc-800' : 'bg-zinc-50 border border-zinc-100'}`}>
-            <h3 className={`text-sm font-bold uppercase tracking-wider mb-3 ${isDark ? 'text-zinc-400' : 'text-zinc-500'}`}>Key Results</h3>
+          <div className="rounded-xl p-5 mb-8 bg-white/[0.03] border border-zinc-800">
+            <h3 className="text-sm font-bold uppercase tracking-wider mb-3 text-zinc-400">Key Results</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {project.results.map((r) => (
                 <div key={r} className="flex items-start gap-2">
                   <CheckCircle size={15} className="text-emerald-500 shrink-0 mt-0.5" />
-                  <span className={`text-sm font-medium ${isDark ? 'text-zinc-300' : 'text-zinc-700'}`}>{r}</span>
+                  <span className="text-sm font-medium text-zinc-300">{r}</span>
                 </div>
               ))}
             </div>
@@ -101,9 +100,9 @@ function ProjectModal({ project, onClose, isDark }: { project: PortfolioProject;
 
           {/* Testimonial */}
           {project.testimonial && (
-            <div className={`rounded-xl p-5 mb-8 ${isDark ? 'bg-violet-500/5 border border-violet-500/10' : 'bg-violet-50 border border-violet-100'}`}>
+            <div className="rounded-xl p-5 mb-8 bg-violet-500/5 border border-violet-500/10">
               <Quote size={20} className="text-violet-400/40 mb-3" />
-              <p className={`text-sm italic leading-relaxed mb-3 ${isDark ? 'text-zinc-300' : 'text-zinc-700'}`}>
+              <p className="text-sm italic leading-relaxed mb-3 text-zinc-300">
                 &ldquo;{project.testimonial.quote}&rdquo;
               </p>
               <p className="text-xs font-bold text-violet-500">{project.testimonial.name} · {project.testimonial.role}</p>
@@ -113,7 +112,7 @@ function ProjectModal({ project, onClose, isDark }: { project: PortfolioProject;
           {/* Tags */}
           <div className="flex flex-wrap gap-2">
             {project.tags.map((tag) => (
-              <span key={tag} className={`px-3 py-1 text-xs font-semibold rounded-lg ${isDark ? 'bg-white/5 text-zinc-400' : 'bg-zinc-100 text-zinc-500'}`}>
+              <span key={tag} className="px-3 py-1 text-xs font-semibold rounded-lg bg-white/5 text-zinc-400">
                 {tag}
               </span>
             ))}
@@ -134,8 +133,6 @@ function ProjectModal({ project, onClose, isDark }: { project: PortfolioProject;
 export function PortfolioGrid() {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>('all');
   const [selectedProject, setSelectedProject] = useState<PortfolioProject | null>(null);
-  const { theme } = useTheme();
-  const isDark = theme === 'dark';
 
   const filtered = activeCategory === 'all' ? portfolio : portfolio.filter((p) => p.category === activeCategory);
 
@@ -151,9 +148,7 @@ export function PortfolioGrid() {
               onClick={() => setActiveCategory(cat.id)}
               className={`px-4 py-2 rounded-full text-[13px] font-semibold transition-all cursor-pointer border-none ${isActive
                 ? 'bg-violet-600 text-white shadow-lg shadow-violet-500/25'
-                : isDark
-                  ? 'bg-white/5 text-zinc-400 hover:bg-white/10 hover:text-zinc-200'
-                  : 'bg-zinc-100 text-zinc-500 hover:bg-zinc-200 hover:text-zinc-700'
+                : 'bg-white/5 text-zinc-400 hover:bg-white/10 hover:text-zinc-200'
               }`}
             >
               {cat.label}
@@ -168,7 +163,7 @@ export function PortfolioGrid() {
           <button
             key={p.id}
             onClick={() => setSelectedProject(p)}
-            className={`group rounded-2xl overflow-hidden border text-left transition-all duration-300 hover:-translate-y-1 cursor-pointer bg-transparent ${isDark ? 'border-zinc-700 hover:border-violet-500/30 hover:shadow-lg hover:shadow-violet-500/10' : 'border-zinc-200 hover:border-violet-300 hover:shadow-xl hover:shadow-violet-100/50'}`}
+            className="group rounded-2xl overflow-hidden border text-left transition-all duration-300 hover:-translate-y-1 cursor-pointer bg-transparent border-zinc-700 hover:border-violet-500/30 hover:shadow-lg hover:shadow-violet-500/10"
           >
             <div className="relative h-52 overflow-hidden">
               <Image src={p.image} alt={p.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" loading="lazy" className="object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -184,13 +179,13 @@ export function PortfolioGrid() {
               </div>
             </div>
 
-            <div className={`p-5 ${isDark ? 'bg-dark-800' : 'bg-white'}`}>
+            <div className="p-5 bg-dark-800">
               <p className="text-[10px] font-semibold text-zinc-400 uppercase tracking-wider mb-1">{p.client}</p>
-              <h3 className={`text-base font-bold mb-2 ${isDark ? 'text-zinc-100' : 'text-zinc-900'}`}>{p.title}</h3>
+              <h3 className="text-base font-bold mb-2 text-zinc-100">{p.title}</h3>
               <p className="text-sm text-zinc-500 leading-relaxed line-clamp-2 mb-4">{p.description}</p>
               <div className="flex flex-wrap gap-1.5">
                 {p.tags.slice(0, 3).map((tag) => (
-                  <span key={tag} className={`px-2 py-0.5 text-[10px] font-semibold rounded-md ${isDark ? 'bg-white/5 text-zinc-400' : 'bg-zinc-100 text-zinc-500'}`}>
+                  <span key={tag} className="px-2 py-0.5 text-[10px] font-semibold rounded-md bg-white/5 text-zinc-400">
                     {tag}
                   </span>
                 ))}
@@ -211,7 +206,7 @@ export function PortfolioGrid() {
 
       {/* Modal */}
       {selectedProject && (
-        <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} isDark={isDark} />
+        <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
       )}
     </>
   );
