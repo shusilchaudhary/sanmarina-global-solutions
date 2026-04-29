@@ -5,43 +5,18 @@ interface LogoProps {
   variant?: 'light' | 'dark';
 }
 
-export function Logo({ className = '', variant = 'light' }: LogoProps) {
-  const textColor = variant === 'dark' ? '#ffffff' : '#09090b';
-  const accentColor = '#8B5CF6';
-
+export function Logo({ className = '' }: LogoProps) {
   return (
-    <div className={`flex items-center gap-2.5 shrink-0 ${className}`}>
+    <div className={`flex items-center shrink-0 ${className}`}>
       <Image
         src="/sanmarinaglobal.png"
         alt="SanMarina Global Solutions"
-        width={36}
-        height={36}
-        className="rounded-lg object-contain"
+        width={150}
+        height={50}
+        className="object-contain"
         priority
+        style={{ height: '44px', width: 'auto' }}
       />
-      <div style={{ lineHeight: 1.1 }}>
-        <span style={{
-          fontFamily: 'var(--font-outfit), Outfit, sans-serif',
-          fontSize: '18px',
-          fontWeight: 800,
-          color: textColor,
-          letterSpacing: '-0.03em',
-          display: 'block',
-        }}>
-          SanMarina
-        </span>
-        <span style={{
-          fontFamily: 'var(--font-inter), Inter, sans-serif',
-          fontSize: '10px',
-          fontWeight: 600,
-          color: accentColor,
-          letterSpacing: '0.15em',
-          textTransform: 'uppercase',
-          display: 'block',
-        }}>
-          Global Solutions
-        </span>
-      </div>
     </div>
   );
 }
