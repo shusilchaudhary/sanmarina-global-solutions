@@ -54,6 +54,11 @@ export const metadata: Metadata = {
     images: ['/og-image.png'],
   },
   robots: { index: true, follow: true },
+  icons: {
+    icon: '/sanmarina_global_logo.png',
+    shortcut: '/sanmarina_global_logo.png',
+    apple: '/sanmarina_global_logo.png',
+  },
 };
 
 export default function RootLayout({
