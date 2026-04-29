@@ -12,7 +12,7 @@ export function Logo({ className = '', variant = 'light' }: LogoProps) {
   return (
     <div className={`flex items-center gap-2.5 shrink-0 ${className}`}>
       <Image
-        src="/sanmarina_global_logo.png"
+        src="/sanmarinaglobal.png"
         alt="SanMarina Global Solutions"
         width={36}
         height={36}

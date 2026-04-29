@@ -55,9 +55,9 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
   icons: {
-    icon: '/sanmarina_global_logo.png',
-    shortcut: '/sanmarina_global_logo.png',
-    apple: '/sanmarina_global_logo.png',
+    icon: '/sanmarinaglobal.png',
+    shortcut: '/sanmarinaglobal.png',
+    apple: '/sanmarinaglobal.png',
   },
 };
 
