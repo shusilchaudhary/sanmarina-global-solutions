@@ -1,15 +1,6 @@
-import {
-  Globe,
-  Users,
-  Monitor,
-  FileCheck,
-  ShieldCheck,
-  Plane,
-} from 'lucide-react';
-
 export interface ServiceItem {
   id: string;
-  icon: string; // Lucide icon name
+  icon: string;
   title: string;
   description: string;
   href: string;
@@ -18,87 +9,73 @@ export interface ServiceItem {
 
 export const services: ServiceItem[] = [
   {
-    id: 'recruitment',
-    icon: 'Users',
-    title: 'International Recruitment',
-    description:
-      'We connect skilled Asian workers with verified European employers across 15+ countries. From hospitality to healthcare, we match talent with opportunity.',
-    href: '/services#recruitment',
-    features: [
-      'Verified employer network',
-      'Skill matching algorithm',
-      'Pre-departure orientation',
-      'On-ground support in destination',
-    ],
-  },
-  {
-    id: 'visa',
-    icon: 'FileCheck',
-    title: 'Visa & Work Permit Assistance',
-    description:
-      'Navigate complex European immigration requirements with our expert visa processing team. We handle documentation, applications, and embassy coordination.',
-    href: '/services#visa',
-    features: [
-      'Work permit processing',
-      'EU Blue Card applications',
-      'Document preparation & verification',
-      '98% visa approval rate',
-    ],
-  },
-  {
-    id: 'it-consulting',
-    icon: 'Monitor',
-    title: 'IT Consulting Services',
-    description:
-      'Transform your business with our expert IT consulting. We offer custom software development, cloud solutions, and digital transformation strategies for enterprises.',
-    href: '/services#it-consulting',
-    features: [
-      'Custom software development',
-      'Cloud infrastructure setup',
-      'Digital transformation strategy',
-      'Dedicated development teams',
-    ],
-  },
-  {
-    id: 'compliance',
-    icon: 'ShieldCheck',
-    title: 'Compliance & Legal Support',
-    description:
-      'Stay compliant with international labor laws and regulations. Our legal team ensures all placements meet EU and destination country requirements.',
-    href: '/services#compliance',
-    features: [
-      'Labor law compliance',
-      'Employment contract review',
-      'Worker rights protection',
-      'Regulatory updates',
-    ],
-  },
-  {
-    id: 'travel',
-    icon: 'Plane',
-    title: 'Travel & Relocation',
-    description:
-      'Seamless relocation support from Asia to Europe. We arrange flights, accommodation, and orientation to ensure a smooth transition for every worker.',
-    href: '/services#travel',
-    features: [
-      'Flight booking assistance',
-      'Airport pickup coordination',
-      'Temporary accommodation',
-      'Cultural orientation program',
-    ],
-  },
-  {
-    id: 'global-staffing',
+    id: 'web-dev',
     icon: 'Globe',
-    title: 'Global Staffing Solutions',
+    title: 'Web Development',
     description:
-      'Enterprise-grade staffing solutions for businesses needing reliable workforce. Scalable teams, managed HR, and performance tracking included.',
-    href: '/services#global-staffing',
+      'Custom websites, web apps, e-commerce platforms, and SaaS products built with React, Next.js, Node.js, and the latest technologies.',
+    href: '/services#web-dev',
     features: [
-      'Contract & permanent staffing',
-      'Managed workforce solutions',
-      'Performance monitoring',
-      'Scalable team deployment',
+      'Responsive & mobile-first design',
+      'SEO-optimized architecture',
+      'Custom CMS integration',
+      'Performance-tuned delivery',
+    ],
+  },
+  {
+    id: 'app-dev',
+    icon: 'Smartphone',
+    title: 'App Development',
+    description:
+      'Native and cross-platform mobile apps for iOS and Android. From concept to App Store, we handle everything.',
+    href: '/services#app-dev',
+    features: [
+      'iOS & Android native apps',
+      'React Native & Flutter',
+      'API & backend integration',
+      'Push notifications & analytics',
+    ],
+  },
+  {
+    id: 'digital-marketing',
+    icon: 'Megaphone',
+    title: 'Digital Marketing',
+    description:
+      'Data-driven marketing strategies across social media, PPC, email, and content marketing to grow your audience and revenue.',
+    href: '/services#digital-marketing',
+    features: [
+      'Social media management',
+      'Google & Facebook Ads',
+      'Email marketing campaigns',
+      'Content strategy & creation',
+    ],
+  },
+  {
+    id: 'seo',
+    icon: 'Search',
+    title: 'SEO Services',
+    description:
+      'Comprehensive SEO to boost your organic rankings — technical audits, on-page optimization, link building, and keyword strategy.',
+    href: '/services#seo',
+    features: [
+      'Technical SEO audit',
+      'On-page optimization',
+      'Link building strategy',
+      'Monthly reporting & analytics',
+    ],
+  },
+  {
+    id: 'ai-video',
+    icon: 'Video',
+    title: 'AI Video Generation',
+    description:
+      'Leverage cutting-edge AI to create professional video content at scale — product demos, explainers, social reels, and ads.',
+    href: '/services#ai-video',
+    features: [
+      'AI-generated product videos',
+      'Social media reels & shorts',
+      'Explainer & tutorial animations',
+      'Scalable production pipeline',
     ],
   },
 ];

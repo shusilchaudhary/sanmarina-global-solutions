@@ -139,22 +139,24 @@ export function ContactForm() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
-          <label className="block text-sm font-medium text-neutral-700 mb-2">Full Name</label>
+          <label htmlFor="contact-name" className="block text-sm font-medium text-neutral-700 mb-2">Full Name</label>
           <input
             {...register('name')}
+            id="contact-name"
             type="text"
             placeholder="Your name"
-            className="w-full px-5 py-4 bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 hover:border-neutral-300 rounded-xl text-neutral-800 placeholder:text-neutral-400 focus:bg-white focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all duration-300 shadow-sm"
+            className="w-full px-5 py-4 bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 hover:border-neutral-300 rounded-xl text-neutral-800 placeholder:text-neutral-400 focus:bg-white focus:outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all duration-300 shadow-sm"
           />
           {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name.message}</p>}
         </div>
         <div>
-          <label className="block text-sm font-medium text-neutral-700 mb-2">Email</label>
+          <label htmlFor="contact-email" className="block text-sm font-medium text-neutral-700 mb-2">Email</label>
           <input
             {...register('email')}
+            id="contact-email"
             type="email"
             placeholder="you@email.com"
-            className="w-full px-5 py-4 bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 hover:border-neutral-300 rounded-xl text-neutral-800 placeholder:text-neutral-400 focus:bg-white focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all duration-300 shadow-sm"
+            className="w-full px-5 py-4 bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 hover:border-neutral-300 rounded-xl text-neutral-800 placeholder:text-neutral-400 focus:bg-white focus:outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all duration-300 shadow-sm"
           />
           {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email.message}</p>}
         </div>
@@ -162,14 +164,14 @@ export function ContactForm() {
 
       {/* Phone with country code */}
       <div>
-        <label className="block text-sm font-medium text-neutral-700 mb-2">Phone <span className="text-neutral-400 font-normal">(optional)</span></label>
+        <label htmlFor="contact-phone" className="block text-sm font-medium text-neutral-700 mb-2">Phone <span className="text-neutral-400 font-normal">(optional)</span></label>
         <div className="flex gap-2">
           {/* Country code dropdown */}
           <div className="relative flex-shrink-0">
             <select
               value={dialCode}
               onChange={e => setDialCode(e.target.value)}
-              className="appearance-none h-full pl-3 pr-8 py-4 bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 hover:border-neutral-300 rounded-xl text-neutral-800 focus:bg-white focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all duration-300 shadow-sm cursor-pointer text-sm font-medium"
+              className="appearance-none h-full pl-3 pr-8 py-4 bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 hover:border-neutral-300 rounded-xl text-neutral-800 focus:bg-white focus:outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all duration-300 shadow-sm cursor-pointer text-sm font-medium"
               style={{ minWidth: '110px' }}
             >
               {COUNTRY_CODES.map((c, i) => (
@@ -184,27 +186,32 @@ export function ContactForm() {
           {/* Phone number input */}
           <input
             {...register('phone')}
+            id="contact-phone"
             type="tel"
             placeholder="XXX XXX XXX"
-            className="flex-1 px-5 py-4 bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 hover:border-neutral-300 rounded-xl text-neutral-800 placeholder:text-neutral-400 focus:bg-white focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all duration-300 shadow-sm"
+            className="flex-1 px-5 py-4 bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 hover:border-neutral-300 rounded-xl text-neutral-800 placeholder:text-neutral-400 focus:bg-white focus:outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all duration-300 shadow-sm"
           />
         </div>
         {errors.phone && <p className="mt-1 text-xs text-red-500">{errors.phone.message}</p>}
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-neutral-700 mb-2">Service Interested In</label>
+        <label htmlFor="contact-service" className="block text-sm font-medium text-neutral-700 mb-2">Service Interested In</label>
         <div className="relative">
           <select
             {...register('service')}
-            className="w-full appearance-none px-5 py-4 bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 hover:border-neutral-300 rounded-xl text-neutral-800 focus:bg-white focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all duration-300 shadow-sm cursor-pointer"
+            id="contact-service"
+            className="w-full appearance-none px-5 py-4 bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 hover:border-neutral-300 rounded-xl text-neutral-800 focus:bg-white focus:outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all duration-300 shadow-sm cursor-pointer"
           >
             <option value="">Select a service</option>
-            <option value="recruitment">International Recruitment</option>
-            <option value="visa">Visa Assistance</option>
-            <option value="it-consulting">IT Consulting</option>
-            <option value="compliance">Compliance</option>
-            <option value="travel">Travel & Relocation</option>
+            <option value="web-development">Web Development</option>
+            <option value="app-development">App Development</option>
+            <option value="digital-marketing">Digital Marketing</option>
+            <option value="seo">SEO Services</option>
+            <option value="ai-video">AI Video Generation</option>
+            <option value="ai-automation">AI Automation</option>
+            <option value="graphic-design">Graphic Designing</option>
+            <option value="video-editing">Video Editing</option>
             <option value="other">Other</option>
           </select>
           <ChevronDown size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-400 pointer-events-none" />
@@ -213,12 +220,13 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-neutral-700 mb-2">Message</label>
+        <label htmlFor="contact-message" className="block text-sm font-medium text-neutral-700 mb-2">Message</label>
         <textarea
           {...register('message')}
+          id="contact-message"
           rows={5}
           placeholder="Tell us about your needs..."
-          className="w-full px-5 py-4 bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 hover:border-neutral-300 rounded-xl text-neutral-800 placeholder:text-neutral-400 focus:bg-white focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all duration-300 shadow-sm resize-none"
+          className="w-full px-5 py-4 bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 hover:border-neutral-300 rounded-xl text-neutral-800 placeholder:text-neutral-400 focus:bg-white focus:outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all duration-300 shadow-sm resize-none"
         />
         {errors.message && <p className="mt-1 text-xs text-red-500">{errors.message.message}</p>}
       </div>
@@ -226,7 +234,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="group w-full inline-flex items-center justify-center gap-3 px-6 py-4 text-base font-bold text-white bg-red-600 hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-xl transition-all duration-300 shadow-[0_4px_20px_rgba(204,34,41,0.25)] hover:shadow-[0_4px_30px_rgba(204,34,41,0.4)] hover:-translate-y-0.5"
+        className="group w-full inline-flex items-center justify-center gap-3 px-6 py-4 text-base font-bold text-white bg-violet-600 hover:bg-violet-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-xl transition-all duration-300 shadow-[0_4px_20px_rgba(139,92,246,0.25)] hover:shadow-[0_4px_30px_rgba(139,92,246,0.4)] hover:-translate-y-0.5"
       >
         {isSubmitting ? (
           <><Loader2 className="w-4 h-4 animate-spin" /> Sending...</>

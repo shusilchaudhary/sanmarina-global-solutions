@@ -1,3 +1,7 @@
+'use client';
+
+import { useTheme } from '@/components/shared/ThemeProvider';
+
 interface SectionHeaderProps {
   label?: string;
   title: string;
@@ -6,13 +10,9 @@ interface SectionHeaderProps {
   dark?: boolean;
 }
 
-export function SectionHeader({
-  label,
-  title,
-  description,
-  align = 'center',
-  dark = false,
-}: SectionHeaderProps) {
+export function SectionHeader({ label, title, description, align = 'center', dark = false }: SectionHeaderProps) {
+  const { theme } = useTheme();
+  const isDark = dark || theme === 'dark';
   const textAlign = align === 'center' ? 'center' : 'left';
   const maxWidth  = align === 'center' ? '720px' : '600px';
   const margin    = align === 'center' ? '0 auto 3rem' : '0 0 3rem';
@@ -25,7 +25,7 @@ export function SectionHeader({
           fontFamily: 'var(--font-inter), Inter, sans-serif',
           fontSize: '11px', fontWeight: 700,
           letterSpacing: '0.16em', textTransform: 'uppercase',
-          color: dark ? '#FFA0A4' : '#CC2229',
+          color: isDark ? '#C4B5FD' : '#7C3AED',
           marginBottom: '0.875rem',
         }}>
           {label}
@@ -37,7 +37,7 @@ export function SectionHeader({
         fontWeight: 800,
         lineHeight: 1.15,
         letterSpacing: '-0.03em',
-        color: dark ? '#ffffff' : '#0B1628',
+        color: isDark ? '#ffffff' : '#09090b',
         marginBottom: description ? '1rem' : '0',
       }}>
         {title}
@@ -48,7 +48,7 @@ export function SectionHeader({
           fontSize: '1.0625rem',
           fontWeight: 400,
           lineHeight: 1.7,
-          color: dark ? '#93C5FD' : '#6B7280',
+          color: isDark ? 'rgba(255,255,255,0.5)' : '#71717a',
           marginTop: '1rem',
         }}>
           {description}

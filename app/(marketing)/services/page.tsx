@@ -1,210 +1,175 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { CTASection } from '@/components/marketing/CTASection';
-import { ArrowRight, Users, FileCheck, Monitor, ShieldCheck, Plane, Globe, CheckCircle } from 'lucide-react';
-import { Navbar } from '@/components/layout/Navbar';
-import { Footer } from '@/components/layout/Footer';
+import { ArrowRight, Globe, Smartphone, Megaphone, Search, Video, Palette, Clapperboard, Bot, CheckCircle } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Our Services | SanMarina Global Solutions',
   description:
-    'International recruitment, visa assistance, IT consulting, and global staffing solutions by SanMarina Global Solutions.',
+    'Web development, app development, digital marketing, SEO, and AI video generation services by SanMarina Global Solutions.',
 };
 
 const services = [
   {
-    id: 'recruitment',
-    Icon: Users,
-    title: 'International Recruitment',
-    description: 'We connect skilled Asian workers with verified European employers across 15+ countries. From hospitality to healthcare, we match talent with opportunity.',
-    image: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80',
-    accent: '#CC2229',
-    features: ['Verified employer network', 'Pre-departure orientation', 'Skills matching', 'On-ground support'],
-    href: '/jobs',
-    cta: 'Browse Jobs',
-  },
-  {
-    id: 'visa',
-    Icon: FileCheck,
-    title: 'Visa & Work Permit Assistance',
-    description: 'Navigate complex European immigration requirements with our expert visa processing team. We handle documentation, applications, and embassy coordination.',
-    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80',
-    accent: '#2563EB',
-    features: ['Work permit processing', 'EU Blue Card applications', 'Document verification', '98% approval rate'],
-    href: '/contact',
-    cta: 'Get Help',
-  },
-  {
-    id: 'it-consulting',
-    Icon: Monitor,
-    title: 'IT Consulting Services',
-    description: 'Transform your business with expert IT consulting — custom software, cloud infrastructure, and digital transformation strategies for enterprises.',
-    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80',
-    accent: '#2563EB',
-    features: ['Custom software development', 'Cloud infrastructure', 'Digital transformation', 'Dedicated dev teams'],
-    href: '/contact',
+    id: 'web-dev',
+    Icon: Globe,
+    title: 'Web Development',
+    description: 'Custom websites, web apps, e-commerce platforms, and SaaS products built with React, Next.js, Node.js, and more.',
+    image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80',
+    color: 'violet' as const,
+    features: ['Responsive & mobile-first', 'SEO-optimized architecture', 'Custom CMS integration', 'Performance-tuned delivery'],
     cta: 'Get a Quote',
   },
   {
-    id: 'compliance',
-    Icon: ShieldCheck,
-    title: 'Compliance & Legal Support',
-    description: 'Stay compliant with international labor laws. Our legal team ensures all placements meet EU and destination country requirements.',
-    image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80',
-    accent: '#CC2229',
-    features: ['Labor law compliance', 'Employment contract review', 'Worker rights protection', 'Regulatory updates'],
-    href: '/contact',
-    cta: 'Consult Us',
+    id: 'app-dev',
+    Icon: Smartphone,
+    title: 'App Development',
+    description: 'Native and cross-platform mobile apps for iOS and Android. From concept to App Store, we handle everything.',
+    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80',
+    color: 'cyan' as const,
+    features: ['iOS & Android native', 'React Native & Flutter', 'API integration', 'Push notifications & analytics'],
+    cta: 'Get a Quote',
   },
   {
-    id: 'travel',
-    Icon: Plane,
-    title: 'Travel & Relocation',
-    description: 'Seamless relocation support from Asia to Europe — flights, accommodation, and orientation to ensure a smooth transition for every worker.',
-    image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80',
-    accent: '#CC2229',
-    features: ['Flight booking assistance', 'Airport pickup', 'Temporary accommodation', 'Cultural orientation'],
-    href: '/contact',
+    id: 'digital-marketing',
+    Icon: Megaphone,
+    title: 'Digital Marketing',
+    description: 'Data-driven marketing strategies across social media, PPC, email, and content to grow your audience and revenue.',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
+    color: 'violet' as const,
+    features: ['Social media management', 'Google & Facebook Ads', 'Email campaigns', 'Content strategy'],
+    cta: 'Get Started',
+  },
+  {
+    id: 'seo',
+    Icon: Search,
+    title: 'SEO Services',
+    description: 'Comprehensive SEO to boost your organic rankings — technical audits, on-page optimization, link building, and keyword strategy.',
+    image: 'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=80',
+    color: 'cyan' as const,
+    features: ['Technical SEO audit', 'On-page optimization', 'Link building strategy', 'Monthly reporting'],
+    cta: 'Boost Rankings',
+  },
+  {
+    id: 'ai-video',
+    Icon: Video,
+    title: 'AI Video Generation',
+    description: 'Leverage cutting-edge AI to create professional video content at scale — product demos, explainers, social reels, and ads.',
+    image: 'https://images.unsplash.com/photo-1535016120720-40c646be5580?w=800&q=80',
+    color: 'violet' as const,
+    features: ['AI-generated product videos', 'Social media reels', 'Explainer animations', 'Scalable production'],
     cta: 'Learn More',
   },
   {
-    id: 'global-staffing',
-    Icon: Globe,
-    title: 'Global Staffing Solutions',
-    description: 'Enterprise-grade staffing solutions for businesses needing reliable workforce. Scalable teams, managed HR, and performance tracking included.',
-    image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80',
-    accent: '#2563EB',
-    features: ['Contract & permanent staffing', 'Managed workforce', 'Performance monitoring', 'Scalable deployment'],
-    href: '/contact',
+    id: 'graphic-design',
+    Icon: Palette,
+    title: 'Graphic Designing',
+    description: 'Eye-catching visual designs for your brand — logos, brand identity, social media assets, UI/UX, and print materials.',
+    image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&q=80',
+    color: 'cyan' as const,
+    features: ['Logo & brand identity', 'Social media graphics', 'UI/UX design', 'Print & packaging design'],
+    cta: 'Get a Quote',
+  },
+  {
+    id: 'video-editing',
+    Icon: Clapperboard,
+    title: 'Video Editing',
+    description: 'Professional video editing and post-production for YouTube, social media, corporate videos, and promotional campaigns.',
+    image: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&q=80',
+    color: 'violet' as const,
+    features: ['YouTube & social media edits', 'Corporate presentations', 'Color grading & effects', 'Motion graphics & titles'],
     cta: 'Get Started',
+  },
+  {
+    id: 'ai-automation',
+    Icon: Bot,
+    title: 'AI Automation',
+    description: 'Streamline your business with intelligent AI automation — custom chatbots, workflow automation, data pipelines, and AI-powered agents.',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80',
+    color: 'cyan' as const,
+    features: ['Custom AI chatbots', 'Workflow & process automation', 'Data pipeline optimization', 'AI agent development'],
+    cta: 'Learn More',
   },
 ];
 
+const colorClasses = {
+  violet: { iconBg: 'bg-violet-600', check: 'text-violet-500', btn: 'bg-violet-600 hover:bg-violet-500' },
+  cyan:   { iconBg: 'bg-cyan-600',   check: 'text-cyan-500',   btn: 'bg-cyan-600 hover:bg-cyan-500' },
+};
+
 export default function ServicesPage() {
   return (
-    <>
-      <Navbar />
-      <main>
-        {/* Hero */}
-        <section style={{
-          position: 'relative', minHeight: '420px',
-          display: 'flex', alignItems: 'center',
-          paddingTop: '140px', paddingBottom: '80px',
-        }}>
-          <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
-            <Image
-              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1920&q=80"
-              alt="Services hero"
-              fill
-              style={{ objectFit: 'cover' }}
-              priority
-            />
-            <div style={{
-              position: 'absolute', inset: 0,
-              background: 'linear-gradient(135deg, rgba(6,12,26,0.93) 0%, rgba(11,22,40,0.88) 100%)',
-            }} />
-            <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '3px', background: 'linear-gradient(90deg, transparent, #CC2229 40%, #CC2229 60%, transparent)' }} />
-          </div>
+    <main>
+      {/* Hero */}
+      <section className="relative min-h-[480px] flex items-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1920&q=80"
+            alt="Coding on multiple screens"
+            fill
+            priority
+            sizes="100vw"
+            style={{ objectFit: 'cover', objectPosition: 'center' }}
+          />
+          <div className="absolute inset-0" style={{
+            background: 'linear-gradient(160deg, rgba(15,5,30,0.90) 0%, rgba(30,15,60,0.75) 50%, rgba(10,10,20,0.88) 100%)',
+          }} />
+        </div>
+        <div className="relative z-10 container mx-auto px-4 max-w-4xl text-center pt-44 pb-20">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.15em] rounded-full mb-5 text-violet-300 bg-violet-500/15 border border-violet-400/25 backdrop-blur-sm">
+            What We Offer
+          </span>
+          <h1 className="font-display text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
+            Comprehensive Digital <br />
+            <span className="text-gradient-warm">Solutions for Your Business</span>
+          </h1>
+          <p className="text-lg max-w-xl mx-auto leading-relaxed" style={{ color: '#a1a1aa' }}>
+            From web and app development to SEO, digital marketing, and AI video — everything you need to succeed online.
+          </p>
+        </div>
+      </section>
 
-          <div style={{ position: 'relative', zIndex: 10, maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem', textAlign: 'center', width: '100%' }}>
-            <div style={{
-              display: 'inline-flex', alignItems: 'center', gap: '8px',
-              padding: '6px 18px', borderRadius: '999px',
-              background: 'rgba(204,34,41,0.15)', border: '1px solid rgba(204,34,41,0.4)',
-              fontSize: '11px', fontWeight: 700, color: '#FCA5A5',
-              letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '20px',
-            }}>
-              What We Offer
-            </div>
-            <h1 style={{
-              fontFamily: 'var(--font-outfit), Outfit, sans-serif',
-              fontSize: 'clamp(2rem, 5vw, 3.75rem)', fontWeight: 800,
-              color: '#ffffff', letterSpacing: '-0.03em', lineHeight: 1.15,
-              marginBottom: '16px',
-            }}>
-              Comprehensive Solutions for
-              <br />
-              <span style={{ background: 'linear-gradient(135deg, #FF6B6B, #CC2229)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                Workers & Businesses
-              </span>
-            </h1>
-            <p style={{ fontSize: '17px', color: 'rgba(255,255,255,0.7)', maxWidth: '560px', margin: '0 auto', lineHeight: 1.7 }}>
-              From international recruitment to enterprise IT consulting — end-to-end solutions that power global workforce mobility.
-            </p>
-          </div>
-        </section>
-
-        {/* Services Grid */}
-        <section style={{ background: '#F9FAFB', padding: '80px 0' }}>
-          <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))', gap: '28px' }}>
-              {services.map(({ id, Icon, title, description, image, accent, features, href, cta }) => (
-                <div key={id} style={{
-                  background: '#fff', borderRadius: '20px', overflow: 'hidden',
-                  border: '1.5px solid #F3F4F6',
-                  boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
-                  display: 'flex', flexDirection: 'column',
-                }}>
-                  {/* Image */}
-                  <div style={{ position: 'relative', height: '200px' }}>
-                    <Image src={image} alt={title} fill style={{ objectFit: 'cover' }} />
-                    <div style={{
-                      position: 'absolute', inset: 0,
-                      background: 'linear-gradient(to top, rgba(11,22,40,0.75) 0%, transparent 60%)',
-                    }} />
-                    {/* Icon badge */}
-                    <div style={{
-                      position: 'absolute', bottom: '14px', left: '16px',
-                      width: '44px', height: '44px', borderRadius: '12px',
-                      background: accent, display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    }}>
-                      <Icon size={20} color="#fff" />
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                    <h2 style={{
-                      fontFamily: 'var(--font-outfit), Outfit, sans-serif',
-                      fontSize: '20px', fontWeight: 800, color: '#0B1628',
-                      letterSpacing: '-0.02em', marginBottom: '10px',
-                    }}>
-                      {title}
-                    </h2>
-                    <p style={{ fontSize: '14px', color: '#6B7280', lineHeight: 1.7, marginBottom: '20px' }}>
-                      {description}
-                    </p>
-
-                    {/* Features */}
-                    <ul style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '24px', flex: 1 }}>
-                      {features.map(f => (
-                        <li key={f} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#374151', fontWeight: 500 }}>
-                          <CheckCircle size={14} color={accent} style={{ flexShrink: 0 }} />
-                          {f}
-                        </li>
-                      ))}
-                    </ul>
-
-                    <Link href={href} style={{
-                      display: 'inline-flex', alignItems: 'center', gap: '8px',
-                      padding: '12px 22px', borderRadius: '10px',
-                      background: accent, color: '#fff',
-                      fontSize: '14px', fontWeight: 700,
-                      textDecoration: 'none', alignSelf: 'flex-start',
-                    }}>
-                      {cta} <ArrowRight size={15} />
-                    </Link>
+      {/* Services grid */}
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+          {services.map(({ id, Icon, title, description, image, color, features, cta }) => {
+            const c = colorClasses[color];
+            return (
+              <div key={id} className="card-white overflow-hidden flex flex-col">
+                {/* Image */}
+                <div className="relative h-48 overflow-hidden">
+                  <Image src={image} alt={title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                  <div className={`absolute bottom-3 left-3 w-10 h-10 rounded-xl ${c.iconBg} flex items-center justify-center shadow-lg`}>
+                    <Icon className="w-5 h-5 text-white" />
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
-        <CTASection />
-      </main>
-      <Footer />
-    </>
+                <div className="p-8 flex flex-col flex-1">
+                  <h2 className="font-display text-xl font-bold text-zinc-900 mb-3">{title}</h2>
+                  <p className="text-sm text-zinc-500 leading-relaxed mb-6">{description}</p>
+
+                  <ul className="space-y-2.5 mb-8 flex-1">
+                    {features.map(f => (
+                      <li key={f} className="flex items-center gap-2 text-sm text-zinc-600 font-medium">
+                        <CheckCircle size={14} className={c.check} />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <Link href="/contact" className={`inline-flex items-center gap-2 px-5 py-3 rounded-xl ${c.btn} text-white text-sm font-semibold transition-colors self-start shadow-lg`}>
+                    {cta} <ArrowRight size={14} />
+                  </Link>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      <CTASection />
+    </main>
   );
 }

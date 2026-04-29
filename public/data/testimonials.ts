@@ -16,149 +16,83 @@ export interface Testimonial {
 
 export const testimonials: Testimonial[] = [
   {
-    id: 'real-1',
-    name: 'Kirpa Rupakheti',
-    role: 'Permanent Worker (Lucrator Permanent)',
+    id: 'client-1',
+    name: 'Alex Ionescu',
+    role: 'CEO, TechVenture SRL',
     country: 'Romania',
     countryCode: 'RO',
     quote:
-      'SanMarina Global made my European dream a reality. My Romania work visa was approved and I am now legally working as a permanent worker. The entire process was handled professionally and the team supported me at every step.',
-    avatar: '',
+      'SanMarina Global Solutions built our entire e-commerce platform from scratch. The quality of code, attention to design, and on-time delivery exceeded our expectations. Revenue grew 3x within six months of launch.',
+    avatar: 'https://i.pravatar.cc/150?img=11',
     rating: 5,
     verified: true,
-    visaType: 'Romania D-Visa — Permanent Worker',
-    visaDate: 'January 2026',
     fullStory: [
-      "Kirpa always dreamed of building a stable, long-term future for his family back home. Like many highly skilled workers in Asia, he faced the overwhelming complexity of navigating international immigration laws alone, unsure of which agencies to trust.",
-      "When he connected with SanMarina Global, our European employer network immediately recognized his potential. Our specialized visa team took over the entire process—securing his official work permit, handling embassy documentation, and conducting pre-departure training.",
-      "Today, Kirpa is legally employed in Romania on a long-term contract, earning a competitive European salary. He represents the premium standard of talent we pride ourselves on deploying globally."
-    ]
+      'TechVenture needed a modern e-commerce platform to replace their outdated system. SanMarina Global delivered a high-performance Next.js application with a seamless checkout experience.',
+      'The project was completed on time and within budget, resulting in a 3x revenue increase within six months.',
+    ],
   },
   {
-    id: 'real-2',
-    name: 'Dom Kumar Chemjong Limbu',
-    role: 'Permanent Worker (Lucrator Permanent)',
-    country: 'Romania',
-    countryCode: 'RO',
+    id: 'client-2',
+    name: 'Maria Petrescu',
+    role: 'Marketing Director, FreshBrands',
+    country: 'Germany',
+    countryCode: 'DE',
     quote:
-      'I never imagined getting a European work visa could be this smooth. SanMarina Global handled my Romania visa application from Kuala Lumpur and it was approved within weeks. I am grateful for their dedication.',
-    avatar: '',
+      'Their digital marketing and SEO services transformed our online presence. We went from page 5 to the top 3 results for our main keywords. Organic traffic increased by 280% in just four months.',
+    avatar: 'https://i.pravatar.cc/150?img=5',
     rating: 5,
     verified: true,
-    visaType: 'Romania D-Visa — Permanent Worker',
-    visaDate: 'February 2026',
     fullStory: [
-      "Previously based in Kuala Lumpur, Dom Kumar was actively searching for safe, legal pathways to transition into the European labor market without falling victim to unverified agencies or drawn-out waiting periods.",
-      "SanMarina Global provided a transparent, step-by-step roadmap. We matched Dom with a verified Romanian employer seeking dedicated professionals for a secure contract. Working across borders, our agency entirely managed his D-Visa application process remotely.",
-      "Within weeks, his visa was successfully approved by the embassy. Dom has now relocated to Romania, proving that with the right agency advocating for you, international career relocation can be completely stress-free."
-    ]
+      'FreshBrands was struggling with low visibility in a competitive market. SanMarina Global implemented a comprehensive SEO and content marketing strategy.',
+      'Within four months, the company saw a 280% increase in organic traffic and a significant boost in qualified leads.',
+    ],
   },
   {
-    id: 'visa-1',
-    name: 'Rajesh Sharma',
-    role: 'Factory Worker',
-    country: 'Poland',
-    countryCode: 'PL',
-    quote: 'SanMarina Global helped me secure my Poland work visa quickly and efficiently. I am now working at a top manufacturing facility.',
-    avatar: '',
-    visaImage: '/visa_01.jpeg',
+    id: 'client-3',
+    name: 'David Novak',
+    role: 'Founder, HealthTrack App',
+    country: 'Czech Republic',
+    countryCode: 'CZ',
+    quote:
+      'The mobile app they developed for us is flawless. Cross-platform, lightning-fast, and beautifully designed. Our users love it — we hit 10,000 downloads in the first month.',
+    avatar: 'https://i.pravatar.cc/150?img=12',
     rating: 5,
     verified: true,
-    visaType: 'Poland National Visa',
-    visaDate: 'March 2026',
     fullStory: [
-      "Rajesh was looking for reliable ways to work in Europe. With the help of SanMarina Global, he seamlessly obtained his Poland work visa.",
-      "Our team handled all documentation, from permit approvals to embassy appointments. Rajesh is now successfully deployed in Poland, earning a competitive salary and supporting his family back home."
-    ]
+      'David needed a cross-platform health-tracking app with real-time sync and an intuitive UI. SanMarina Global built it using React Native with native modules for performance.',
+      'The app launched successfully on both iOS and Android, gaining 10,000 downloads in its first month.',
+    ],
   },
   {
-    id: 'visa-2',
-    name: 'Siti Aminah',
-    role: 'Hospitality Staff',
-    country: 'Croatia',
-    countryCode: 'HR',
-    quote: 'The process to get my work visa for Croatia was stress-free thanks to SanMarina Global. Their support was incredible!',
-    avatar: '',
-    visaImage: '/visa_02.jpeg',
+    id: 'client-4',
+    name: 'Sofia Andersson',
+    role: 'COO, Nordic Retail Group',
+    country: 'Sweden',
+    countryCode: 'SE',
+    quote:
+      'We hired SanMarina for AI video generation and the results were incredible. Professional product videos produced in days instead of weeks, at a fraction of traditional costs.',
+    avatar: 'https://i.pravatar.cc/150?img=9',
     rating: 5,
     verified: true,
-    visaType: 'Croatia Work Permit',
-    visaDate: 'February 2026',
     fullStory: [
-      "Siti Aminah always wanted to work in the European hospitality sector. SanMarina Global matched her with a verified employer in Croatia.",
-      "From pre-departure training to visa approval, our team guided her every step of the way. She is now thriving in her new career abroad."
-    ]
+      'Nordic Retail Group needed product videos at scale but traditional production was too slow and expensive. SanMarina Global used AI-powered tools to generate stunning product demos.',
+      'The turnaround went from weeks to days, saving the company significant production costs while maintaining premium quality.',
+    ],
   },
   {
-    id: 'visa-3',
-    name: 'Mark Reyes',
-    role: 'Logistics Coordinator',
-    country: 'Romania',
-    countryCode: 'RO',
-    quote: 'I highly recommend SanMarina Global! They secured my Romania work visa and ensured a smooth transition.',
-    avatar: '',
-    visaImage: '/visa_03.jpeg',
+    id: 'client-5',
+    name: 'Marco Bianchi',
+    role: 'CTO, FinServe Italia',
+    country: 'Italy',
+    countryCode: 'IT',
+    quote:
+      'Their full-stack team integrated seamlessly with ours. The web application they built handles thousands of daily transactions without a hitch. Truly enterprise-grade work.',
+    avatar: 'https://i.pravatar.cc/150?img=53',
     rating: 5,
     verified: true,
-    visaType: 'Romania D-Visa',
-    visaDate: 'January 2026',
     fullStory: [
-      "Mark had the skills but needed the right agency to facilitate his move to Europe. SanMarina Global provided exactly that.",
-      "We took charge of his entire application process. Now, Mark is safely deployed in Romania, working as a Logistics Coordinator for a leading European firm."
-    ]
+      'FinServe needed a robust transaction processing web application. SanMarina Global delivered a scalable, secure platform handling thousands of daily operations.',
+      'The seamless integration with the existing team and infrastructure made the project a model for future collaborations.',
+    ],
   },
-  {
-    id: 'visa-5',
-    name: 'Nguyen Thi Mai',
-    role: 'Healthcare Assistant',
-    country: 'Malta',
-    countryCode: 'MT',
-    quote: 'My dream of living and working in Malta came true because of the professional support from SanMarina Global.',
-    avatar: '',
-    visaImage: '/visa_05.jpeg',
-    rating: 5,
-    verified: true,
-    visaType: 'Malta Single Permit',
-    visaDate: 'February 2026',
-    fullStory: [
-      "Nguyen Thi Mai wanted to leverage her healthcare skills in Europe. SanMarina Global helped her navigate the stringent requirements for Malta.",
-      "Our dedicated team ensured all her documents were flawless, leading to a prompt visa approval. She is now a valued member of a healthcare facility in Malta."
-    ]
-  },
-  {
-    id: 'visa-6',
-    name: 'David Osei',
-    role: 'Warehouse Operator',
-    country: 'Romania',
-    countryCode: 'RO',
-    quote: 'SanMarina Global is the best! They guided me through the entire Romania visa process with transparency and dedication.',
-    avatar: '',
-    visaImage: '/visa_06.jpeg',
-    rating: 5,
-    verified: true,
-    visaType: 'Romania D-Visa',
-    visaDate: 'January 2026',
-    fullStory: [
-      "David was determined to build a long-term career in agriculture and warehousing in Europe. SanMarina Global was the trusted partner he needed.",
-      "Through our comprehensive services, David secured his Romanian D-Visa without a hitch and is now happily employed and fully settled abroad."
-    ]
-  },
-  {
-    id: 'visa-7',
-    name: 'Bina Thapa',
-    role: 'Agriculture Worker',
-    country: 'Poland',
-    countryCode: 'PL',
-    quote: 'I am so grateful for SanMarina Global. They helped me get my Poland work visa and start a new, bright chapter.',
-    avatar: '',
-    visaImage: '/visa_07.jpeg',
-    rating: 5,
-    verified: true,
-    visaType: 'Poland National Visa',
-    visaDate: 'March 2026',
-    fullStory: [
-      "Bina Thapa dreamed of working in Europe's agriculture sector. Faced with multiple challenges, she turned to SanMarina Global for straightforward guidance.",
-      "Our team expertly managed her application, ensuring quick approval. Bina is now successfully placed in Poland, enjoying a rewarding career."
-    ]
-  }
 ];

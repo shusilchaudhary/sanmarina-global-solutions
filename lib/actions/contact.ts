@@ -1,25 +1,52 @@
 'use server';
 
 import { Resend } from 'resend';
+import { contactFormSchema } from '@/lib/validations';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const CONTACT_EMAIL = process.env.CONTACT_EMAIL ?? 'info@sanmarinaglobal.eu';
 
 const serviceLabels: Record<string, string> = {
-  recruitment: 'International Recruitment',
-  visa: 'Visa Assistance',
-  'it-consulting': 'IT Consulting',
-  compliance: 'Compliance',
-  travel: 'Travel & Relocation',
+  'web-development': 'Web Development',
+  'app-development': 'App Development',
+  'digital-marketing': 'Digital Marketing',
+  seo: 'SEO Services',
+  'ai-video': 'AI Video Generation',
+  'ai-automation': 'AI Automation',
+  'graphic-design': 'Graphic Designing',
+  'video-editing': 'Video Editing',
   other: 'Other',
 };
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 export async function sendContactEmail(formData: FormData) {
-  const name = formData.get('name') as string;
-  const email = formData.get('email') as string;
-  const phone = formData.get('phone') as string;
-  const service = formData.get('service') as string;
-  const message = formData.get('message') as string;
+  const raw = {
+    name: (formData.get('name') as string) ?? '',
+    email: (formData.get('email') as string) ?? '',
+    phone: (formData.get('phone') as string) ?? '',
+    service: (formData.get('service') as string) ?? '',
+    message: (formData.get('message') as string) ?? '',
+  };
+
+  const parsed = contactFormSchema.safeParse(raw);
+  if (!parsed.success) {
+    return { success: false, message: 'Invalid form data. Please check your inputs and try again.' };
+  }
+
+  const { name, email, phone, service, message } = parsed.data;
+  const safeName = escapeHtml(name);
+  const safeEmail = escapeHtml(email);
+  const safePhone = escapeHtml(phone || 'Not provided');
+  const safeService = escapeHtml(serviceLabels[service] ?? service);
+  const safeMessage = escapeHtml(message).replace(/\n/g, '<br>');
 
   try {
     await resend.emails.send({
@@ -37,29 +64,29 @@ export async function sendContactEmail(formData: FormData) {
             <table style="width: 100%; border-collapse: collapse;">
               <tr>
                 <td style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; font-weight: bold; color: #475569; width: 140px;">Full Name</td>
-                <td style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; color: #1e293b;">${name}</td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; color: #1e293b;">${safeName}</td>
               </tr>
               <tr>
                 <td style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; font-weight: bold; color: #475569;">Email</td>
-                <td style="padding: 10px 0; border-bottom: 1px solid #e2e8f0;"><a href="mailto:${email}" style="color: #2563eb;">${email}</a></td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #e2e8f0;"><a href="mailto:${safeEmail}" style="color: #2563eb;">${safeEmail}</a></td>
               </tr>
               <tr>
                 <td style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; font-weight: bold; color: #475569;">Phone</td>
-                <td style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; color: #1e293b;">${phone || 'Not provided'}</td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; color: #1e293b;">${safePhone}</td>
               </tr>
               <tr>
                 <td style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; font-weight: bold; color: #475569;">Service</td>
-                <td style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; color: #1e293b;">${serviceLabels[service] ?? service}</td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; color: #1e293b;">${safeService}</td>
               </tr>
             </table>
             <div style="margin-top: 20px;">
               <p style="font-weight: bold; color: #475569; margin: 0 0 8px;">Message:</p>
               <div style="background: white; border: 1px solid #e2e8f0; border-radius: 6px; padding: 16px; color: #1e293b; line-height: 1.6;">
-                ${message.replace(/\n/g, '<br>')}
+                ${safeMessage}
               </div>
             </div>
             <div style="margin-top: 20px; padding: 12px; background: #eff6ff; border-radius: 6px; font-size: 12px; color: #3b82f6;">
-              Reply directly to this email to respond to ${name}.
+              Reply directly to this email to respond to ${safeName}.
             </div>
           </div>
         </div>

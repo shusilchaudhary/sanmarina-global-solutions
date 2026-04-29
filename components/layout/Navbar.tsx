@@ -3,43 +3,41 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
-  Menu, Phone, Mail, ChevronDown, ArrowRight, X,
-  HardHat, Package, Wrench, Building2,
-  Code, Cloud, Database, ShieldCheck,
+  Menu, ChevronDown, ArrowRight, X,
+  Globe, Smartphone, Megaphone, Search, Video, Palette, Clapperboard, Bot,
+  Sun, Moon,
 } from 'lucide-react';
 import { Logo } from '@/components/shared/Logo';
+import { useTheme } from '@/components/shared/ThemeProvider';
 
 const navLinks = [
-  { label: 'Home',            href: '/' },
-  { label: 'Services',        href: '#', hasDropdown: true },
-  { label: 'Jobs',            href: '/jobs' },
-  { label: 'About',           href: '/about' },
-  { label: 'Success Stories', href: '/success-stories' },
-  { label: 'Blog',            href: '/blog' },
-  { label: 'Contact',         href: '/contact' },
+  { label: 'Home',      href: '/' },
+  { label: 'Services',  href: '#', hasDropdown: true },
+  { label: 'Portfolio', href: '/portfolio' },
+  { label: 'About',     href: '/about' },
+  { label: 'Contact',   href: '/contact' },
 ];
 
-const recruitmentItems = [
-  { icon: HardHat,   label: 'Construction',        desc: 'Masons, carpenters & site workers',  href: '/recruitment' },
-  { icon: Package,   label: 'Logistics & Delivery', desc: 'Drivers, warehouse & delivery',       href: '/recruitment' },
-  { icon: Wrench,    label: 'Manufacturing',         desc: 'Factory & assembly line staff',        href: '/recruitment' },
-  { icon: Building2, label: 'Hospitality',           desc: 'Chefs, waiters & hotel staff',         href: '/recruitment' },
-];
-
-const itItems = [
-  { icon: Code,        label: 'Custom Software', desc: 'Web & mobile apps',       href: '/it-consulting' },
-  { icon: Cloud,       label: 'Cloud Solutions', desc: 'AWS, Azure & GCP',         href: '/it-consulting' },
-  { icon: Database,    label: 'Data & AI',        desc: 'Analytics & automation',   href: '/it-consulting' },
-  { icon: ShieldCheck, label: 'Cybersecurity',    desc: 'Security & compliance',    href: '/it-consulting' },
+const serviceItems = [
+  { icon: Globe,        label: 'Web Development',     desc: 'Websites & web apps',             href: '/services' },
+  { icon: Smartphone,   label: 'App Development',     desc: 'iOS, Android & cross-platform',   href: '/services' },
+  { icon: Megaphone,    label: 'Digital Marketing',   desc: 'Campaigns that drive results',    href: '/services' },
+  { icon: Search,       label: 'SEO Services',        desc: 'Rank higher, grow traffic',       href: '/services' },
+  { icon: Video,        label: 'AI Video Generation', desc: 'AI-powered video content',        href: '/services' },
+  { icon: Palette,      label: 'Graphic Designing',   desc: 'Logos, branding & UI/UX',         href: '/services' },
+  { icon: Clapperboard, label: 'Video Editing',       desc: 'Professional post-production',    href: '/services' },
+  { icon: Bot,          label: 'AI Automation',      desc: 'Smart workflows & AI agents',     href: '/services' },
 ];
 
 export function Navbar() {
-  const [mobileOpen,     setMobileOpen]     = useState(false);
-  const [scrolled,       setScrolled]       = useState(false);
-  const [servicesOpen,   setServicesOpen]   = useState(false);
+  const [mobileOpen,   setMobileOpen]   = useState(false);
+  const [scrolled,     setScrolled]     = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
+  const isDark = theme === 'dark';
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -50,337 +48,132 @@ export function Navbar() {
   }, [mobileOpen]);
 
   return (
-    <>
-      {/* ══════════════════════════════════════
-          TOP INFO BAR  (dark navy)
-      ══════════════════════════════════════ */}
+    <header style={{
+      position: 'fixed', top: '36px', left: 0, right: 0, zIndex: 50,
+      backgroundColor: isDark ? '#09090b' : '#ffffff',
+      borderBottom: isDark ? '1px solid #27272a' : '1px solid #e4e4e7',
+      boxShadow: scrolled ? (isDark ? '0 1px 3px 0 rgba(0,0,0,0.3)' : '0 1px 3px 0 rgba(0,0,0,0.04)') : 'none',
+      transition: 'background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.2s ease',
+    }}>
       <div style={{
-        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 60,
-        height: '36px', backgroundColor: '#0B1628',
-        borderBottom: '1px solid #162B5B',
-        display: 'flex', alignItems: 'center',
+        maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem',
+        height: '64px', display: 'flex', alignItems: 'center',
       }}>
-        <div style={{
-          width: '100%', maxWidth: '1280px', margin: '0 auto',
-          padding: '0 1.5rem', display: 'flex', alignItems: 'center',
-          justifyContent: 'space-between',
-        }}>
-          {/* Left – contacts */}
-          <div className="hidden md:flex" style={{ alignItems: 'center', gap: '1rem' }}>
-            <a href="tel:+40735062451" style={{
-              display: 'flex', alignItems: 'center', gap: '5px',
-              fontSize: '11px', fontWeight: 500, color: '#9CA3AF',
-              textDecoration: 'none', transition: 'color 0.2s',
-            }}
-              onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
-              onMouseLeave={e => (e.currentTarget.style.color = '#9CA3AF')}
-            >
-              <Phone size={11} color="#CC2229" />
-              +40 735 062 451
-            </a>
-            <span style={{ width: '1px', height: '12px', background: '#1E3A8A' }} />
-            <a href="mailto:info@sanmarinaglobal.eu" style={{
-              display: 'flex', alignItems: 'center', gap: '5px',
-              fontSize: '11px', fontWeight: 500, color: '#9CA3AF',
-              textDecoration: 'none', transition: 'color 0.2s',
-            }}
-              onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
-              onMouseLeave={e => (e.currentTarget.style.color = '#9CA3AF')}
-            >
-              <Mail size={11} color="#CC2229" />
-              info@sanmarinaglobal.eu
-            </a>
-          </div>
 
-          {/* Right – licence + jobs */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginLeft: 'auto' }}>
-            <span className="hidden sm:flex" style={{ alignItems: 'center', gap: '5px', fontSize: '11px', color: '#6B7280' }}>
-              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#CC2229', animation: 'pulse 2s infinite' }} />
-              Licensed by ANOFM Romania
-            </span>
-            <span className="hidden sm:block" style={{ width: '1px', height: '12px', background: '#1E3A8A' }} />
-            <Link href="/jobs" style={{
-              fontSize: '11px', fontWeight: 700, color: '#F46467',
-              textDecoration: 'none', letterSpacing: '0.08em', textTransform: 'uppercase',
-              transition: 'color 0.2s',
-            }}
-              onMouseEnter={e => (e.currentTarget.style.color = '#FFA0A4')}
-              onMouseLeave={e => (e.currentTarget.style.color = '#F46467')}
-            >
-              Browse Jobs
-            </Link>
-          </div>
-        </div>
-      </div>
+        <Link href="/" className="shrink-0">
+          <Logo variant={isDark ? 'dark' : 'light'} />
+        </Link>
 
-      {/* ══════════════════════════════════════
-          MAIN NAVBAR  (white)
-      ══════════════════════════════════════ */}
-      <header style={{
-        position: 'fixed', top: '36px', left: 0, right: 0, zIndex: 50,
-        backgroundColor: '#ffffff',
-        borderBottom: '1px solid #E5E7EB',
-        boxShadow: scrolled ? '0 2px 24px rgba(11,22,40,0.09)' : 'none',
-        transition: 'box-shadow 0.3s ease',
-      }}>
-        <div style={{
-          maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem',
-          height: '110px', display: 'flex', alignItems: 'center',
-          position: 'relative',
-        }}>
-
-          {/* ── Logo ── */}
-          <Link href="/" style={{ flexShrink: 0, display: 'flex', alignItems: 'center' }}>
-            <Logo />
-          </Link>
-
-          {/* ── Desktop nav links — absolutely centered ── */}
-          <nav className="hidden lg:flex" style={{
-            position: 'absolute', left: '50%', top: 0, bottom: 0,
-            transform: 'translateX(-50%)',
-            alignItems: 'center', gap: '4px',
-          }}>
-            {navLinks.map((link) =>
-              link.hasDropdown ? (
-                /* Services dropdown */
-                <div key="services" style={{ position: 'relative', height: '110px', display: 'flex', alignItems: 'center' }}
-                  onMouseEnter={() => setServicesOpen(true)}
-                  onMouseLeave={() => setServicesOpen(false)}
+        {/* Desktop nav */}
+        <nav className="hidden lg:flex items-center gap-0.5 ml-auto mr-8">
+          {navLinks.map((link) =>
+            link.hasDropdown ? (
+              <div key="services" className="relative"
+                onMouseEnter={() => setServicesOpen(true)}
+                onMouseLeave={() => setServicesOpen(false)}
+              >
+                <button
+                  className={`flex items-center gap-1 px-3.5 py-2 text-[14px] font-medium transition-colors bg-transparent border-none cursor-pointer rounded-lg ${isDark ? 'text-zinc-300 hover:text-white hover:bg-white/5' : 'text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50'}`}
+                  style={{ fontFamily: 'var(--font-inter), Inter, sans-serif' }}
+                  aria-expanded={servicesOpen}
+                  aria-haspopup="true"
                 >
-                  <button style={{
-                    display: 'flex', alignItems: 'center', gap: '4px',
-                    height: '110px', padding: '0 14px',
-                    background: 'none', border: 'none', cursor: 'pointer',
-                    fontFamily: 'var(--font-inter), Inter, sans-serif',
-                    fontSize: '15.5px', fontWeight: 700,
-                    color: servicesOpen ? '#CC2229' : '#1F2937',
-                    letterSpacing: '-0.01em',
-                    transition: 'color 0.2s',
-                  }}>
-                    Services
-                    <ChevronDown size={13} strokeWidth={2.5}
-                      style={{ transition: 'transform 0.2s', transform: servicesOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
-                    />
-                  </button>
+                  Services
+                  <ChevronDown size={12} className={`text-zinc-400 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
+                </button>
 
-                  {/* Red bottom indicator */}
-                  <span style={{
-                    position: 'absolute', bottom: 0, left: '14px', right: '14px',
-                    height: '2px', background: '#CC2229', borderRadius: '2px',
-                    transform: servicesOpen ? 'scaleX(1)' : 'scaleX(0)',
-                    transformOrigin: 'left',
-                    transition: 'transform 0.2s ease',
-                  }} />
-
-                  {/* ── Mega dropdown ── */}
-                  <div style={{
-                      position: 'absolute', top: '100%', left: '50%',
-                      transform: `translateX(-50%) translateY(${servicesOpen ? '0px' : '6px'})`,
-                      paddingTop: '4px',
-                      opacity: servicesOpen ? 1 : 0,
-                      visibility: servicesOpen ? 'visible' : 'hidden',
-                      transition: 'opacity 0.2s ease, transform 0.2s ease, visibility 0.2s',
-                      zIndex: 100,
-                    }}
-                  >
-                    <div style={{
-                      width: '540px', background: '#ffffff',
-                      border: '1px solid #E5E7EB',
-                      borderRadius: '16px',
-                      boxShadow: '0 20px 60px rgba(11,22,40,0.14)',
-                      overflow: 'hidden',
-                    }}>
-                      {/* Dropdown top bar */}
-                      <div style={{
-                        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                        padding: '12px 20px', background: '#F9FAFB',
-                        borderBottom: '1px solid #F3F4F6',
-                      }}>
-                        <span style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#9CA3AF' }}>
-                          Our Services
-                        </span>
-                        <Link href="/services" style={{
-                          display: 'flex', alignItems: 'center', gap: '4px',
-                          fontSize: '11px', fontWeight: 700, color: '#CC2229', textDecoration: 'none',
-                        }}>
-                          View All <ArrowRight size={11} />
+                <div style={{
+                  position: 'absolute', top: '100%', left: '50%',
+                  transform: `translateX(-50%) translateY(${servicesOpen ? '0' : '4px'})`,
+                  paddingTop: '6px',
+                  opacity: servicesOpen ? 1 : 0,
+                  visibility: servicesOpen ? 'visible' : 'hidden',
+                  transition: 'opacity 0.15s, transform 0.15s, visibility 0.15s',
+                }}>
+                  <div className={`w-[300px] rounded-xl border shadow-lg overflow-hidden ${isDark ? 'bg-dark-900 border-zinc-700 shadow-black/20' : 'bg-white border-zinc-200 shadow-black/6'}`}>
+                    <div className="p-1.5">
+                      {serviceItems.map(({ icon: Icon, label, desc, href }) => (
+                        <Link key={label} href={href} className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors group ${isDark ? 'hover:bg-white/5' : 'hover:bg-zinc-50'}`}>
+                          <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors ${isDark ? 'bg-white/5 group-hover:bg-violet-500/20' : 'bg-zinc-100 group-hover:bg-violet-100'}`}>
+                            <Icon size={15} className="text-zinc-500 group-hover:text-violet-600 transition-colors" />
+                          </div>
+                          <div>
+                            <p className={`text-[13px] font-semibold ${isDark ? 'text-zinc-200' : 'text-zinc-800'}`}>{label}</p>
+                            <p className="text-[11px] text-zinc-400">{desc}</p>
+                          </div>
                         </Link>
-                      </div>
-
-                      {/* Two columns */}
-                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
-                        {/* Recruitment */}
-                        <div style={{ padding: '16px', borderRight: '1px solid #F3F4F6' }}>
-                          <p style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#CC2229', marginBottom: '10px', paddingLeft: '4px' }}>
-                            Global Recruitment
-                          </p>
-                          {recruitmentItems.map(({ icon: Icon, label, desc, href }) => (
-                            <Link key={label} href={href} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '8px 6px', borderRadius: '10px', textDecoration: 'none', transition: 'background 0.15s' }}
-                              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#FFF1F2'; }}
-                              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
-                            >
-                              <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#FFF1F2', border: '1px solid #FECDD3', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                                <Icon size={15} color="#CC2229" />
-                              </div>
-                              <div>
-                                <p style={{ fontFamily: 'var(--font-inter), Inter, sans-serif', fontSize: '13px', fontWeight: 600, color: '#111827', margin: 0, lineHeight: 1.3 }}>{label}</p>
-                                <p style={{ fontFamily: 'var(--font-inter), Inter, sans-serif', fontSize: '11px', color: '#9CA3AF', margin: 0, lineHeight: 1.3 }}>{desc}</p>
-                              </div>
-                            </Link>
-                          ))}
-                        </div>
-
-                        {/* IT Consulting */}
-                        <div style={{ padding: '16px' }}>
-                          <p style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#2563EB', marginBottom: '10px', paddingLeft: '4px' }}>
-                            IT Consulting
-                          </p>
-                          {itItems.map(({ icon: Icon, label, desc, href }) => (
-                            <Link key={label} href={href} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '8px 6px', borderRadius: '10px', textDecoration: 'none', transition: 'background 0.15s' }}
-                              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#EFF6FF'; }}
-                              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
-                            >
-                              <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#EFF6FF', border: '1px solid #BFDBFE', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                                <Icon size={15} color="#2563EB" />
-                              </div>
-                              <div>
-                                <p style={{ fontFamily: 'var(--font-inter), Inter, sans-serif', fontSize: '13px', fontWeight: 600, color: '#111827', margin: 0, lineHeight: 1.3 }}>{label}</p>
-                                <p style={{ fontFamily: 'var(--font-inter), Inter, sans-serif', fontSize: '11px', color: '#9CA3AF', margin: 0, lineHeight: 1.3 }}>{desc}</p>
-                              </div>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Bottom strip */}
-                      <div style={{
-                        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                        padding: '10px 20px', backgroundColor: '#0B1628',
-                      }}>
-                        <span style={{ fontSize: '11px', color: '#6B7280' }}>Need help choosing a service?</span>
-                        <Link href="/contact" style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '11px', fontWeight: 700, color: '#F46467', textDecoration: 'none' }}>
-                          Talk to us <ArrowRight size={11} />
-                        </Link>
-                      </div>
+                      ))}
+                    </div>
+                    <div className={`flex items-center justify-between px-4 py-2.5 border-t ${isDark ? 'bg-white/2 border-zinc-700' : 'bg-zinc-50 border-zinc-100'}`}>
+                      <span className="text-[11px] text-zinc-400">Have a project?</span>
+                      <Link href="/contact" className="flex items-center gap-1 text-[11px] font-semibold text-violet-600 hover:text-violet-700 transition-colors">
+                        Talk to us <ArrowRight size={10} />
+                      </Link>
                     </div>
                   </div>
                 </div>
-              ) : (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  style={{
-                    position: 'relative', display: 'flex', alignItems: 'center',
-                    height: '110px', padding: '0 14px',
-                    fontFamily: 'var(--font-inter), Inter, sans-serif',
-                    fontSize: '15.5px', fontWeight: 700, color: '#1F2937',
-                    letterSpacing: '-0.01em',
-                    textDecoration: 'none', transition: 'color 0.2s',
-                    whiteSpace: 'nowrap',
-                  }}
-                  onMouseEnter={e => { (e.currentTarget.style.color = '#CC2229'); const bar = e.currentTarget.querySelector('.nav-bar') as HTMLElement; if (bar) bar.style.transform = 'scaleX(1)'; }}
-                  onMouseLeave={e => { (e.currentTarget.style.color = '#1F2937'); const bar = e.currentTarget.querySelector('.nav-bar') as HTMLElement; if (bar) bar.style.transform = 'scaleX(0)'; }}
-                >
-                  {link.label}
-                  <span className="nav-bar" style={{
-                    position: 'absolute', bottom: 0, left: '14px', right: '14px',
-                    height: '2px', background: '#CC2229',
-                    transform: 'scaleX(0)', transformOrigin: 'left',
-                    transition: 'transform 0.2s ease',
-                    borderRadius: '2px',
-                  }} />
-                </Link>
-              )
-            )}
-          </nav>
+              </div>
+            ) : (
+              <Link key={link.href} href={link.href}
+                className={`px-3.5 py-2 text-[14px] font-medium rounded-lg transition-colors ${isDark ? 'text-zinc-300 hover:text-white hover:bg-white/5' : 'text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50'}`}
+              >
+                {link.label}
+              </Link>
+            )
+          )}
+        </nav>
 
-          {/* ── CTA + Hamburger ── */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginLeft: 'auto' }}>
-            <Link href="/auth/login" className="hidden md:flex" style={{
-              alignItems: 'center', justifyContent: 'center',
-              padding: '9px 20px', borderRadius: '10px',
-              background: '#F3F4F6',
-              color: '#1F2937', fontSize: '14px', fontWeight: 700,
-              textDecoration: 'none', whiteSpace: 'nowrap',
-            }}>
-              Sign In
-            </Link>
-            <Link href="/auth/register" className="hidden md:flex" style={{
-              alignItems: 'center', justifyContent: 'center',
-              padding: '9px 20px', borderRadius: '10px',
-              background: 'linear-gradient(135deg, #CC2229, #a81b21)',
-              color: '#ffffff', fontSize: '14px', fontWeight: 700,
-              textDecoration: 'none', whiteSpace: 'nowrap',
-              boxShadow: '0 2px 12px rgba(204,34,41,0.28)',
-            }}>
-              Sign Up
-            </Link>
-            <button
-              onClick={() => setMobileOpen(true)}
-              className="lg:hidden"
-              style={{
-                padding: '8px', borderRadius: '8px', border: 'none',
-                background: 'transparent', cursor: 'pointer',
-                color: '#374151', transition: 'background 0.2s',
-              }}
-              onMouseEnter={e => { (e.currentTarget.style.background = '#F3F4F6'); }}
-              onMouseLeave={e => { (e.currentTarget.style.background = 'transparent'); }}
-              aria-label="Open menu"
-            >
-              <Menu size={20} />
-            </button>
-          </div>
-        </div>
-      </header>
+        {/* CTA */}
+        <Link href="/contact"
+          className="hidden lg:flex items-center gap-1.5 px-4 py-2 rounded-lg text-[13px] font-semibold transition-all"
+          style={{
+            background: isDark ? '#ffffff' : '#09090b',
+            color: isDark ? '#09090b' : '#ffffff',
+          }}
+          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = isDark ? '#e4e4e7' : '#27272a'; }}
+          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = isDark ? '#ffffff' : '#09090b'; }}
+        >
+          Get a Quote
+          <ArrowRight size={13} />
+        </Link>
 
-      {/* ══════════════════════════════════════
-          MOBILE MENU
-      ══════════════════════════════════════ */}
+        {/* Theme toggle */}
+        <button
+          onClick={toggleTheme}
+          className={`hidden lg:flex items-center justify-center w-9 h-9 ml-3 rounded-lg border transition-all cursor-pointer ${isDark ? 'bg-white/5 border-zinc-700 text-zinc-300 hover:bg-white/10 hover:text-white' : 'bg-zinc-50 border-zinc-200 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900'}`}
+          aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+        >
+          {isDark ? <Sun size={16} /> : <Moon size={16} />}
+        </button>
+
+        {/* Hamburger */}
+        <button onClick={() => setMobileOpen(true)} className={`lg:hidden ml-auto p-2 bg-transparent border-none cursor-pointer ${isDark ? 'text-zinc-300 hover:text-white' : 'text-zinc-600 hover:text-zinc-900'}`} aria-label="Open menu">
+          <Menu size={20} />
+        </button>
+      </div>
+
+      {/* Mobile menu */}
       {mobileOpen && (
-        <div style={{ position: 'fixed', inset: 0, zIndex: 70 }} className="lg:hidden">
-          {/* Overlay */}
-          <div
-            onClick={() => setMobileOpen(false)}
-            style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.45)', backdropFilter: 'blur(4px)' }}
-          />
-          {/* Panel */}
-          <div style={{
-            position: 'absolute', top: 0, right: 0, bottom: 0,
-            width: '300px', maxWidth: '90vw',
-            background: '#ffffff', borderLeft: '1px solid #E5E7EB',
-            boxShadow: '-8px 0 40px rgba(0,0,0,0.15)',
-            display: 'flex', flexDirection: 'column',
-          }}>
-            {/* Header */}
-            <div style={{
-              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-              padding: '16px 20px', borderBottom: '3px solid #CC2229',
-            }}>
-              <Logo />
-              <button onClick={() => setMobileOpen(false)} style={{ padding: '6px', background: 'none', border: 'none', cursor: 'pointer', borderRadius: '8px', color: '#6B7280' }}>
-                <X size={20} />
+        <div className="fixed inset-0 z-70 lg:hidden">
+          <div onClick={() => setMobileOpen(false)} className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+          <div className={`absolute right-0 top-0 bottom-0 w-[300px] max-w-[90vw] flex flex-col shadow-2xl ${isDark ? 'bg-dark-900' : 'bg-white'}`}>
+            <div className={`flex items-center justify-between px-5 py-4 border-b ${isDark ? 'border-zinc-800' : 'border-zinc-100'}`}>
+              <Logo variant={isDark ? 'dark' : 'light'} />
+              <button onClick={() => setMobileOpen(false)} className={`p-1.5 bg-transparent border-none cursor-pointer rounded-lg ${isDark ? 'text-zinc-400 hover:text-white hover:bg-white/5' : 'text-zinc-400 hover:text-zinc-700 hover:bg-zinc-50'}`} aria-label="Close menu">
+                <X size={18} />
               </button>
             </div>
 
-            {/* Links */}
-            <nav style={{ flex: 1, overflowY: 'auto', padding: '12px 16px' }}>
+            <nav className="flex-1 overflow-y-auto px-3 py-3">
               {navLinks.map((link) => (
                 <div key={link.label}>
                   {link.hasDropdown ? (
-                    <div style={{ marginBottom: '8px' }}>
-                      <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#CC2229', padding: '8px 12px 4px', margin: 0 }}>
-                        {link.label}
-                      </p>
-                      <div style={{ marginLeft: '12px', paddingLeft: '12px', borderLeft: '2px solid #FECDD3' }}>
-                        {[...recruitmentItems, ...itItems].slice(0, 4).map((item) => (
-                          <Link key={item.label} href={item.href} onClick={() => setMobileOpen(false)} style={{
-                            display: 'block', padding: '9px 10px',
-                            fontSize: '14px', fontWeight: 500, color: '#374151',
-                            textDecoration: 'none', borderRadius: '8px',
-                            transition: 'background 0.15s, color 0.15s',
-                          }}
-                            onMouseEnter={e => { (e.currentTarget.style.background = '#FFF1F2'); (e.currentTarget.style.color = '#CC2229'); }}
-                            onMouseLeave={e => { (e.currentTarget.style.background = 'transparent'); (e.currentTarget.style.color = '#374151'); }}
+                    <div className="mb-1">
+                      <p className="text-[10px] font-semibold tracking-[0.12em] uppercase text-zinc-400 px-3 py-2">Services</p>
+                      <div className={`ml-2 pl-3 border-l ${isDark ? 'border-zinc-700' : 'border-zinc-200'}`}>
+                        {serviceItems.map((item) => (
+                          <Link key={item.label} href={item.href} onClick={() => setMobileOpen(false)}
+                            className={`block px-3 py-2.5 text-[14px] font-medium rounded-lg transition-colors ${isDark ? 'text-zinc-300 hover:text-white hover:bg-white/5' : 'text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50'}`}
                           >
                             {item.label}
                           </Link>
@@ -388,14 +181,8 @@ export function Navbar() {
                       </div>
                     </div>
                   ) : (
-                    <Link href={link.href} onClick={() => setMobileOpen(false)} style={{
-                      display: 'block', padding: '11px 12px',
-                      fontSize: '15px', fontWeight: 600, color: '#1F2937',
-                      textDecoration: 'none', borderRadius: '10px',
-                      transition: 'background 0.15s, color 0.15s', marginBottom: '2px',
-                    }}
-                      onMouseEnter={e => { (e.currentTarget.style.background = '#FFF1F2'); (e.currentTarget.style.color = '#CC2229'); }}
-                      onMouseLeave={e => { (e.currentTarget.style.background = 'transparent'); (e.currentTarget.style.color = '#1F2937'); }}
+                    <Link href={link.href} onClick={() => setMobileOpen(false)}
+                      className={`block px-3 py-3 text-[15px] font-semibold rounded-lg transition-colors ${isDark ? 'text-zinc-200 hover:text-white hover:bg-white/5' : 'text-zinc-800 hover:text-zinc-900 hover:bg-zinc-50'}`}
                     >
                       {link.label}
                     </Link>
@@ -404,32 +191,25 @@ export function Navbar() {
               ))}
             </nav>
 
-            {/* Mobile CTA */}
-            <div style={{ padding: '16px', borderTop: '1px solid #F3F4F6', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <Link href="/auth/login" onClick={() => setMobileOpen(false)} style={{
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                width: '100%', padding: '12px',
-                background: '#F3F4F6',
-                color: '#1F2937', fontSize: '15px', fontWeight: 600,
-                fontFamily: 'var(--font-inter), Inter, sans-serif',
-                textDecoration: 'none', borderRadius: '12px',
-              }}>
-                Sign In
-              </Link>
-              <Link href="/auth/register" onClick={() => setMobileOpen(false)} style={{
-                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
-                width: '100%', padding: '13px',
-                background: 'linear-gradient(135deg, #CC2229, #a81b21)',
-                color: '#ffffff', fontSize: '15px', fontWeight: 700,
-                fontFamily: 'var(--font-inter), Inter, sans-serif',
-                textDecoration: 'none', borderRadius: '12px',
-              }}>
-                Sign Up <ArrowRight size={16} />
-              </Link>
+            <div className={`p-4 border-t ${isDark ? 'border-zinc-800' : 'border-zinc-100'}`}>
+              <div className="flex items-center gap-2">
+                <Link href="/contact" onClick={() => setMobileOpen(false)}
+                  className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-lg text-[14px] font-semibold transition-colors ${isDark ? 'bg-white text-zinc-900 hover:bg-zinc-200' : 'bg-zinc-900 text-white hover:bg-zinc-800'}`}
+                >
+                  Get a Quote <ArrowRight size={14} />
+                </Link>
+                <button
+                  onClick={toggleTheme}
+                  className={`w-11 h-11 rounded-lg border flex items-center justify-center transition-all cursor-pointer shrink-0 ${isDark ? 'bg-white/5 border-zinc-700 text-zinc-300 hover:bg-white/10' : 'bg-zinc-50 border-zinc-200 text-zinc-500 hover:bg-zinc-100'}`}
+                  aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+                >
+                  {isDark ? <Sun size={16} /> : <Moon size={16} />}
+                </button>
+              </div>
             </div>
           </div>
         </div>
       )}
-    </>
+    </header>
   );
 }

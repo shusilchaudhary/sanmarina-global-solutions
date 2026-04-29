@@ -1,227 +1,133 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import Image from 'next/image';
+import { ArrowRight, Globe, Smartphone, Megaphone, Search, Video, Palette, Clapperboard, Bot } from 'lucide-react';
+import { useTheme } from '@/components/shared/ThemeProvider';
 
-const recruitmentServices = [
+const services = [
   {
-    title: 'Construction & Engineering',
-    desc: 'Skilled masons, carpenters, welders and site workers for European projects.',
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80',
-    href: '/jobs?category=construction',
-    jobs: '4 open roles',
+    icon: Globe,
+    title: 'Web Development',
+    desc: 'Custom websites, web apps, and e-commerce platforms built with React, Next.js, and Node.js.',
+    image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80',
+    color: 'violet' as const,
   },
   {
-    title: 'Hospitality & Catering',
-    desc: 'Chefs, waiters, hotel staff and kitchen helpers for premium establishments.',
-    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80',
-    href: '/jobs?category=hospitality',
-    jobs: '6 open roles',
+    icon: Smartphone,
+    title: 'App Development',
+    desc: 'Native and cross-platform mobile apps for iOS and Android using React Native and Flutter.',
+    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80',
+    color: 'cyan' as const,
   },
   {
-    title: 'Logistics & Warehousing',
-    desc: 'Drivers, warehouse operators and delivery staff for fast-paced logistics.',
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=80',
-    href: '/jobs?category=logistics',
-    jobs: '2 open roles',
+    icon: Megaphone,
+    title: 'Digital Marketing',
+    desc: 'Data-driven campaigns across social media, PPC, email, and content marketing.',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
+    color: 'violet' as const,
   },
   {
-    title: 'Agriculture & Farming',
-    desc: 'Seasonal and permanent agricultural workers for European farms.',
-    image: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=600&q=80',
-    href: '/jobs?category=agriculture',
-    jobs: '2 open roles',
+    icon: Search,
+    title: 'SEO Services',
+    desc: 'Technical SEO, on-page optimization, link building, and keyword strategy to rank higher.',
+    image: 'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=80',
+    color: 'cyan' as const,
+  },
+  {
+    icon: Video,
+    title: 'AI Video Generation',
+    desc: 'AI-powered professional video content — product demos, explainers, ads, and social reels.',
+    image: 'https://images.unsplash.com/photo-1535016120720-40c646be5580?w=800&q=80',
+    color: 'violet' as const,
+  },
+  {
+    icon: Palette,
+    title: 'Graphic Designing',
+    desc: 'Logos, brand identity, social media graphics, UI/UX design, and print-ready marketing materials.',
+    image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&q=80',
+    color: 'cyan' as const,
+  },
+  {
+    icon: Clapperboard,
+    title: 'Video Editing',
+    desc: 'Professional video editing for YouTube, social media, corporate presentations, and promotional content.',
+    image: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&q=80',
+    color: 'violet' as const,
+  },
+  {
+    icon: Bot,
+    title: 'AI Automation',
+    desc: 'Intelligent workflow automation using AI — chatbots, data pipelines, process optimization, and custom AI agents.',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80',
+    color: 'cyan' as const,
   },
 ];
 
-const itServices = [
-  {
-    title: 'Custom Software Development',
-    desc: 'Scalable web and mobile applications tailored to your business needs.',
-    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&q=80',
-    href: '/it-consulting',
-  },
-  {
-    title: 'Cloud Infrastructure',
-    desc: 'AWS, Azure and Google Cloud setup, migration and management.',
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80',
-    href: '/it-consulting',
-  },
-  {
-    title: 'Data & AI Solutions',
-    desc: 'Analytics pipelines, machine learning models and intelligent automation.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80',
-    href: '/it-consulting',
-  },
-  {
-    title: 'Cybersecurity',
-    desc: 'Security audits, compliance frameworks and threat monitoring.',
-    image: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&q=80',
-    href: '/it-consulting',
-  },
-];
-
-function ServiceCard({ title, desc, image, href, jobs, accent }: {
-  title: string; desc: string; image: string; href: string; jobs?: string; accent: 'red' | 'blue';
-}) {
-  return (
-    <Link href={href} style={{ textDecoration: 'none', display: 'block' }}>
-      <div style={{
-        borderRadius: '16px', overflow: 'hidden',
-        boxShadow: '0 4px 24px rgba(0,0,0,0.08)',
-        transition: 'transform 0.3s, box-shadow 0.3s',
-        cursor: 'pointer', background: '#fff',
-        border: '1px solid #F3F4F6',
-        height: '100%',
-      }}
-        onMouseEnter={e => {
-          (e.currentTarget as HTMLElement).style.transform = 'translateY(-4px)';
-          (e.currentTarget as HTMLElement).style.boxShadow = `0 16px 48px ${accent === 'red' ? 'rgba(204,34,41,0.15)' : 'rgba(37,99,235,0.15)'}`;
-        }}
-        onMouseLeave={e => {
-          (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
-          (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 24px rgba(0,0,0,0.08)';
-        }}
-      >
-        {/* Image */}
-        <div style={{ position: 'relative', height: '200px', overflow: 'hidden' }}>
-          <Image src={image} alt={title} fill style={{ objectFit: 'cover' }} />
-          <div style={{
-            position: 'absolute', inset: 0,
-            background: `linear-gradient(to top, ${accent === 'red' ? 'rgba(11,22,40,0.7)' : 'rgba(11,22,40,0.65)'} 0%, transparent 60%)`,
-          }} />
-          {jobs && (
-            <div style={{
-              position: 'absolute', bottom: '12px', left: '14px',
-              background: accent === 'red' ? '#CC2229' : '#2563EB',
-              color: '#fff', fontSize: '11px', fontWeight: 700,
-              padding: '4px 10px', borderRadius: '999px',
-              letterSpacing: '0.04em',
-            }}>
-              {jobs}
-            </div>
-          )}
-        </div>
-
-        {/* Text */}
-        <div style={{ padding: '20px 22px 22px' }}>
-          <h3 style={{
-            fontFamily: 'var(--font-outfit), Outfit, sans-serif',
-            fontSize: '17px', fontWeight: 700, color: '#0B1628',
-            marginBottom: '8px', lineHeight: 1.3,
-          }}>
-            {title}
-          </h3>
-          <p style={{ fontSize: '13.5px', color: '#6B7280', lineHeight: 1.6, marginBottom: '14px' }}>
-            {desc}
-          </p>
-          <div style={{
-            display: 'flex', alignItems: 'center', gap: '6px',
-            fontSize: '13px', fontWeight: 700,
-            color: accent === 'red' ? '#CC2229' : '#2563EB',
-          }}>
-            Learn more <ArrowRight size={14} />
-          </div>
-        </div>
-      </div>
-    </Link>
-  );
-}
+const colorMap = {
+  violet: { iconBg: 'bg-violet-600', text: 'text-violet-600' },
+  cyan:   { iconBg: 'bg-cyan-600',   text: 'text-cyan-600' },
+};
 
 export function ServicesSection() {
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
+
   return (
-    <section style={{ background: '#F9FAFB', padding: '96px 0' }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem' }}>
+    <section className={`py-24 transition-colors duration-300 ${isDark ? 'bg-dark-950' : 'bg-white'}`}>
+      <div className="max-w-7xl mx-auto px-6">
 
-        {/* ── Recruitment ── */}
-        <div style={{ marginBottom: '80px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
-            <div style={{ height: '3px', width: '40px', background: '#CC2229', borderRadius: '2px' }} />
-            <span style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.2em', color: '#CC2229' }}>
-              Global Recruitment
-            </span>
+        <div className="flex items-center gap-3 mb-2">
+          <div className="h-0.5 w-10 bg-violet-500 rounded" />
+          <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600">What We Do</span>
+        </div>
+        <div className="flex items-end justify-between flex-wrap gap-4 mb-12">
+          <div>
+            <h2 className={`font-display text-3xl md:text-4xl font-extrabold tracking-tight ${isDark ? 'text-zinc-100' : 'text-zinc-900'}`}>
+              Our Digital Services
+            </h2>
+            <p className="text-zinc-500 mt-2 max-w-lg">End-to-end IT solutions to take your business from idea to launch and beyond.</p>
           </div>
-          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px', marginBottom: '36px' }}>
-            <div>
-              <h2 style={{
-                fontFamily: 'var(--font-outfit), Outfit, sans-serif',
-                fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800,
-                color: '#0B1628', letterSpacing: '-0.03em', lineHeight: 1.2,
-              }}>
-                European Workforce Solutions
-              </h2>
-              <p style={{ fontSize: '16px', color: '#6B7280', marginTop: '8px', maxWidth: '520px', lineHeight: 1.6 }}>
-                Pre-screened, dedicated talent from Asia placed into verified roles across Europe.
-              </p>
-            </div>
-            <Link href="/jobs" style={{
-              display: 'inline-flex', alignItems: 'center', gap: '8px',
-              padding: '12px 24px', background: '#0B1628', color: '#fff',
-              borderRadius: '10px', fontSize: '14px', fontWeight: 700,
-              textDecoration: 'none', whiteSpace: 'nowrap',
-              transition: 'background 0.2s',
-            }}>
-              View All Jobs <ArrowRight size={16} />
-            </Link>
-          </div>
-
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
-            gap: '24px',
-          }}>
-            {recruitmentServices.map(s => (
-              <ServiceCard key={s.title} {...s} accent="red" />
-            ))}
-          </div>
+          <Link href="/services" className="btn-primary text-sm">
+            View All <ArrowRight size={15} />
+          </Link>
         </div>
 
-        {/* Divider */}
-        <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent, #E5E7EB 20%, #E5E7EB 80%, transparent)', marginBottom: '80px' }} />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((s) => {
+            const Icon = s.icon;
+            const c = colorMap[s.color];
+            return (
+              <Link href="/services" key={s.title} className="block group">
+                <div className="card-white overflow-hidden h-full">
+                  {/* Image */}
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={s.image}
+                      alt={s.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      loading="lazy"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                    <div className={`absolute bottom-3 left-3 w-10 h-10 rounded-xl ${c.iconBg} flex items-center justify-center shadow-lg`}>
+                      <Icon className="w-5 h-5 text-white" />
+                    </div>
+                  </div>
 
-        {/* ── IT Consulting ── */}
-        <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
-            <div style={{ height: '3px', width: '40px', background: '#2563EB', borderRadius: '2px' }} />
-            <span style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.2em', color: '#2563EB' }}>
-              IT Consulting
-            </span>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px', marginBottom: '36px' }}>
-            <div>
-              <h2 style={{
-                fontFamily: 'var(--font-outfit), Outfit, sans-serif',
-                fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800,
-                color: '#0B1628', letterSpacing: '-0.03em', lineHeight: 1.2,
-              }}>
-                Enterprise Technology Services
-              </h2>
-              <p style={{ fontSize: '16px', color: '#6B7280', marginTop: '8px', maxWidth: '520px', lineHeight: 1.6 }}>
-                Accelerate your digital transformation with expert IT teams and solutions.
-              </p>
-            </div>
-            <Link href="/it-consulting" style={{
-              display: 'inline-flex', alignItems: 'center', gap: '8px',
-              padding: '12px 24px', background: '#2563EB', color: '#fff',
-              borderRadius: '10px', fontSize: '14px', fontWeight: 700,
-              textDecoration: 'none', whiteSpace: 'nowrap',
-            }}>
-              Explore IT Services <ArrowRight size={16} />
-            </Link>
-          </div>
-
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
-            gap: '24px',
-          }}>
-            {itServices.map(s => (
-              <ServiceCard key={s.title} {...s} accent="blue" />
-            ))}
-          </div>
+                  <div className="p-6">
+                    <h3 className={`text-lg font-bold mb-2 ${isDark ? 'text-zinc-100' : 'text-zinc-900'}`}>{s.title}</h3>
+                    <p className="text-sm text-zinc-500 leading-relaxed mb-4">{s.desc}</p>
+                    <span className={`text-sm font-semibold ${c.text} flex items-center gap-1.5 group-hover:gap-2.5 transition-all`}>
+                      Learn more <ArrowRight size={14} />
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
         </div>
-
       </div>
     </section>
   );

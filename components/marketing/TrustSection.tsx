@@ -1,81 +1,105 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { Users, Globe, Award, Briefcase } from 'lucide-react';
+import Image from 'next/image';
+import { Star, Quote } from 'lucide-react';
+import { testimonials } from '@/public/data/testimonials';
+import { cn } from '@/lib/utils';
+import { useTheme } from '@/components/shared/ThemeProvider';
 
-const stats = [
-  { icon: Users,     value: 10,  suffix: '+',  label: 'Workers Placed',     color: 'text-red-600' },
-  { icon: Globe,     value: 15,  suffix: '+',  label: 'European Countries', color: 'text-red-600' },
-  { icon: Award,     value: 98,  suffix: '%',  label: 'Visa Success Rate',  color: 'text-red-600' },
-  { icon: Briefcase, value: 150, suffix: '+',  label: 'Partner Companies',  color: 'text-red-600' },
-];
-
-function useCountUp(target: number, isVisible: boolean) {
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    if (!isVisible) return;
-    let current = 0;
-    const step = Math.ceil(target / 60);
-    const interval = setInterval(() => {
-      current += step;
-      if (current >= target) { setCount(target); clearInterval(interval); }
-      else setCount(current);
-    }, 25);
-    return () => clearInterval(interval);
-  }, [target, isVisible]);
-  return count;
-}
+const duplicated = [...testimonials, ...testimonials];
 
 export function TrustSection() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [paused, setPaused] = useState(false);
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
-      { threshold: 0.25 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
+    const track = trackRef.current;
+    if (!track) return;
+
+    let raf: number;
+    let pos = 0;
+    const speed = 0.5;
+
+    function step() {
+      if (!paused) {
+        pos += speed;
+        const halfWidth = track!.scrollWidth / 2;
+        if (pos >= halfWidth) pos = 0;
+        track!.style.transform = `translateX(-${pos}px)`;
+      }
+      raf = requestAnimationFrame(step);
+    }
+
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, [paused]);
 
   return (
-    <section ref={ref} className="relative py-20 md:py-28 bg-white overflow-hidden">
-      {/* Subtle background */}
-      <div className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(204,34,41,0.04) 0%, transparent 70%)' }} />
-
-      <div className="container mx-auto px-4 max-w-7xl relative z-10">
-        <p className="text-center text-[11px] font-bold uppercase tracking-[0.25em] text-red-600/70 mb-14">
-          Trusted by Global Enterprises
+    <section className={`relative py-20 md:py-28 overflow-hidden transition-colors duration-300 ${isDark ? 'bg-dark-950' : 'bg-white'}`}>
+      <div className="max-w-7xl mx-auto px-4 mb-12">
+        <p className="text-center text-[11px] font-bold uppercase tracking-[0.25em] text-zinc-400">
+          Trusted by Businesses Worldwide
         </p>
+      </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 lg:gap-10">
-          {stats.map((stat) => {
-            const Icon = stat.icon;
-            // eslint-disable-next-line react-hooks/rules-of-hooks
-            const count = useCountUp(stat.value, isVisible);
-            return (
-              <div key={stat.label} className="flex flex-col items-center text-center group">
-                {/* Icon bubble */}
-                <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-red-50 border border-red-100 flex items-center justify-center mb-6 group-hover:bg-red-600 group-hover:border-red-600 group-hover:scale-110 transition-all duration-300 shadow-sm">
-                  <Icon className="w-7 h-7 text-red-600 group-hover:text-white transition-colors duration-300" />
-                </div>
+      <div
+        className="relative overflow-hidden"
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+      >
+        <div className={`pointer-events-none absolute inset-y-0 left-0 w-24 md:w-40 z-10 ${isDark ? 'bg-gradient-to-r from-dark-950 to-transparent' : 'bg-gradient-to-r from-white to-transparent'}`} />
+        <div className={`pointer-events-none absolute inset-y-0 right-0 w-24 md:w-40 z-10 ${isDark ? 'bg-gradient-to-l from-dark-950 to-transparent' : 'bg-gradient-to-l from-white to-transparent'}`} />
 
-                <h3 className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold text-navy-900 mb-2 tracking-tight">
-                  {count.toLocaleString()}
-                  <span className="text-red-600">{stat.suffix}</span>
-                </h3>
+        <div ref={trackRef} className="flex gap-6 w-max will-change-transform">
+          {duplicated.map((t, i) => (
+            <div
+              key={`${t.id}-${i}`}
+              className={`w-[340px] md:w-[400px] shrink-0 rounded-2xl border p-7 shadow-sm hover:shadow-lg hover:border-violet-200 transition-all duration-300 ${isDark ? 'bg-dark-800 border-zinc-700 hover:bg-dark-700' : 'bg-white border-zinc-200'}`}
+            >
+              <Quote className="w-7 h-7 text-violet-200 mb-4" />
 
-                <p className="text-sm text-navy-500 font-semibold">
-                  {stat.label}
-                </p>
-
-                {/* Red underline on hover */}
-                <div className="mt-3 h-0.5 w-0 bg-red-500 group-hover:w-8 transition-all duration-500 rounded-full" />
+              <div className="flex items-center gap-0.5 mb-4">
+                {Array.from({ length: 5 }).map((_, s) => (
+                  <Star
+                    key={s}
+                    className={cn(
+                      'w-4 h-4',
+                      s < t.rating
+                        ? 'text-amber-400 fill-amber-400'
+                        : 'text-zinc-200 fill-zinc-200'
+                    )}
+                  />
+                ))}
               </div>
-            );
-          })}
+
+              <p className={`text-sm leading-relaxed line-clamp-4 mb-6 ${isDark ? 'text-zinc-300' : 'text-zinc-700'}`}>
+                &ldquo;{t.quote}&rdquo;
+              </p>
+
+              <div className={`flex items-center gap-3 pt-4 border-t ${isDark ? 'border-zinc-700' : 'border-zinc-100'}`}>
+                {t.avatar ? (
+                  <Image
+                    src={t.avatar}
+                    alt={t.name}
+                    width={40}
+                    height={40}
+                    className="w-10 h-10 rounded-full object-cover shrink-0"
+                  />
+                ) : (
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-violet-500 to-cyan-500 flex items-center justify-center text-white font-display font-bold text-sm shrink-0">
+                    {t.name.charAt(0)}
+                  </div>
+                )}
+                <div className="min-w-0">
+                  <p className={`text-sm font-bold truncate ${isDark ? 'text-zinc-100' : 'text-zinc-900'}`}>{t.name}</p>
+                  <p className="text-xs text-zinc-500 truncate">{t.role} · {t.country}</p>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

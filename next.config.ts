@@ -1,9 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  transpilePackages: ['three', '@react-three/fiber', '@react-three/drei'],
   images: {
-    qualities: [75, 100],
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 60 * 60 * 24 * 30,
     remotePatterns: [
       {
         protocol: 'https',
@@ -17,6 +17,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  compress: true,
 };
 
 export default nextConfig;

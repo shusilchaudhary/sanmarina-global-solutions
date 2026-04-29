@@ -1,79 +1,59 @@
 import Link from 'next/link';
-import { ArrowRight, Users, Building } from 'lucide-react';
+import { ArrowRight, Globe, Smartphone, Video, Bot } from 'lucide-react';
 
 export function CTASection() {
   return (
     <section className="relative py-28 md:py-36 overflow-hidden">
-
-      {/* Deep navy background */}
-      <div className="absolute inset-0 bg-[linear-gradient(160deg,#060C1A_0%,#0B1628_40%,#0F2044_80%,#060C1A_100%)]" />
-
-      {/* Red radial glow – center-right */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[700px] h-[700px] pointer-events-none"
-        style={{ background: 'radial-gradient(circle at 80% 50%, rgba(204,34,41,0.15) 0%, transparent 60%)' }} />
-
-      {/* Blue glow – bottom-left */}
-      <div className="absolute left-0 bottom-0 w-[500px] h-[500px] pointer-events-none"
-        style={{ background: 'radial-gradient(circle at 10% 100%, rgba(37,99,235,0.12) 0%, transparent 60%)' }} />
-
-      {/* Subtle dot grid */}
+      <div className="absolute inset-0 bg-dark-950" />
+      <div className="absolute inset-0 pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse 70% 60% at 30% 50%, rgba(139,92,246,0.12) 0%, transparent 60%)' }} />
+      <div className="absolute inset-0 pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse 50% 50% at 80% 80%, rgba(6,182,212,0.08) 0%, transparent 50%)' }} />
       <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
-        style={{ backgroundImage: 'radial-gradient(rgba(255,255,255,1) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
-
-      {/* Red shimmer top edge */}
-      <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-red-600/60 to-transparent" />
+        style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)', backgroundSize: '64px 64px' }} />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-500/30 to-transparent" />
 
       <div className="container mx-auto px-4 max-w-6xl relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-
-          {/* Left – headline */}
           <div className="text-center lg:text-left">
-            <span className="inline-block px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] rounded-full mb-6 text-red-300 bg-red-600/15 border border-red-600/30">
+            <span className="inline-block px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] rounded-full mb-6 text-violet-300 bg-violet-500/10 border border-violet-500/20">
               Ready to Start?
             </span>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 tracking-tight leading-[1.08]">
-              Scale Your{' '}
-              <span className="text-red-gradient">Global Operations</span>{' '}
-              Today
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight leading-[1.08]" style={{ color: '#ffffff' }}>
+              Let&apos;s Build Something{' '}
+              <span className="text-gradient-warm">Amazing</span>{' '}
+              Together
             </h2>
-            <p className="text-lg text-navy-300 mb-10 max-w-md mx-auto lg:mx-0 leading-relaxed">
-              Whether you&apos;re an employer seeking top-tier talent, or a professional aiming to build your career in Europe.
+            <p className="text-lg mb-10 max-w-md mx-auto lg:mx-0 leading-relaxed" style={{ color: '#ffffff' }}>
+              Whether you need a website, mobile app, marketing strategy, or AI-powered video content — we&apos;ve got you covered.
             </p>
-            <Link href="/contact" className="btn-red text-base inline-flex animate-red-pulse">
-              Get Started Now
-              <ArrowRight className="w-5 h-5" />
+            <Link href="/contact" className="btn-primary text-base inline-flex animate-glow-pulse">
+              Get a Free Quote <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
 
-          {/* Right – cards */}
           <div className="flex flex-col gap-5">
-            {/* Employer card */}
-            <div className="navy-card p-7 flex gap-5 items-start group hover:scale-[1.02] transition-transform">
-              <div className="w-12 h-12 rounded-2xl bg-red-600/15 border border-red-600/30 text-red-400 flex items-center justify-center shrink-0 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">
-                <Building className="w-6 h-6" />
+            {[
+              { icon: Globe,      title: 'Web & App Development', desc: 'Scalable, high-performance websites and mobile apps crafted with the latest technologies.', iconClass: 'bg-violet-500/10 border-violet-500/20 text-violet-400 group-hover:bg-violet-500' },
+              { icon: Smartphone, title: 'Digital Marketing & SEO', desc: 'Grow your online presence with data-driven SEO, targeted ads, and content that converts.', iconClass: 'bg-cyan-500/10 border-cyan-500/20 text-cyan-400 group-hover:bg-cyan-500' },
+              { icon: Video,      title: 'AI Video Generation', desc: 'Create stunning video content with AI — product demos, social reels, and ads at scale.', iconClass: 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400 group-hover:bg-emerald-500' },
+              { icon: Bot,        title: 'AI Automation', desc: 'Automate workflows with custom AI chatbots, data pipelines, and intelligent agents.', iconClass: 'bg-teal-500/10 border-teal-500/20 text-teal-400 group-hover:bg-teal-500' },
+            ].map(({ icon: Icon, title, desc, iconClass }) => (
+              <div key={title} className="card-glass p-7 flex gap-5 items-start group hover:scale-[1.02] transition-transform">
+                <div className={`w-12 h-12 rounded-2xl border flex items-center justify-center shrink-0 group-hover:text-white transition-all duration-300 ${iconClass}`}>
+                  <Icon className="w-6 h-6" />
+                </div>
+                <div>
+                  <h4 className="font-display text-lg font-bold mb-1.5" style={{ color: '#ffffff' }}>{title}</h4>
+                  <p className="text-sm leading-relaxed" style={{ color: '#ffffff' }}>{desc}</p>
+                </div>
               </div>
-              <div>
-                <h4 className="font-display text-lg font-bold text-white mb-1.5">For Employers</h4>
-                <p className="text-sm text-navy-300 leading-relaxed">Access pre-screened international talent or hire a dedicated IT consulting team ready to deliver from day one.</p>
-              </div>
-            </div>
+            ))}
 
-            {/* Candidate card */}
-            <div className="navy-card p-7 flex gap-5 items-start group hover:scale-[1.02] transition-transform">
-              <div className="w-12 h-12 rounded-2xl bg-electric-500/15 border border-electric-500/30 text-electric-300 flex items-center justify-center shrink-0 group-hover:bg-electric-500 group-hover:text-white transition-all duration-300">
-                <Users className="w-6 h-6" />
-              </div>
-              <div>
-                <h4 className="font-display text-lg font-bold text-white mb-1.5">For Candidates</h4>
-                <p className="text-sm text-navy-300 leading-relaxed">Register today to get matched with verified jobs across 15+ European countries. Zero placement fees.</p>
-              </div>
-            </div>
-
-            {/* Trust strip */}
             <div className="flex items-center gap-4 mt-2 px-2">
-              {['Licensed by ANOFM', 'GDPR Compliant', 'Zero Fees'].map((t) => (
-                <div key={t} className="flex items-center gap-1.5 text-[11px] font-semibold text-navy-300">
-                  <span className="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" />
+              {['On-Time Delivery', 'Dedicated Support', 'Transparent Pricing'].map((t) => (
+                <div key={t} className="flex items-center gap-1.5 text-[11px] font-semibold text-white">
+                  <span className="w-1.5 h-1.5 rounded-full bg-violet-500 shrink-0" />
                   {t}
                 </div>
               ))}

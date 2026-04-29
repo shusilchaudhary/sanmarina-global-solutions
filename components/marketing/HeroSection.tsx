@@ -2,188 +2,118 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { HeroSearch } from './HeroSearch';
-import { CheckCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle } from 'lucide-react';
 
-const quickLinks = [
-  { label: 'Construction', href: '/jobs?category=construction' },
-  { label: 'Hospitality', href: '/jobs?category=hospitality' },
-  { label: 'Logistics', href: '/jobs?category=logistics' },
-  { label: 'Agriculture', href: '/jobs?category=agriculture' },
-  { label: 'Healthcare', href: '/jobs?category=healthcare' },
-  { label: 'IT & Tech', href: '/jobs?category=it' },
+const services = [
+  { label: 'Web Development', href: '/services' },
+  { label: 'App Development', href: '/services' },
+  { label: 'Digital Marketing', href: '/services' },
+  { label: 'SEO', href: '/services' },
+  { label: 'AI Video', href: '/services' },
 ];
 
 export function HeroSection() {
   return (
-    <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <section className="relative min-h-screen overflow-hidden">
 
-      {/* Background Image */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
+      {/* Background image */}
+      <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1920&q=80"
-          alt="Professional team at work"
+          src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1920&q=80"
+          alt="Developer workspace with code on laptop screen"
           fill
           priority
+          sizes="100vw"
+          quality={75}
           style={{ objectFit: 'cover', objectPosition: 'center' }}
         />
-        {/* Dark navy gradient overlay */}
-        <div style={{
-          position: 'absolute', inset: 0,
-          background: 'linear-gradient(135deg, rgba(6,12,26,0.92) 0%, rgba(11,22,40,0.85) 50%, rgba(15,32,68,0.80) 100%)',
-        }} />
-        {/* Red accent at bottom */}
-        <div style={{
-          position: 'absolute', bottom: 0, left: 0, right: 0, height: '4px',
-          background: 'linear-gradient(90deg, transparent, #CC2229 40%, #CC2229 60%, transparent)',
+        {/* Violet-tinted dark overlay — gives the image a tech tone */}
+        <div className="absolute inset-0" style={{
+          background: 'linear-gradient(160deg, rgba(15,5,30,0.90) 0%, rgba(30,15,60,0.72) 50%, rgba(10,10,20,0.88) 100%)',
         }} />
       </div>
 
       {/* Content */}
-      <div style={{
-        position: 'relative', zIndex: 10,
-        flex: 1, display: 'flex', flexDirection: 'column',
-        alignItems: 'center', justifyContent: 'center',
-        paddingTop: '160px', paddingBottom: '80px',
-        paddingLeft: '1.5rem', paddingRight: '1.5rem',
-        textAlign: 'center',
-      }}>
+      <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-6 pt-40 sm:pt-44 md:pt-48 pb-12 sm:pb-16 text-center">
 
         {/* Badge */}
-        <div style={{
-          display: 'inline-flex', alignItems: 'center', gap: '8px',
-          padding: '6px 18px', borderRadius: '999px',
-          background: 'rgba(204,34,41,0.15)', border: '1px solid rgba(204,34,41,0.4)',
-          fontSize: '12px', fontWeight: 700, color: '#FCA5A5',
-          letterSpacing: '0.1em', textTransform: 'uppercase',
-          marginBottom: '28px',
-        }}>
-          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#CC2229', animation: 'pulse 2s infinite' }} />
-          International Recruitment & IT Consulting
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-500/15 border border-violet-400/25 backdrop-blur-sm mb-6 sm:mb-8">
+          <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
+          <span className="text-[11px] sm:text-xs font-semibold text-violet-300 tracking-wide">IT Solutions & Digital Services</span>
         </div>
 
         {/* Headline */}
-        <h1 style={{
-          fontFamily: 'var(--font-outfit), Outfit, sans-serif',
-          fontSize: 'clamp(2.5rem, 6vw, 4.75rem)',
+        <h1 className="font-display mb-5 sm:mb-6" style={{
+          fontSize: 'clamp(2rem, 6vw, 4.5rem)',
           fontWeight: 800,
           lineHeight: 1.1,
-          letterSpacing: '-0.03em',
-          color: '#ffffff',
-          maxWidth: '900px',
-          marginBottom: '20px',
+          letterSpacing: '-0.04em',
+          color: '#f4f4f5',
+          textAlign: 'center',
         }}>
-          Your Career in Europe{' '}
+          We Build Digital{' '}
           <span style={{
-            background: 'linear-gradient(135deg, #FF6B6B, #CC2229)',
+            background: 'linear-gradient(135deg, #A78BFA, #22D3EE)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
-          }}>
-            Starts Here
-          </span>
+          }}>Products</span>{' '}
+          That Drive Growth
         </h1>
 
-        {/* Sub-headline */}
+        {/* Sub */}
         <p style={{
-          fontFamily: 'var(--font-inter), Inter, sans-serif',
-          fontSize: 'clamp(1rem, 2vw, 1.2rem)',
-          color: 'rgba(255,255,255,0.75)',
-          maxWidth: '600px',
+          color: '#a1a1aa',
+          textAlign: 'center',
+          maxWidth: '640px',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          marginBottom: '2.5rem',
           lineHeight: 1.7,
-          marginBottom: '40px',
+          fontSize: 'clamp(0.9375rem, 2vw, 1.0625rem)',
         }}>
-          We connect skilled professionals from Asia with verified employers across 15+ European countries. Zero fees for candidates.
+          From high-performance websites and mobile apps to SEO, marketing campaigns, and AI-powered video — we turn ideas into revenue.
         </p>
 
-        {/* Search Bar */}
-        <div style={{ width: '100%', maxWidth: '860px', marginBottom: '24px' }}>
-          <HeroSearch />
+        {/* CTA buttons */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10 sm:mb-12">
+          <Link href="/contact"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-white text-[15px] font-semibold hover:bg-zinc-100 transition-colors shadow-lg shadow-white/10"
+            style={{ color: '#18181b' }}
+          >
+            Start a Project
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+          <Link href="/services"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-white/30 text-[15px] font-semibold hover:bg-white/10 hover:border-white/50 transition-colors"
+            style={{ color: '#ffffff' }}
+          >
+            View Services
+          </Link>
         </div>
 
-        {/* Trust badges */}
-        <div style={{
-          display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px',
-          marginBottom: '56px',
-        }}>
-          {['Licensed by ANOFM', 'Zero Fees for Candidates', 'GDPR Compliant', '98% Visa Success'].map((t) => (
-            <span key={t} style={{
-              display: 'inline-flex', alignItems: 'center', gap: '7px',
-              fontSize: '13px', fontWeight: 500, color: 'rgba(255,255,255,0.7)',
-            }}>
-              <CheckCircle size={14} color="#CC2229" />
+        {/* Trust line */}
+        <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-x-6 gap-y-3 max-w-md sm:max-w-none mx-auto">
+          {['Expert Team', 'On-Time Delivery', '100+ Projects', '24/7 Support'].map((t) => (
+            <span key={t} className="inline-flex items-center justify-center sm:justify-start gap-1.5 text-sm font-medium" style={{ color: '#71717a' }}>
+              <CheckCircle size={14} className="text-emerald-400 shrink-0" />
               {t}
             </span>
           ))}
         </div>
-
-        {/* Quick category links */}
-        <div>
-          <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', marginBottom: '14px' }}>
-            Browse by Category
-          </p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '10px' }}>
-            {quickLinks.map((link) => (
-              <Link key={link.label} href={link.href} style={{
-                padding: '8px 20px',
-                background: 'rgba(255,255,255,0.08)',
-                border: '1px solid rgba(255,255,255,0.15)',
-                borderRadius: '999px',
-                fontSize: '13px', fontWeight: 600, color: 'rgba(255,255,255,0.85)',
-                textDecoration: 'none',
-                transition: 'all 0.2s',
-              }}
-                onMouseEnter={e => {
-                  (e.currentTarget as HTMLElement).style.background = '#CC2229';
-                  (e.currentTarget as HTMLElement).style.borderColor = '#CC2229';
-                  (e.currentTarget as HTMLElement).style.color = '#fff';
-                }}
-                onMouseLeave={e => {
-                  (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.08)';
-                  (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.15)';
-                  (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.85)';
-                }}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
-        </div>
       </div>
 
-      {/* Bottom stats strip */}
-      <div style={{
-        position: 'relative', zIndex: 10,
-        background: 'rgba(255,255,255,0.05)',
-        backdropFilter: 'blur(12px)',
-        borderTop: '1px solid rgba(255,255,255,0.1)',
-        padding: '20px 1.5rem',
-      }}>
-        <div style={{
-          maxWidth: '1280px', margin: '0 auto',
-          display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0',
-        }}>
+      {/* Stats bar */}
+      <div className="relative z-10 border-t border-white/[0.06] bg-black/25 backdrop-blur-sm py-5 sm:py-6 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-0 md:divide-x md:divide-white/[0.06]">
           {[
-            { value: '1,000+', label: 'Successful Placements' },
-            { value: '15+', label: 'European Countries' },
-            { value: '98%', label: 'Visa Success Rate' },
-            { value: '150+', label: 'Partner Companies' },
-          ].map((stat, i) => (
-            <div key={stat.label} style={{
-              flex: '1 1 140px',
-              textAlign: 'center',
-              padding: '12px 24px',
-              borderRight: i < 3 ? '1px solid rgba(255,255,255,0.1)' : 'none',
-            }}>
-              <div style={{
-                fontFamily: 'var(--font-outfit), Outfit, sans-serif',
-                fontSize: '1.75rem', fontWeight: 800, color: '#ffffff',
-                letterSpacing: '-0.02em', lineHeight: 1,
-              }}>
-                {stat.value}
-              </div>
-              <div style={{ fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.5)', marginTop: '4px', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                {stat.label}
-              </div>
+            { value: '100+', label: 'Projects Delivered' },
+            { value: '50+', label: 'Happy Clients' },
+            { value: '2+', label: 'Years Experience' },
+            { value: '24/7', label: 'Support Available' },
+          ].map((stat) => (
+            <div key={stat.label} className="text-center py-1 px-3">
+              <div className="font-display text-xl sm:text-2xl font-extrabold text-white tracking-tight">{stat.value}</div>
+              <div className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-widest mt-1" style={{ color: '#71717a' }}>{stat.label}</div>
             </div>
           ))}
         </div>
