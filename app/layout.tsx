@@ -92,11 +92,11 @@ export default function RootLayout({
                 addressCountry: 'RO',
               },
               sameAs: [
-                'https://www.facebook.com/sanmarinaglobal',
-                'https://www.instagram.com/sanmarinaglobal',
-                'https://www.linkedin.com/company/sanmarinaglobal',
-                'https://www.tiktok.com/@sanmarinaglobal',
-                'https://www.youtube.com/@sanmarinaglobal',
+                'https://www.facebook.com/profile.php?id=61588923064066',
+                'https://www.instagram.com/sanmarinaglobalsolutions/',
+                'https://www.linkedin.com/company/115894467/',
+                'https://www.tiktok.com/@sanmarinaglobalsolutions',
+                'https://www.youtube.com/@SanMarinaGlobalSolutions',
               ],
             }),
           }}
