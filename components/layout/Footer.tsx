@@ -87,9 +87,9 @@ export function Footer() {
                 <Mail className="w-4 h-4 text-violet-400 flex-shrink-0 group-hover:scale-110 transition-transform" />
                 info@sanmarinaglobal.eu
               </a>
-              <div className="flex items-center gap-3 text-sm" style={white}>
-                <MapPin className="w-4 h-4 text-violet-400 flex-shrink-0" />
-                Bucharest, Romania
+              <div className="flex items-start gap-3 text-sm" style={white}>
+                <MapPin className="w-4 h-4 text-violet-400 flex-shrink-0 mt-0.5" />
+                <span>Bucharest, Romania<br />Baneshwor, Kathmandu, Nepal</span>
               </div>
             </div>
 

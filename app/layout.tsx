@@ -85,12 +85,20 @@ export default function RootLayout({
                 email: 'info@sanmarinaglobal.eu',
                 availableLanguage: ['English', 'Romanian'],
               },
-              address: {
-                '@type': 'PostalAddress',
-                streetAddress: 'Splaiul Unirii 165, Sector 3',
-                addressLocality: 'Bucharest',
-                addressCountry: 'RO',
-              },
+              address: [
+                {
+                  '@type': 'PostalAddress',
+                  streetAddress: 'Splaiul Unirii 165, Sector 3',
+                  addressLocality: 'Bucharest',
+                  addressCountry: 'RO',
+                },
+                {
+                  '@type': 'PostalAddress',
+                  streetAddress: 'Baneshwor',
+                  addressLocality: 'Kathmandu',
+                  addressCountry: 'NP',
+                },
+              ],
               sameAs: [
                 'https://www.facebook.com/profile.php?id=61588923064066',
                 'https://www.instagram.com/sanmarinaglobalsolutions/',

@@ -10,7 +10,8 @@ export const metadata: Metadata = {
 };
 
 const contactItems = [
-  { icon: MapPin, label: 'Office Address', value: 'Splaiul Unirii 165, Sector 3\nBucharest, Romania', href: undefined },
+  { icon: MapPin, label: 'Romania Office', value: 'Splaiul Unirii 165, Sector 3\nBucharest, Romania', href: undefined },
+  { icon: MapPin, label: 'Nepal Office',   value: 'Baneshwor\nKathmandu, Nepal', href: undefined },
   { icon: Mail,   label: 'Email',          value: 'info@sanmarinaglobal.eu', href: 'mailto:info@sanmarinaglobal.eu' },
   { icon: Phone,  label: 'Phone',          value: '+40 735 062 451',        href: 'tel:+40735062451' },
   { icon: Clock,  label: 'Office Hours',   value: 'Mon – Fri: 9:00 AM – 6:00 PM (EET)\nSaturday – Sunday: Closed', href: undefined },
@@ -87,17 +88,37 @@ export default function ContactPage() {
                 ))}
               </div>
 
-              <div className="w-full h-64 rounded-2xl overflow-hidden border border-zinc-700 shadow-sm">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2849.0!2d26.1118!3d44.4268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff4b70001d55%3A0x1234!2sSplaiul+Unirii+165%2C+Bucure%C8%99ti!5e0!3m2!1sen!2sro!4v1680000000000!5m2!1sen!2sro"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="SanMarina Global Solutions Office — Splaiul Unirii 165, Bucharest"
-                />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <p className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Romania</p>
+                  <div className="w-full h-52 rounded-2xl overflow-hidden border border-zinc-700 shadow-sm">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2849.0!2d26.1118!3d44.4268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff4b70001d55%3A0x1234!2sSplaiul+Unirii+165%2C+Bucure%C8%99ti!5e0!3m2!1sen!2sro!4v1680000000000!5m2!1sen!2sro"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title="SanMarina Global Solutions — Bucharest, Romania"
+                    />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Nepal</p>
+                  <div className="w-full h-52 rounded-2xl overflow-hidden border border-zinc-700 shadow-sm">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.2!2d85.3240!3d27.6939!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19a3d4a8b8e7%3A0x1234!2sBaneshwor%2C+Kathmandu!5e0!3m2!1sen!2snp!4v1680000000000!5m2!1sen!2snp"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title="SanMarina Global Solutions — Baneshwor, Kathmandu"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
