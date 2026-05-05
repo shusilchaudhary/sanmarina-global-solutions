@@ -27,9 +27,9 @@ export function ClientLogos() {
           </h2>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+        <div className="flex flex-wrap items-center justify-center gap-x-6 sm:gap-x-10 gap-y-6 px-1">
           {clients.map((client) => (
-            <div key={client.name} className="flex items-center gap-3 group">
+            <div key={client.name} className="flex items-center gap-3 group min-w-0 max-w-[min(100%,280px)] sm:max-w-none">
               {client.logo ? (
                 <Image
                   src={client.logo}

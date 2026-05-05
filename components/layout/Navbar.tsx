@@ -12,6 +12,8 @@ const navLinks = [
   { label: 'Home',      href: '/' },
   { label: 'Services',  href: '#', hasDropdown: true },
   { label: 'Portfolio', href: '/portfolio' },
+  { label: 'Pricing',   href: '/pricing' },
+  { label: 'Blog',      href: '/blog' },
   { label: 'About',     href: '/about' },
   { label: 'Contact',   href: '/contact' },
 ];
@@ -138,7 +140,7 @@ export function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-70 lg:hidden">
+        <div className="fixed inset-0 z-[70] lg:hidden">
           <div onClick={() => setMobileOpen(false)} className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
           <div className="absolute right-0 top-0 bottom-0 w-[300px] max-w-[90vw] flex flex-col shadow-2xl bg-dark-900">
             <div className="flex items-center justify-between px-5 py-4 border-b border-zinc-800">

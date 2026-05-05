@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter, Outfit } from 'next/font/google';
 import { ThemeProvider } from '@/components/shared/ThemeProvider';
 import { WhatsAppButton } from '@/components/shared/WhatsAppButton';
@@ -59,6 +59,12 @@ export const metadata: Metadata = {
     shortcut: '/sanmarinaglobal.png',
     apple: '/sanmarinaglobal.png',
   },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#09090b',
 };
 
 export default function RootLayout({
